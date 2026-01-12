@@ -262,7 +262,7 @@ Based on published research:
 **FractiAI Research Team**
 - Website: http://fractiai.com
 - Email: info@fractiai.com
-- YouTube: @enterpriseworld7dai
+- YouTube: @FractiAI (https://www.youtube.com/@FractiAI)
 - Zenodo: https://zenodo.org/records/17009840
 - GitHub: https://github.com/AiwonA1/Omniverse-for-Digital-Assistants-and-Agents
 

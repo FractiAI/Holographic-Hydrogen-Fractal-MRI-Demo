@@ -224,7 +224,7 @@ Each node contains nested lattices. Zoom infinitely deep—true holographic self
 **FractiAI Research Team**
 - **Website**: http://fractiai.com
 - **Email**: info@fractiai.com
-- **YouTube**: https://youtube.com/@enterpriseworld7dai
+- **YouTube**: https://www.youtube.com/@FractiAI
 - **Data**: https://zenodo.org/records/17009840
 - **Whitepapers**: https://zenodo.org/records/17055763
 - **GitHub**: https://github.com/AiwonA1/Omniverse-for-Digital-Assistants-and-Agents

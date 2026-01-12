@@ -339,7 +339,7 @@ Consider adding:
 
 ### Scientific Questions
 - **FractiAI Research**: info@fractiai.com
-- **YouTube**: @enterpriseworld7dai
+- **YouTube**: @FractiAI (https://www.youtube.com/@FractiAI)
 - **Zenodo**: https://zenodo.org/records/17009840
 
 ---
