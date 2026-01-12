@@ -183,7 +183,7 @@ interface SensoryEncoding {
 
 ## 🎨 UI/UX Enhancements
 
-### Tesla's Guidance Updated
+### Nikola Tesla's Guidance Updated
 Added stage-specific greetings and suggested questions:
 - **SSAN Lattice**: Emphasizes historic first measurement
 - **Sensory Reality**: Explains 1.420 GHz umbilical frequency
@@ -303,7 +303,7 @@ Both modules support full data export:
    - Establish umbilical connections
    - Adjust harmonic mode (1-8×)
 
-### Tesla AI Assistant
+### Nikola Tesla AI Assistant
 - **Right sidebar**: Always available
 - **Context-aware**: Changes guidance per stage
 - **Suggested questions**: Click to ask
