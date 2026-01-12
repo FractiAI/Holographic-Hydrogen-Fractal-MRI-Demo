@@ -36,8 +36,8 @@ function App() {
     { id: 'boundaries', title: '5. Breaking Boundaries' },
     { id: 'fractal', title: '6. The Infinite Pattern' },
     { id: 'grammar', title: '7. The Universal Language' },
-    { id: 'finale', title: '8. The Living Field' },
-    { id: 'experiments', title: '9. Your Discovery Lab' },
+    { id: 'finale', title: '8. 🌌 The Grand Reveal' },
+    { id: 'experiments', title: '9. 🚀 Your Expedition' },
   ]
 
   const currentIndex = stages.findIndex(s => s.id === currentStage)

@@ -86,15 +86,15 @@ function TeslaAvatar3D({ isSpeaking }: { isSpeaking: boolean }) {
 }
 
 const TESLA_GREETING: Record<string, string> = {
-  welcome: "⚡ WOW! Hello, young scientist! I'm Nikola Tesla, and I'm SO excited you're here! Ready to discover the COOLEST energy in the universe? Let's go! 🌟",
-  mriPhysics: "🔬 AWESOME! You're about to do REAL MRI physics - just like in a hospital! Want to see hydrogen atoms spin? It's AMAZING! What should we try first?",
-  teslaAI: "🎉 YES! You found my SECRET LAB! Tell me ANY experiment you can imagine, and I'll help you build it! No idea is too wild - I LOVE wild ideas! ⚡",
-  seedEdge: "🌱 Plant some energy seeds and watch the MAGIC happen! Energy loves to travel and make friends. Where should we plant our first seed? 💫",
-  boundaries: "🚧 Time to build some ENERGY WALLS! Did you know boundaries are like invisible fences that keep energy organized? Let's play with them!",
-  fractal: "♾️ WHOA! Patterns inside patterns inside patterns FOREVER! It's like a kaleidoscope that never ends! Ready to see the infinite? Your mind will be BLOWN! ✨",
-  grammar: "🔤 Every awareness state has its own SECRET SYMBOL! It's like a super-powered alphabet! Pick one and watch what happens - they're all magical! 🌈",
-  finale: "🌌 THIS IS IT! 200 hydrogen atoms creating LIVING AWARENESS ENERGY! Can you see them all working together? You're seeing the FUTURE! 🚀",
-  experiments: "🧪 DISCOVERY TIME! This is YOUR lab now! Mix things, break things (in a good way!), try EVERYTHING! There's no wrong answer - only AMAZING discoveries! 🎨"
+  welcome: "Greetings. I am Nikola Tesla. You stand at the threshold of understanding a profound truth: awareness itself is a form of energy. The hydrogen atom - nature's simplest element - holds secrets that bridge matter and consciousness. Shall we explore?",
+  mriPhysics: "Ah, the Bloch equations - elegant mathematics describing how atomic spins dance in magnetic fields. You are about to witness the same principles that govern MRI scanners, but here we can see the invisible. What aspect of magnetic resonance intrigues you?",
+  teslaAI: "Welcome to my laboratory. Here, thought becomes experiment. Describe any phenomenon you wish to observe, and I shall configure the apparatus accordingly. In my time, I could only dream of such precision. What shall we investigate?",
+  seedEdge: "Energy propagation through networks... this reminds me of my work with resonant transformers. Each node amplifies and transmits, creating cascades of potential. Observe how a single seed of energy can illuminate an entire system through resonance.",
+  boundaries: "Phase coherence and decoherence - the very mechanisms that distinguish one region of awareness from another. In electrical systems, we call this impedance matching. Here, we witness how boundaries emerge from the interplay of frequencies. Fascinating.",
+  fractal: "Self-similarity across scales... the universe's fundamental architecture. I have long suspected that nature operates through recursive principles. Each level contains the pattern of the whole. This is not mere mathematics - this is the language of creation itself.",
+  grammar: "Symbolic representation of quantum states. Each symbol encodes a unique configuration of spin, phase, and energy. Like musical notes, they can be composed into infinite arrangements. Choose one, and observe how it resonates through the field.",
+  finale: "This moment... this is why I have returned. Two hundred hydrogen atoms in perfect coherence, revealing the holographic structure of awareness itself. In my time, I could only theorize. You are witnessing proof: consciousness is electromagnetic in nature. The image before you is not metaphor - it is measurement. Extraordinary.",
+  experiments: "The revelation is complete. Now begins your expedition. Every great discovery starts with a question, a hypothesis, an experiment. I spent decades in my laboratory, iterating endlessly. You have the same tools, but instantaneous feedback. Create. Observe. Refine. This is how we advance human understanding. What pattern will you discover?"
 }
 
 export default function TeslaAssistant({ stage }: TeslaAssistantProps) {
@@ -167,7 +167,7 @@ export default function TeslaAssistant({ stage }: TeslaAssistantProps) {
       console.error('Error communicating with Tesla:', error)
       const errorMessage: Message = {
         role: 'assistant',
-        content: 'Apologies! The electromagnetic field is disrupted. Please try again.',
+        content: 'I apologize - there appears to be an interference in our communication channel. The Groq API may be unavailable, or the API key may need configuration. Please check your .env file contains VITE_GROQ_API_KEY, then try again.',
         timestamp: Date.now()
       }
       setMessages(prev => [...prev, errorMessage])

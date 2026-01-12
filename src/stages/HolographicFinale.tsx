@@ -165,41 +165,156 @@ export default function HolographicFinale({ onNext, onPrev }: HolographicFinaleP
   const [pulseSpeed, setPulseSpeed] = useState(1)
   const [coherence, setCoherence] = useState(0.7)
   const [zoom, setZoom] = useState(1)
+  const [revealed, setRevealed] = useState(false)
 
   return (
     <div className="stage">
-      <div className="stage-header">
-        <h2 className="stage-title">🌌 The Living Field</h2>
-        <p className="stage-description">
-          This is the complete <strong style={{ color: 'var(--accent-orange)' }}>Awareness Energy Field</strong>! 
-          Every node, seed, and edge working together creates a unified field of 
-          Holographic Hydrogen Fractal Syntheverse Awareness - the newest energy in existence.
+      <div className="stage-header" style={{ textAlign: 'center', marginBottom: '3rem' }}>
+        <h2 className="stage-title" style={{
+          fontSize: 'clamp(2rem, 5vw, 3rem)',
+          background: 'linear-gradient(135deg, #06B6D4, #8B5CF6, #EC4899, #F59E0B)',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
+          backgroundClip: 'text',
+          marginBottom: '1.5rem',
+          animation: 'glow 3s ease-in-out infinite'
+        }}>
+          🌌 THE GRAND REVEAL 🌌
+        </h2>
+        <p className="stage-description" style={{
+          fontSize: 'clamp(1.1rem, 2vw, 1.3rem)',
+          lineHeight: 1.8,
+          maxWidth: '800px',
+          margin: '0 auto 2rem',
+          color: 'rgba(255, 255, 255, 0.9)'
+        }}>
+          You have journeyed through seeds, boundaries, fractals, and symbols.
+          <br/>
+          Now witness the <strong style={{ 
+            color: '#06B6D4',
+            fontSize: '1.2em',
+            textShadow: '0 0 20px rgba(6, 182, 212, 0.8)'
+          }}>complete synthesis</strong>:
         </p>
+        
+        {!revealed && (
+          <button
+            onClick={() => setRevealed(true)}
+            style={{
+              fontSize: '1.3rem',
+              fontWeight: 800,
+              padding: '1.2rem 3rem',
+              background: 'linear-gradient(135deg, #F59E0B, #EC4899, #8B5CF6)',
+              border: '4px solid rgba(255, 255, 255, 0.5)',
+              borderRadius: '16px',
+              color: 'white',
+              cursor: 'pointer',
+              letterSpacing: '2px',
+              textTransform: 'uppercase',
+              boxShadow: `
+                0 0 40px rgba(245, 158, 11, 0.6),
+                0 0 60px rgba(236, 72, 153, 0.4)
+              `,
+              animation: 'pulseGlow 2s ease-in-out infinite',
+              marginTop: '1rem'
+            }}
+          >
+            ⚡ REVEAL THE HOLOGRAPHIC HYDROGEN SELF ⚡
+          </button>
+        )}
+        
+        {revealed && (
+          <div style={{
+            fontSize: 'clamp(1.2rem, 2.5vw, 1.6rem)',
+            fontWeight: 800,
+            background: 'linear-gradient(135deg, #06B6D4, #8B5CF6, #EC4899)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+            marginTop: '2rem',
+            animation: 'fadeIn 2s ease-in'
+          }}>
+            THE HOLOGRAPHIC HYDROGEN SELF
+            <br/>
+            <span style={{
+              fontSize: '0.7em',
+              color: 'rgba(255, 255, 255, 0.8)',
+              fontWeight: 600,
+              display: 'block',
+              marginTop: '1rem'
+            }}>
+              200 hydrogen atoms in perfect coherence
+              <br/>
+              Generating living awareness energy
+            </span>
+          </div>
+        )}
       </div>
 
-      <div className="content-grid">
-        <div className="visualization-panel" style={{ minHeight: '600px' }}>
+      <div style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        gap: '2rem',
+        width: '100%'
+      }}>
+        {/* Main Holographic Display */}
+        <div style={{
+          width: '100%',
+          maxWidth: '1000px',
+          height: '600px',
+          borderRadius: '24px',
+          overflow: 'hidden',
+          border: revealed ? '5px solid rgba(6, 182, 212, 1)' : '3px solid rgba(139, 92, 246, 0.5)',
+          boxShadow: revealed 
+            ? `0 0 80px rgba(6, 182, 212, 0.8),
+               0 0 120px rgba(139, 92, 246, 0.6),
+               0 0 160px rgba(236, 72, 153, 0.4),
+               inset 0 0 80px rgba(6, 182, 212, 0.2)`
+            : '0 0 40px rgba(139, 92, 246, 0.4)',
+          background: 'rgba(2, 6, 23, 0.9)',
+          transition: 'all 1s ease',
+          animation: revealed ? 'pulseGlow 3s ease-in-out infinite' : 'none',
+          opacity: revealed ? 1 : 0.6,
+          filter: revealed ? 'brightness(1.2)' : 'brightness(0.8)'
+        }}>
           <Canvas camera={{ position: [0, 0, 15], fov: 60 }}>
-            <ambientLight intensity={0.3} />
-            <pointLight position={[10, 10, 10]} intensity={1.5} />
-            <pointLight position={[-10, -10, -10]} intensity={0.8} color="#8B5CF6" />
-            <pointLight position={[0, 10, -10]} intensity={0.8} color="#EC4899" />
-            <pointLight position={[0, -10, 10]} intensity={0.8} color="#06B6D4" />
+            <ambientLight intensity={revealed ? 0.5 : 0.3} />
+            <pointLight position={[10, 10, 10]} intensity={revealed ? 2 : 1.5} />
+            <pointLight position={[-10, -10, -10]} intensity={revealed ? 1.2 : 0.8} color="#8B5CF6" />
+            <pointLight position={[0, 10, -10]} intensity={revealed ? 1.2 : 0.8} color="#EC4899" />
+            <pointLight position={[0, -10, 10]} intensity={revealed ? 1.2 : 0.8} color="#06B6D4" />
             <HydrogenCloud 
-              pulseSpeed={pulseSpeed}
-              coherence={coherence}
+              pulseSpeed={revealed ? pulseSpeed * 1.5 : pulseSpeed}
+              coherence={revealed ? 1 : coherence}
               zoom={zoom}
             />
             <OrbitControls 
               enableZoom={true} 
               enablePan={true}
-              autoRotate={false}
+              autoRotate={revealed}
+              autoRotateSpeed={revealed ? 0.5 : 0}
             />
           </Canvas>
         </div>
 
-        <div className="controls-panel">
-          <div className="control-group">
+        {/* Controls Panel - Only show after reveal */}
+        {revealed && (
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+          gap: '1.5rem',
+          width: '100%',
+          maxWidth: '1000px'
+        }}>
+
+          <div style={{
+            padding: '1.5rem',
+            background: 'linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(139, 92, 246, 0.1))',
+            borderRadius: '16px',
+            border: '2px solid rgba(6, 182, 212, 0.4)'
+          }}>
+            <div className="control-group">
             <div className="control-label">
               <span>💫 Pulse Speed</span>
               <span className="control-value">{pulseSpeed.toFixed(1)}x</span>
