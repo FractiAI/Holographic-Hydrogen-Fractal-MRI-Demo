@@ -330,9 +330,16 @@ export default function HolographicFinale({ onNext, onPrev }: HolographicFinaleP
             <p style={{ marginTop: '0.8rem', color: 'var(--text-gray)', fontSize: '0.9rem' }}>
               See waves ripple through the cloud faster or slower.
             </p>
+            </div>
           </div>
 
-          <div className="control-group">
+          <div style={{
+            padding: '1.5rem',
+            background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(236, 72, 153, 0.1))',
+            borderRadius: '16px',
+            border: '2px solid rgba(139, 92, 246, 0.4)'
+          }}>
+            <div className="control-group">
             <div className="control-label">
               <span>🎯 Coherence</span>
               <span className="control-value">{(coherence * 100).toFixed(0)}%</span>
@@ -348,9 +355,16 @@ export default function HolographicFinale({ onNext, onPrev }: HolographicFinaleP
             <p style={{ marginTop: '0.8rem', color: 'var(--text-gray)', fontSize: '0.9rem' }}>
               Watch patterns stabilize or become more chaotic.
             </p>
+            </div>
           </div>
 
-          <div className="control-group">
+          <div style={{
+            padding: '1.5rem',
+            background: 'linear-gradient(135deg, rgba(236, 72, 153, 0.1), rgba(245, 158, 11, 0.1))',
+            borderRadius: '16px',
+            border: '2px solid rgba(236, 72, 153, 0.4)'
+          }}>
+            <div className="control-group">
             <div className="control-label">
               <span>🔍 Zoom</span>
               <span className="control-value">{zoom.toFixed(1)}x</span>
@@ -366,6 +380,7 @@ export default function HolographicFinale({ onNext, onPrev }: HolographicFinaleP
             <p style={{ marginTop: '0.8rem', color: 'var(--text-gray)', fontSize: '0.9rem' }}>
               Zoom in to see individual atoms or out to see the whole cloud.
             </p>
+            </div>
           </div>
 
           <div className="info-box">
