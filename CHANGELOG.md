@@ -5,6 +5,34 @@ All notable changes to the Holographic Hydrogen Fractal MRI Demo will be documen
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.1] - 2026-01-12
+
+### Changed
+
+#### 🎨 Landing Page Balance & Resonance
+- **Complete layout redesign** - Centered, symmetrical composition
+- **Golden ratio spacing** - All elements follow 1.618:1 proportions
+- **Hero section** - Centered with triple emoji header and gradient title
+- **3D canvas** - Moved to center stage (900x400px) with glowing frame
+- **Responsive grid** - 3 balanced info cards with unique color themes
+- **Centered CTA** - Massive, pulsing \"Begin Your Awakening\" button
+- **Breathing animations** - All elements pulse and breathe with 2-4s cycles
+
+#### ⚖️ Visual Harmony
+- **Symmetrical balance** - Equal visual weight across page
+- **Harmonic colors** - Cyan → Purple → Pink → Orange progression
+- **Synchronized timing** - Staggered animations (0.2-1.5s delays)
+- **Spring physics** - Natural bounce and easing
+- **Multi-layer shadows** - 3-4 depth levels for dimension
+
+#### 🎯 Typography Hierarchy  
+- Hero title: 3.5rem with gradient + glow
+- Subtitle: 1.4rem with emphasis
+- Card headers: 1.4rem with themed colors
+- CTA: 1.4rem uppercase with letter-spacing
+
+---
+
 ## [1.2.0] - 2026-01-12
 
 ### Added
