@@ -154,7 +154,7 @@ export default function GrammarStage({ onNext, onPrev }: GrammarStageProps) {
   return (
     <div className="stage">
       <div className="stage-header">
-        <h2 className="stage-title">Common Holographic Grammar 🔮</h2>
+        <h2 className="stage-title">🔤 The Universal Language</h2>
         <p className="stage-description">
           Awareness energy speaks through symbols! Each symbol represents a different 
           <strong style={{ color: 'var(--accent-pink)' }}> awareness energy state</strong> - 

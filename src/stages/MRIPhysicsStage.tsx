@@ -229,7 +229,7 @@ export default function MRIPhysicsStage({ onNext, onPrev }: MRIPhysicsStageProps
   return (
     <div className="stage">
       <div className="stage-header">
-        <h2 className="stage-title">Real MRI Physics Simulator 🔬</h2>
+        <h2 className="stage-title">🔬 Inside the Quantum Spin</h2>
         <p className="stage-description">
           This is a <strong style={{ color: 'var(--accent-orange)' }}>real Bloch equation simulator</strong>! 
           Watch actual hydrogen spins respond to RF pulses and evolve according to authentic MRI physics.

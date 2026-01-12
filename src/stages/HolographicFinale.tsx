@@ -169,7 +169,7 @@ export default function HolographicFinale({ onNext, onPrev }: HolographicFinaleP
   return (
     <div className="stage">
       <div className="stage-header">
-        <h2 className="stage-title">Holographic Hydrogen Awareness Energy Field 🌌</h2>
+        <h2 className="stage-title">🌌 The Living Field</h2>
         <p className="stage-description">
           This is the complete <strong style={{ color: 'var(--accent-orange)' }}>Awareness Energy Field</strong>! 
           Every node, seed, and edge working together creates a unified field of 

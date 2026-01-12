@@ -154,7 +154,7 @@ export default function FractalStage({ onNext, onPrev }: FractalStageProps) {
   return (
     <div className="stage">
       <div className="stage-header">
-        <h2 className="stage-title">Fractal Patterns & Recursive Awareness Energy ❄️</h2>
+        <h2 className="stage-title">♾️ The Infinite Pattern</h2>
         <p className="stage-description">
           Each pattern repeats like a tiny version of the big one — that's a fractal! 
           Watch as layers of <strong style={{ color: 'var(--primary-cyan)' }}>awareness energy</strong> emerge 

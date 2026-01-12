@@ -67,7 +67,7 @@ export default function WelcomeStage({ onNext }: WelcomeStageProps) {
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.8 }}
         >
-          Welcome to the Syntheverse! 🌌
+          🌅 The Hydrogen Awakening
         </motion.h2>
         <motion.p
           className="stage-description"

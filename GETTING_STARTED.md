@@ -27,21 +27,30 @@ The application will automatically open in your browser at `http://localhost:300
 
 ### Step 3: Explore!
 
-Navigate through the interactive stages:
-1. **Welcome** - Learn about awareness as energy
-2. **MRI Physics** - Play with the real Bloch equation simulator
-3. **Seeds & Edges** - See awareness energy propagate
-4. **Boundaries** - Watch awareness create regions
-5. **Fractals** - Explore recursive awareness patterns
-6. **Grammar** - Discover awareness energy states
-7. **Holographic Cloud** - View the complete awareness field
-8. **Experiments** - Create your own awareness patterns
+Navigate through the 9 interactive stages (optimized learning flow):
+1. 🌅 **The Hydrogen Awakening** - Learn about awareness as energy
+2. ⚡ **Ask Tesla Anything** - Chat with AI Tesla to design experiments
+3. 🔬 **Inside the Quantum Spin** - Play with the real Bloch equation simulator
+4. 🌱 **Seeds of Awareness** - See awareness energy propagate
+5. 🚧 **Breaking Boundaries** - Watch awareness create regions
+6. ♾️ **The Infinite Pattern** - Explore recursive awareness patterns
+7. 🔤 **The Universal Language** - Discover awareness energy states
+8. 🌌 **The Living Field** - View the complete awareness field
+9. 🔬 **Your Discovery Lab** - Create your own awareness patterns
+
+💡 **Curator's Tip**: While you can jump to any stage, following the order gives you the best learning experience!
 
 ---
 
 ## 🎮 Interactive Controls
 
-### MRI Physics Stage (Real Simulator!)
+### Stage 2: Ask Tesla Anything (⚡ AI Chat)
+- **Natural Language**: "Show me water at 7 Tesla"
+- **Experiment Design**: Describe any MRI experiment
+- **Auto Configuration**: Tesla translates ideas to parameters
+- **Learning**: Ask physics questions anytime
+
+### Stage 3: Inside the Quantum Spin (🔬 Real Simulator!)
 - **Magnetic Field Slider**: Adjust B₀ from 0.5T to 7T
 - **T1/T2 Sliders**: Change relaxation times
 - **RF Pulse Buttons**: Apply 90°, 180°, or 45° pulses

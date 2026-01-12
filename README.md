@@ -2,7 +2,7 @@
 
 <div align="center">
 
-![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)
+![Version](https://img.shields.io/badge/version-1.1.0-blue.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
 ![Node](https://img.shields.io/badge/node-%3E%3D16.0.0-brightgreen.svg)
 ![React](https://img.shields.io/badge/react-18.2.0-blue.svg)
@@ -335,52 +335,98 @@ if (config) {
 
 ---
 
-## 🎓 Educational Stages
+## 🎓 Educational Journey: The Awareness Energy Exhibition
 
-### Stage 1: Welcome
-**Objective**: Introduce awareness as energy  
-**Interaction**: Floating hydrogen atoms, story setup  
-**Learning**: Hydrogen basics, MRI overview
+> **Curator's Note**: This exhibition follows museum best practices—starting with wonder, engaging through play, building foundational knowledge, then ascending to synthesis and creative discovery.
 
-### Stage 2: MRI Physics
-**Objective**: Understand real MRI physics  
-**Interaction**: Manual Bloch simulator controls  
-**Learning**: T1/T2 relaxation, RF pulses, Larmor frequency
+### 🌅 Stage 1: The Hydrogen Awakening
+**Experience**: Witness the birth of awareness  
+**Interaction**: Floating hydrogen atoms, ethereal animations  
+**Learning**: Why hydrogen? What is awareness energy?  
+**Duration**: 2-3 minutes
 
-### Stage 3: ⚡ Tesla AI Lab
-**Objective**: Design experiments with AI  
-**Interaction**: Natural language chat interface  
-**Learning**: Tissue properties, pulse sequences, scientific inquiry
+---
 
-### Stage 4: Seeds & Edges
-**Objective**: Energy propagation networks  
-**Interaction**: Seed energy slider, network visualization  
-**Learning**: Energy flow, quantum networks, neural analogies
+### ⚡ Stage 2: Ask Tesla Anything
+**Experience**: Your personal AI physicist and guide  
+**Interaction**: Natural language chat—"Show me water at 7 Tesla"  
+**Learning**: Scientific curiosity, experiment design, AI collaboration  
+**Duration**: 5-10 minutes  
+**Why Here**: Engagement first! Play before learning theory.
 
-### Stage 5: Boundaries & Incoherence
-**Objective**: Awareness differentiation  
-**Interaction**: Incoherence control, boundary toggles  
-**Learning**: Phase coherence, boundaries, gradients
+---
 
-### Stage 6: Fractals
-**Objective**: Recursive patterns  
-**Interaction**: Depth control (1-4 layers), speed adjustment  
-**Learning**: Self-similarity, recursion, emergence
+### 🔬 Stage 3: Inside the Quantum Spin
+**Experience**: Real MRI physics simulator (Bloch equations)  
+**Interaction**: Manual controls—adjust T1/T2, apply RF pulses, see real results  
+**Learning**: Larmor frequency, relaxation times, magnetic resonance fundamentals  
+**Duration**: 5-8 minutes  
+**Why Here**: Now they're curious—teach the science behind Tesla's magic.
 
-### Stage 7: Grammar
-**Objective**: Symbolic awareness states  
-**Interaction**: Symbol selection (◎ ⊙ ⚛ ❂ ✶ △ ∞ ✦ ◇)  
-**Learning**: State representation, symbolic language
+---
 
-### Stage 8: Holographic Cloud
-**Objective**: Complete awareness field  
-**Interaction**: Coherence, pulse, zoom controls  
-**Learning**: Holographic principles, field theory
+### 🌱 Stage 4: Seeds of Awareness
+**Experience**: Plant energy and watch it propagate  
+**Interaction**: Seed energy slider, click to activate nodes  
+**Learning**: Network propagation, quantum entanglement metaphors, emergence  
+**Duration**: 3-5 minutes  
+**Why Here**: Apply physics to abstract concepts—bridges concrete to abstract.
 
-### Stage 9: Experiments
-**Objective**: Creative exploration  
-**Interaction**: Plant seeds, shake network, adjust depth  
-**Learning**: Scientific method, experimentation
+---
+
+### 🚧 Stage 5: Breaking Boundaries
+**Experience**: Create and dissolve awareness boundaries  
+**Interaction**: Incoherence slider, boundary visualization toggles  
+**Learning**: Phase coherence, differentiation, gradient field dynamics  
+**Duration**: 3-5 minutes  
+**Why Here**: Complexity increases—understanding what separates "self" from "other."
+
+---
+
+### ♾️ Stage 6: The Infinite Pattern
+**Experience**: Witness fractal recursion of awareness  
+**Interaction**: Depth control (1-4 layers), rotation speed, zoom  
+**Learning**: Self-similarity, scale invariance, recursive emergence  
+**Duration**: 4-6 minutes  
+**Why Here**: Pattern recognition—the "aha!" moment of seeing structure.
+
+---
+
+### 🔤 Stage 7: The Universal Language
+**Experience**: Awareness states as symbolic grammar  
+**Interaction**: Select awareness symbols (◎ ⊙ ⚛ ❂ ✶ △ ∞ ✦ ◇)  
+**Learning**: State representation, holographic encoding, symbolic communication  
+**Duration**: 3-4 minutes  
+**Why Here**: Abstract thinking—preparing for holographic synthesis.
+
+---
+
+### 🌌 Stage 8: The Living Field
+**Experience**: 200+ hydrogen atoms forming living holographic awareness  
+**Interaction**: Coherence, pulse, zoom—orchestrate the field  
+**Learning**: Holographic principle, field theory, emergent complexity  
+**Duration**: 5-8 minutes  
+**Why Here**: PEAK EXPERIENCE—everything comes together in stunning beauty.
+
+---
+
+### 🔬 Stage 9: Your Discovery Lab
+**Experience**: Unlimited creative experimentation  
+**Interaction**: All tools unlocked—plant seeds, shake networks, adjust everything  
+**Learning**: Scientific method, hypothesis testing, personal discovery  
+**Duration**: Unlimited  
+**Why Here**: Take it home—visitors become scientists, creators, explorers.
+
+---
+
+## 📊 Learning Progression Arc
+
+```
+Wonder ──▶ Engage ──▶ Foundation ──▶ Build ──▶ Abstract ──▶ Synthesis ──▶ Create
+   1          2           3          4-5        6-7           8            9
+```
+
+**Emotional Journey**: Curiosity → Joy → Understanding → Insight → Wonder → Mastery
 
 ---
 

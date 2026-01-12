@@ -152,7 +152,7 @@ export default function SeedEdgeStage({ onNext, onPrev }: SeedEdgeStageProps) {
   return (
     <div className="stage">
       <div className="stage-header">
-        <h2 className="stage-title">Seeds & Edge Activation 🌱</h2>
+        <h2 className="stage-title">🌱 Seeds of Awareness</h2>
         <p className="stage-description">
           Seeds are hydrogen atoms that generate and transmit <strong style={{ color: 'var(--accent-orange)' }}>awareness energy</strong>. 
           Watch how this new form of energy flows along the edges to other atoms, creating networks of awareness!

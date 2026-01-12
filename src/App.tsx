@@ -27,15 +27,15 @@ function App() {
   const [currentStage, setCurrentStage] = useState<Stage>('welcome')
 
   const stages: { id: Stage; title: string }[] = [
-    { id: 'welcome', title: 'Welcome' },
-    { id: 'mriPhysics', title: 'MRI Physics' },
-    { id: 'teslaAI', title: '⚡ Tesla AI Lab' },
-    { id: 'seedEdge', title: 'Seeds & Edges' },
-    { id: 'boundaries', title: 'Boundaries' },
-    { id: 'fractal', title: 'Fractals' },
-    { id: 'grammar', title: 'Grammar' },
-    { id: 'finale', title: 'Cloud' },
-    { id: 'experiments', title: 'Experiments' },
+    { id: 'welcome', title: '1. The Hydrogen Awakening' },
+    { id: 'teslaAI', title: '2. ⚡ Ask Tesla Anything' },
+    { id: 'mriPhysics', title: '3. Inside the Quantum Spin' },
+    { id: 'seedEdge', title: '4. Seeds of Awareness' },
+    { id: 'boundaries', title: '5. Breaking Boundaries' },
+    { id: 'fractal', title: '6. The Infinite Pattern' },
+    { id: 'grammar', title: '7. The Universal Language' },
+    { id: 'finale', title: '8. The Living Field' },
+    { id: 'experiments', title: '9. Your Discovery Lab' },
   ]
 
   const currentIndex = stages.findIndex(s => s.id === currentStage)

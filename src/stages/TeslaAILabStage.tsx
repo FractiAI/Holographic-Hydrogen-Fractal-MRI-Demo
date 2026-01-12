@@ -298,7 +298,7 @@ export default function TeslaAILabStage({ onNext, onPrev }: TeslaAILabStageProps
             WebkitTextFillColor: 'transparent',
             backgroundClip: 'text'
           }}>
-            ⚡ Tesla AI MRI Laboratory
+            ⚡ Ask Tesla Anything
           </h2>
           <p className="subtitle" style={{ 
             color: 'var(--accent-orange)', 

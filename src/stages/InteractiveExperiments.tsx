@@ -178,7 +178,7 @@ export default function InteractiveExperiments({ onPrev }: InteractiveExperiment
   return (
     <div className="stage">
       <div className="stage-header">
-        <h2 className="stage-title">Interactive Awareness Energy Experiments 🧪</h2>
+        <h2 className="stage-title">🔬 Your Discovery Lab</h2>
         <p className="stage-description">
           Now you're an <strong style={{ color: 'var(--accent-orange)' }}>awareness energy engineer</strong>! 
           Plant new awareness seeds, shake the energy field, and watch how awareness energy 

@@ -126,7 +126,7 @@ export default function BoundariesStage({ onNext, onPrev }: BoundariesStageProps
   return (
     <div className="stage">
       <div className="stage-header">
-        <h2 className="stage-title">Boundaries & Incoherence 🌊</h2>
+        <h2 className="stage-title">🚧 Breaking Boundaries</h2>
         <p className="stage-description">
           Not everything has to be perfect! Messy edges create boundaries that contain and shape 
           awareness energy into distinct regions. Boundaries are how awareness energy differentiates 
