@@ -187,10 +187,12 @@ npm run dev
 ```
 
 ### Environment Setup
-The Groq API key is pre-configured in `.env`:
+Create a `.env` file in the project root:
 ```
-VITE_GROQ_API_KEY=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
+VITE_GROQ_API_KEY=your_groq_api_key_here
 ```
+
+**Get your free API key from**: https://console.groq.com/keys
 
 ### Build for Production
 ```bash
