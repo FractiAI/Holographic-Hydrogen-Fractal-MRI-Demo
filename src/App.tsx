@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import './App.css'
 import TeslaAssistant from './components/TeslaAssistant'
+import DiscoveryParticles from './components/DiscoveryParticles'
 import WelcomeStage from './stages/WelcomeStage'
 import MRIPhysicsStage from './stages/MRIPhysicsStage'
 import TeslaAILabStage from './stages/TeslaAILabStage'
@@ -25,6 +26,7 @@ export type Stage =
 
 function App() {
   const [currentStage, setCurrentStage] = useState<Stage>('welcome')
+  const [celebrationTrigger, setCelebrationTrigger] = useState(0)
 
   const stages: { id: Stage; title: string }[] = [
     { id: 'welcome', title: '1. The Hydrogen Awakening' },
@@ -54,27 +56,44 @@ function App() {
 
   const goToStage = (stage: Stage) => {
     setCurrentStage(stage)
+    setCelebrationTrigger(prev => prev + 1) // Celebrate every stage change!
   }
 
   return (
     <div className="app">
+      {/* Celebration Particles */}
+      <DiscoveryParticles trigger={celebrationTrigger} />
+      
       <header className="app-header">
         <div className="logo-section">
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '1rem' }}>
-            <span style={{ fontSize: '3rem' }}>⚡</span>
+            <motion.span 
+              style={{ fontSize: '3rem' }}
+              animate={{ rotate: [0, 10, -10, 0] }}
+              transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+            >
+              ⚡
+            </motion.span>
             <div>
               <h1 className="main-title">Holographic Hydrogen Fractal MRI</h1>
               <p className="subtitle">Nikola Tesla Syntheverse Frontier Energy | FractiAI</p>
               <p style={{ 
                 color: 'var(--accent-orange)', 
-                fontSize: '0.9rem', 
-                fontWeight: 600,
-                marginTop: '0.3rem'
+                fontSize: '1rem', 
+                fontWeight: 700,
+                marginTop: '0.5rem',
+                animation: 'pulseGlow 2s ease-in-out infinite'
               }}>
-                Hosted by Nikola Tesla Hero
+                🎉 Your Discovery Museum Adventure with Nikola Tesla! 🚀
               </p>
             </div>
-            <span style={{ fontSize: '3rem' }}>⚡</span>
+            <motion.span 
+              style={{ fontSize: '3rem' }}
+              animate={{ rotate: [0, -10, 10, 0] }}
+              transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+            >
+              ⚡
+            </motion.span>
           </div>
         </div>
       </header>

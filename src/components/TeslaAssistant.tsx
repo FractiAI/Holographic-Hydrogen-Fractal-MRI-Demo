@@ -86,15 +86,15 @@ function TeslaAvatar3D({ isSpeaking }: { isSpeaking: boolean }) {
 }
 
 const TESLA_GREETING: Record<string, string> = {
-  welcome: "Welcome, brilliant mind! I am Nikola Tesla. Ask me anything about awareness energy!",
-  mriPhysics: "Greetings! You're exploring real MRI physics. What would you like to understand?",
-  teslaAI: "You are in my full laboratory! Here you can design complete experiments.",
-  seedEdge: "Energy propagation fascinates you? Ask me about seeds and edges!",
-  boundaries: "Boundaries and coherence - fundamental to all systems. What puzzles you?",
-  fractal: "Fractals! The universe's recursive beauty. What shall we explore?",
-  grammar: "Symbols and states - the language of awareness. I'm here to explain!",
-  finale: "The complete holographic field! What aspect intrigues you most?",
-  experiments: "Experimentation time! Ask me to help design your exploration!"
+  welcome: "⚡ WOW! Hello, young scientist! I'm Nikola Tesla, and I'm SO excited you're here! Ready to discover the COOLEST energy in the universe? Let's go! 🌟",
+  mriPhysics: "🔬 AWESOME! You're about to do REAL MRI physics - just like in a hospital! Want to see hydrogen atoms spin? It's AMAZING! What should we try first?",
+  teslaAI: "🎉 YES! You found my SECRET LAB! Tell me ANY experiment you can imagine, and I'll help you build it! No idea is too wild - I LOVE wild ideas! ⚡",
+  seedEdge: "🌱 Plant some energy seeds and watch the MAGIC happen! Energy loves to travel and make friends. Where should we plant our first seed? 💫",
+  boundaries: "🚧 Time to build some ENERGY WALLS! Did you know boundaries are like invisible fences that keep energy organized? Let's play with them!",
+  fractal: "♾️ WHOA! Patterns inside patterns inside patterns FOREVER! It's like a kaleidoscope that never ends! Ready to see the infinite? Your mind will be BLOWN! ✨",
+  grammar: "🔤 Every awareness state has its own SECRET SYMBOL! It's like a super-powered alphabet! Pick one and watch what happens - they're all magical! 🌈",
+  finale: "🌌 THIS IS IT! 200 hydrogen atoms creating LIVING AWARENESS ENERGY! Can you see them all working together? You're seeing the FUTURE! 🚀",
+  experiments: "🧪 DISCOVERY TIME! This is YOUR lab now! Mix things, break things (in a good way!), try EVERYTHING! There's no wrong answer - only AMAZING discoveries! 🎨"
 }
 
 export default function TeslaAssistant({ stage }: TeslaAssistantProps) {
@@ -188,34 +188,37 @@ export default function TeslaAssistant({ stage }: TeslaAssistantProps) {
     <motion.div
       initial={{ opacity: 0, y: 100 }}
       animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, type: 'spring', bounce: 0.3 }}
       style={{
         position: 'fixed',
         bottom: 0,
         left: 0,
         right: 0,
-        zIndex: 1000,
-        transition: 'all 0.3s ease'
+        zIndex: 9999,
+        transition: 'all 0.3s ease',
+        pointerEvents: 'auto'
       }}
     >
       <div style={{
         background: isSpeaking 
-          ? 'linear-gradient(135deg, rgba(6, 182, 212, 0.95), rgba(139, 92, 246, 0.95), rgba(236, 72, 153, 0.95))'
-          : 'linear-gradient(135deg, rgba(15, 23, 42, 0.98), rgba(30, 41, 59, 0.98))',
-        backdropFilter: 'blur(20px)',
+          ? 'linear-gradient(135deg, rgba(6, 182, 212, 0.98), rgba(139, 92, 246, 0.98), rgba(236, 72, 153, 0.98))'
+          : 'linear-gradient(135deg, rgba(6, 182, 212, 0.15), rgba(15, 23, 42, 0.98), rgba(139, 92, 246, 0.15))',
+        backdropFilter: 'blur(30px)',
         border: 'none',
         borderTop: isSpeaking 
-          ? '4px solid #06B6D4'
-          : '4px solid #8B5CF6',
+          ? '5px solid #06B6D4'
+          : '5px solid rgba(139, 92, 246, 0.8)',
         borderRadius: 0,
         boxShadow: isSpeaking 
-          ? '0 -8px 60px rgba(6, 182, 212, 1), 0 -4px 40px rgba(139, 92, 246, 0.8), 0 0 100px rgba(236, 72, 153, 0.6), inset 0 2px 20px rgba(6, 182, 212, 0.4)'
-          : '0 -4px 30px rgba(139, 92, 246, 0.6), 0 -2px 15px rgba(6, 182, 212, 0.4), inset 0 2px 10px rgba(139, 92, 246, 0.2)',
-        transition: 'all 0.3s ease',
-        height: isExpanded ? '400px' : '70px',
+          ? '0 -12px 80px rgba(6, 182, 212, 1.2), 0 -6px 60px rgba(139, 92, 246, 1), 0 -3px 40px rgba(236, 72, 153, 0.8), inset 0 3px 30px rgba(6, 182, 212, 0.5), 0 0 150px rgba(245, 158, 11, 0.4)'
+          : '0 -8px 50px rgba(139, 92, 246, 0.8), 0 -4px 30px rgba(6, 182, 212, 0.6), 0 -2px 20px rgba(236, 72, 153, 0.4), inset 0 2px 15px rgba(139, 92, 246, 0.3)',
+        transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+        height: isExpanded ? '450px' : '80px',
         display: 'flex',
         flexDirection: 'column',
         position: 'relative',
-        overflow: 'hidden'
+        overflow: 'hidden',
+        animation: isSpeaking ? 'teslaAlive 2s ease-in-out infinite' : 'none'
       }}>
         {/* Electric pulse effect */}
         <div style={{
@@ -263,10 +266,10 @@ export default function TeslaAssistant({ stage }: TeslaAssistantProps) {
               margin: 0,
               filter: isSpeaking ? 'drop-shadow(0 0 8px rgba(6, 182, 212, 0.8))' : 'none'
             }}>
-              ⚡ Nikola Tesla AI Assistant
+              ⚡ Nikola Tesla - Your Science Friend!
               <span style={{ 
-                fontSize: '0.7rem',
-                fontWeight: 400,
+                fontSize: '0.75rem',
+                fontWeight: 600,
                 background: isSpeaking 
                   ? 'linear-gradient(90deg, #F59E0B, #EC4899)'
                   : 'linear-gradient(90deg, #06B6D4, #8B5CF6)',
@@ -275,7 +278,7 @@ export default function TeslaAssistant({ stage }: TeslaAssistantProps) {
                 backgroundClip: 'text',
                 marginLeft: '0.5rem'
               }}>
-                {isExpanded ? '• Chat Active' : '• Click to chat'}
+                {isExpanded ? '• Let\'s Chat! 💬' : '• Click to Ask Me Anything! 🎉'}
               </span>
             </h3>
             {!isExpanded && messages.length > 0 && (
@@ -321,7 +324,7 @@ export default function TeslaAssistant({ stage }: TeslaAssistantProps) {
               e.currentTarget.style.boxShadow = '0 0 20px rgba(6, 182, 212, 0.3)'
             }}
           >
-            {isExpanded ? '▼ Minimize' : '▲ Chat with Tesla'}
+{isExpanded ? '▼ Minimize' : '🚀 Chat with Tesla!'}
           </button>
         </div>
 
