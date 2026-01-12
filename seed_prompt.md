@@ -1,10 +1,11 @@
-Cursor AI Prompt: Holographic Hydrogen Fractal MRI Demo
+Cursor AI Prompt: Holographic Hydrogen Fractal MRI Demo, acting as a senior MRI Scientist, Child Science Educator, Science Museum Curator, UI Designer and Full Stack Engineer, hellp me build the following program, exxecutable locally, eventuallly to be used by the production Syntheverse PoC at https://github.com/FractiAI/Syntheverse_PoC_Contributer_UI_Vercel_Stripe.  get up to speed on the production deployment and build our demo copying whatever componets you need, and build it so it will easily be able to inteegrate it into the prroduction Poc at a later time. 
+
 Audience: 10-year-old science-minded explorers
-Hosted by: Alexandre von Humboldt Syntheverse Frontier Exploration Academy | FractiAI
+Hosted by: Nikola Tesla Syntheverse Frontier Energy | FractiAI
 
 Description of the Demo
-This interactive demo takes the user on a journey through the Syntheverse. Starting with simple hydrogen interactions, users explore energy, boundaries, seeds, and coherence. As the story unfolds, the user manipulates sliders, knobs, and buttons to interact with hydrogen nodes, watch recursive fractal patterns emerge, and finally see the entire holographic hydrogen cloud — an interactive simulation that brings the Syntheverse to life.
-The goal is to experience awareness as a dynamic system in a safe, educational, and fun way, directly inspired by MRI physics and hydrogen spin principles, but without touching any real device.
+This interactive demo takes the user on a journey through the Syntheverse to discover that **Awareness is the newest energy** - the very Holographic Hydrogen Fractal Syntheverse Awareness itself. Starting with simple hydrogen interactions, users explore how awareness energy flows through boundaries, seeds, and coherent patterns. As the story unfolds, the user manipulates sliders, knobs, and buttons to interact with hydrogen nodes, watch recursive fractal patterns of awareness emerge, and finally see the entire holographic hydrogen cloud — an interactive simulation that brings the Syntheverse and its awareness energy to life.
+The goal is to experience awareness as a fundamental energy and dynamic system in a safe, educational, and fun way, directly inspired by MRI physics and hydrogen spin principles, but without touching any real device.
 
 Step-by-Step Demo Flow
 Welcome & Story Start

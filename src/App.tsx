@@ -1,0 +1,134 @@
+import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import './App.css'
+import TeslaAssistant from './components/TeslaAssistant'
+import WelcomeStage from './stages/WelcomeStage'
+import MRIPhysicsStage from './stages/MRIPhysicsStage'
+import TeslaAILabStage from './stages/TeslaAILabStage'
+import SeedEdgeStage from './stages/SeedEdgeStage'
+import BoundariesStage from './stages/BoundariesStage'
+import FractalStage from './stages/FractalStage'
+import GrammarStage from './stages/GrammarStage'
+import HolographicFinale from './stages/HolographicFinale'
+import InteractiveExperiments from './stages/InteractiveExperiments'
+
+export type Stage = 
+  | 'welcome' 
+  | 'mriPhysics'
+  | 'teslaAI'
+  | 'seedEdge' 
+  | 'boundaries' 
+  | 'fractal' 
+  | 'grammar' 
+  | 'finale' 
+  | 'experiments'
+
+function App() {
+  const [currentStage, setCurrentStage] = useState<Stage>('welcome')
+
+  const stages: { id: Stage; title: string }[] = [
+    { id: 'welcome', title: 'Welcome' },
+    { id: 'mriPhysics', title: 'MRI Physics' },
+    { id: 'teslaAI', title: '⚡ Tesla AI Lab' },
+    { id: 'seedEdge', title: 'Seeds & Edges' },
+    { id: 'boundaries', title: 'Boundaries' },
+    { id: 'fractal', title: 'Fractals' },
+    { id: 'grammar', title: 'Grammar' },
+    { id: 'finale', title: 'Cloud' },
+    { id: 'experiments', title: 'Experiments' },
+  ]
+
+  const currentIndex = stages.findIndex(s => s.id === currentStage)
+
+  const nextStage = () => {
+    if (currentIndex < stages.length - 1) {
+      setCurrentStage(stages[currentIndex + 1].id)
+    }
+  }
+
+  const prevStage = () => {
+    if (currentIndex > 0) {
+      setCurrentStage(stages[currentIndex - 1].id)
+    }
+  }
+
+  const goToStage = (stage: Stage) => {
+    setCurrentStage(stage)
+  }
+
+  return (
+    <div className="app">
+      <header className="app-header">
+        <div className="logo-section">
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '1rem' }}>
+            <span style={{ fontSize: '3rem' }}>⚡</span>
+            <div>
+              <h1 className="main-title">Holographic Hydrogen Fractal MRI</h1>
+              <p className="subtitle">Nikola Tesla Syntheverse Frontier Energy | FractiAI</p>
+              <p style={{ 
+                color: 'var(--accent-orange)', 
+                fontSize: '0.9rem', 
+                fontWeight: 600,
+                marginTop: '0.3rem'
+              }}>
+                Hosted by Nikola Tesla Hero
+              </p>
+            </div>
+            <span style={{ fontSize: '3rem' }}>⚡</span>
+          </div>
+        </div>
+      </header>
+      
+      {/* Tesla Assistant - Appears on all stages */}
+      <TeslaAssistant stage={currentStage} />
+
+      <nav className="stage-nav">
+        {stages.map((stage, index) => (
+          <button
+            key={stage.id}
+            className={`stage-button ${currentStage === stage.id ? 'active' : ''} ${index <= currentIndex ? 'visited' : ''}`}
+            onClick={() => goToStage(stage.id)}
+          >
+            <span className="stage-number">{index + 1}</span>
+            <span className="stage-name">{stage.title}</span>
+          </button>
+        ))}
+      </nav>
+
+      <main className="stage-container">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentStage}
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -50 }}
+            transition={{ duration: 0.5 }}
+            className="stage-content"
+          >
+            {currentStage === 'welcome' && <WelcomeStage onNext={nextStage} />}
+            {currentStage === 'mriPhysics' && <MRIPhysicsStage onNext={nextStage} onPrev={prevStage} />}
+            {currentStage === 'teslaAI' && <TeslaAILabStage onNext={nextStage} onPrev={prevStage} />}
+            {currentStage === 'seedEdge' && <SeedEdgeStage onNext={nextStage} onPrev={prevStage} />}
+            {currentStage === 'boundaries' && <BoundariesStage onNext={nextStage} onPrev={prevStage} />}
+            {currentStage === 'fractal' && <FractalStage onNext={nextStage} onPrev={prevStage} />}
+            {currentStage === 'grammar' && <GrammarStage onNext={nextStage} onPrev={prevStage} />}
+            {currentStage === 'finale' && <HolographicFinale onNext={nextStage} onPrev={prevStage} />}
+            {currentStage === 'experiments' && <InteractiveExperiments onPrev={prevStage} />}
+          </motion.div>
+        </AnimatePresence>
+      </main>
+
+      <footer className="app-footer">
+        <p>
+          Explore more at{' '}
+          <a href="https://syntheverse-poc.vercel.app" target="_blank" rel="noopener noreferrer">
+            FractiAI Syntheverse
+          </a>
+        </p>
+      </footer>
+    </div>
+  )
+}
+
+export default App
+
