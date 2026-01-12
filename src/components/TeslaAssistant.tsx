@@ -256,7 +256,7 @@ export default function TeslaAssistant({ stage }: TeslaAssistantProps) {
           {/* Tesla Header */}
           <div style={{ flex: 1, minWidth: 0 }}>
             <h3 style={{ 
-              background: 'linear-gradient(90deg, #06B6D4, #8B5CF6, #EC4899)',
+              backgroundImage: 'linear-gradient(90deg, #06B6D4, #8B5CF6, #EC4899)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text',
@@ -270,7 +270,7 @@ export default function TeslaAssistant({ stage }: TeslaAssistantProps) {
               <span style={{ 
                 fontSize: '0.75rem',
                 fontWeight: 600,
-                background: isSpeaking 
+                backgroundImage: isSpeaking 
                   ? 'linear-gradient(90deg, #F59E0B, #EC4899)'
                   : 'linear-gradient(90deg, #06B6D4, #8B5CF6)',
                 WebkitBackgroundClip: 'text',
