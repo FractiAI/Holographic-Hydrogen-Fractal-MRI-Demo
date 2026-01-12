@@ -68,7 +68,10 @@ function App() {
   // Scroll to top of stage content whenever stage changes
   useEffect(() => {
     if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollTo({ top: 0, behavior: 'smooth' })
+      // Scroll to top with a slight delay to ensure content is rendered
+      setTimeout(() => {
+        scrollContainerRef.current?.scrollTo({ top: 0, behavior: 'smooth' })
+      }, 100)
     }
   }, [currentStage])
   
