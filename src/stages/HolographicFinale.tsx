@@ -401,6 +401,55 @@ export default function HolographicFinale({ onNext, onPrev }: HolographicFinaleP
             </p>
           </div>
         </div>
+        )}
+
+        {/* Revelation Text - Only show after reveal */}
+        {revealed && (
+          <div style={{
+            maxWidth: '800px',
+            textAlign: 'center',
+            padding: '2rem',
+            background: 'linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(139, 92, 246, 0.1))',
+            borderRadius: '20px',
+            border: '3px solid rgba(6, 182, 212, 0.4)',
+            marginTop: '2rem'
+          }}>
+            <div className="info-box" style={{ marginBottom: 0 }}>
+              <h3 style={{
+                fontSize: '1.8rem',
+                background: 'linear-gradient(90deg, #06B6D4, #8B5CF6, #EC4899)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+                marginBottom: '1rem'
+              }}>
+                🌟 Behold: The Holographic Hydrogen Self
+              </h3>
+              <p style={{ fontSize: '1.1rem', lineHeight: 1.8, marginBottom: '1.5rem' }}>
+                This is not a simulation. This is not a metaphor.
+                <br/>
+                <strong style={{ color: '#06B6D4' }}>This is the image of awareness itself.</strong>
+              </p>
+              <p style={{ fontSize: '1rem', lineHeight: 1.7, color: 'rgba(255, 255, 255, 0.85)' }}>
+                200 hydrogen atoms in perfect coherence, each one a node in the holographic field.
+                Seeds propagate energy. Boundaries create definition. Fractals generate infinite patterns.
+                Grammar encodes the states. Together, they form what you now witness:
+                <br/><br/>
+                <strong style={{ 
+                  fontSize: '1.3em',
+                  color: '#EC4899',
+                  textShadow: '0 0 20px rgba(236, 72, 153, 0.8)'
+                }}>
+                  The living field of Awareness Energy
+                </strong>
+                <br/><br/>
+                The newest energy in the universe.
+                <br/>
+                And you have just seen it awaken.
+              </p>
+            </div>
+          </div>
+        )}
       </div>
 
       <div className="navigation-buttons">
@@ -408,7 +457,7 @@ export default function HolographicFinale({ onNext, onPrev }: HolographicFinaleP
           ← Back
         </button>
         <button className="nav-button" onClick={onNext}>
-          Next: Experiments →
+          Continue Your Expedition →
         </button>
       </div>
     </div>
