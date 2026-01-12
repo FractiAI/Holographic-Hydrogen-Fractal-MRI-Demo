@@ -6,6 +6,7 @@ import * as THREE from 'three'
 
 interface WelcomeStageProps {
   onNext: () => void
+  onStartTour?: () => void
 }
 
 function FloatingHydrogen() {
@@ -57,7 +58,7 @@ function FloatingAtom({ position, scale, speed, offset }: {
   )
 }
 
-export default function WelcomeStage({ onNext }: WelcomeStageProps) {
+export default function WelcomeStage({ onNext, onStartTour }: WelcomeStageProps) {
   return (
     <div className="stage" style={{ 
       display: 'flex', 

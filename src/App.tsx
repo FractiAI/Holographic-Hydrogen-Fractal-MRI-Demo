@@ -4,6 +4,7 @@ import './App.css'
 import TeslaAssistant from './components/TeslaAssistant'
 import DiscoveryParticles from './components/DiscoveryParticles'
 import ResonanceIndicator from './components/ResonanceIndicator'
+import AutoTourController from './components/AutoTourController'
 import WelcomeStage from './stages/WelcomeStage'
 import HydrogenSpinStage from './stages/HydrogenSpinStage'
 import MRIPhysicsStage from './stages/MRIPhysicsStage'
@@ -38,14 +39,14 @@ function App() {
   const [celebrationTrigger, setCelebrationTrigger] = useState(0)
   const [showResonance, setShowResonance] = useState(false)
   const scrollContainerRef = useRef<HTMLDivElement>(null)
+  
+  // Auto Tour State
+  const [isAutoTourActive, setIsAutoTourActive] = useState(false)
+  const [tourPaused, setTourPaused] = useState(false)
+  const [tourTimeRemaining, setTourTimeRemaining] = useState(0)
+  const tourTimerRef = useRef<number | null>(null)
 
-  // Scroll to top of stage content whenever stage changes
-  useEffect(() => {
-    if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollTo({ top: 0, behavior: 'smooth' })
-    }
-  }, [currentStage])
-
+  // Define stages array BEFORE using it in useEffect
   const stages: { id: Stage; title: string }[] = [
     { id: 'welcome', title: '🌟 Welcome to the Future' },
     { id: 'hydrogenSpin', title: '⚛️ What is Hydrogen Spin?' },
@@ -63,6 +64,54 @@ function App() {
   ]
 
   const currentIndex = stages.findIndex(s => s.id === currentStage)
+
+  // Scroll to top of stage content whenever stage changes
+  useEffect(() => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollTo({ top: 0, behavior: 'smooth' })
+    }
+  }, [currentStage])
+  
+  // Auto Tour Timer
+  useEffect(() => {
+    const STAGE_DURATION = 15000 // 15 seconds per stage
+    
+    if (isAutoTourActive && !tourPaused) {
+      setTourTimeRemaining(STAGE_DURATION)
+      
+      const startTime = Date.now()
+      
+      tourTimerRef.current = window.setInterval(() => {
+        const elapsed = Date.now() - startTime
+        const remaining = Math.max(0, STAGE_DURATION - elapsed)
+        
+        setTourTimeRemaining(remaining)
+        
+        if (remaining === 0) {
+          // Move to next stage
+          const nextIndex = currentIndex + 1
+          if (nextIndex < stages.length && stages[nextIndex].id !== 'teslaAI') {
+            // Skip Tesla AI stage in tour, go directly to experiments
+            if (stages[nextIndex].id === 'teslaAI' && nextIndex + 1 < stages.length) {
+              setCurrentStage(stages[nextIndex + 1].id)
+            } else {
+              setCurrentStage(stages[nextIndex].id)
+            }
+          } else {
+            // Tour complete - end at experiments
+            setIsAutoTourActive(false)
+            setCurrentStage('experiments')
+          }
+        }
+      }, 100) // Update every 100ms for smooth progress
+      
+      return () => {
+        if (tourTimerRef.current) {
+          clearInterval(tourTimerRef.current)
+        }
+      }
+    }
+  }, [isAutoTourActive, tourPaused, currentStage, currentIndex, stages])
 
   const nextStage = () => {
     if (currentIndex < stages.length - 1) {
@@ -83,6 +132,36 @@ function App() {
     // Show resonance indicator for special stages
     const specialStages = ['ssanLattice', 'sensoryReality', 'syntheverseImaging']
     setShowResonance(specialStages.includes(stage))
+    
+    // Stop auto tour if user manually navigates
+    if (isAutoTourActive) {
+      setIsAutoTourActive(false)
+      setTourPaused(false)
+    }
+  }
+  
+  // Auto Tour Functions
+  const startAutoTour = () => {
+    setIsAutoTourActive(true)
+    setTourPaused(false)
+    setCurrentStage('welcome')
+    setCelebrationTrigger(prev => prev + 1)
+  }
+  
+  const pauseAutoTour = () => {
+    setTourPaused(true)
+  }
+  
+  const resumeAutoTour = () => {
+    setTourPaused(false)
+  }
+  
+  const stopAutoTour = () => {
+    setIsAutoTourActive(false)
+    setTourPaused(false)
+    if (tourTimerRef.current) {
+      clearInterval(tourTimerRef.current)
+    }
   }
 
   return (
@@ -90,8 +169,20 @@ function App() {
       {/* Celebration Particles */}
       <DiscoveryParticles trigger={celebrationTrigger} />
       
-      {/* Tesla's Resonance Indicator */}
+      {/* Nikola Tesla's Resonance Indicator */}
       <ResonanceIndicator isActive={showResonance} />
+      
+      {/* Auto Tour Controller */}
+      <AutoTourController
+        isActive={isAutoTourActive}
+        currentStage={currentIndex}
+        totalStages={stages.length - 1} // Exclude Tesla AI from count
+        onPause={pauseAutoTour}
+        onResume={resumeAutoTour}
+        onStop={stopAutoTour}
+        timeRemaining={tourTimeRemaining}
+        stageDuration={15000}
+      />
       
       <header className="app-header">
         <div className="logo-section">
@@ -219,7 +310,7 @@ function App() {
                 transition={{ duration: 0.5 }}
                 className="stage-content"
               >
-                {currentStage === 'welcome' && <WelcomeStage onNext={nextStage} />}
+                {currentStage === 'welcome' && <WelcomeStage onNext={nextStage} onStartTour={startAutoTour} />}
                 {currentStage === 'hydrogenSpin' && <HydrogenSpinStage onNext={nextStage} onPrev={prevStage} />}
                 {currentStage === 'mriPhysics' && <MRIPhysicsStage onNext={nextStage} onPrev={prevStage} />}
                 {currentStage === 'holographs' && <HolographsStage onNext={nextStage} onPrev={prevStage} />}

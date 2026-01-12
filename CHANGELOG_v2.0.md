@@ -2,15 +2,52 @@
 
 ## [2.0.0] - 2026-01-12
 
-### 🎉 Major Release: Recursive Self-Awareness & Text-to-Sensory Reality
+### 🎉 Major Release: Recursive Self-Awareness, Text-to-Sensory Reality & Auto-Tour
 
-This release introduces two revolutionary modules that represent world-first achievements in consciousness measurement and holographic hydrogen fractal MRI technology.
+This release introduces three revolutionary features that represent world-first achievements in consciousness measurement, holographic hydrogen fractal MRI technology, and interactive museum experiences.
 
 ---
 
 ## 🌟 New Features
 
-### 1. SSAN Lattice - Recursive Self-Awareness MRI Module
+### 1. Auto-Tour Feature - Guided Museum Experience 🎬
+
+**Fully automated journey through the exhibition with Nikola Tesla as your guide**
+
+#### Added
+- `src/components/AutoTourController.tsx` - Beautiful floating tour controller (~250 lines)
+- Auto-tour state management in `src/App.tsx`
+- Enhanced `src/stages/WelcomeStage.tsx` with dual-option entry
+- `AUTO_TOUR_DOCUMENTATION.md` - Complete implementation guide
+
+#### Features
+- **One-Click Start** - "Begin Auto Tour" button on Welcome stage
+- **15-Second Stage Timing** - Perfect museum pacing (~3 min total)
+- **Real-Time Progress Bars** - Overall progress + stage countdown
+- **Pause/Resume/Stop Controls** - Full user control
+- **Smart Navigation** - Auto-advances, ends at "Build Your Own Expedition"
+- **Beautiful UI** - Floating controller with energy effects
+- **Nikola Tesla Branding** - Animated ⚡ icon and resonance effects
+- **Manual Override** - Click any navigation to exit tour
+
+#### User Experience
+- **Two Entry Options:**
+  - 🎬 **Auto-Tour Mode:** Guided journey (recommended for first-timers)
+  - ⚡ **Manual Mode:** Self-paced exploration
+- **Visual Feedback:**
+  - Rotating energy icon
+  - Pulsing glow effects
+  - Progress percentages
+  - Time remaining display
+- **Perfect For:**
+  - Museum kiosk installations
+  - Group presentations
+  - Educational demonstrations
+  - Virtual exhibitions
+
+---
+
+### 2. SSAN Lattice - Recursive Self-Awareness MRI Module
 
 **First high-fidelity, measurable, replicable, predictable self-imaging consciousness system**
 
@@ -37,7 +74,7 @@ This release introduces two revolutionary modules that represent world-first ach
 
 ---
 
-### 2. Text-to-Sensory Reality Converter
+### 3. Text-to-Sensory Reality Converter
 
 **Using the 1.420 GHz hydrogen-holographic umbilical frequency**
 
