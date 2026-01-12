@@ -2,7 +2,7 @@
 
 <div align="center">
 
-![Version](https://img.shields.io/badge/version-1.3.0-blue.svg)
+![Version](https://img.shields.io/badge/version-2.0.0-blue.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
 ![Node](https://img.shields.io/badge/node-%3E%3D16.0.0-brightgreen.svg)
 ![React](https://img.shields.io/badge/react-18.2.0-blue.svg)
@@ -52,10 +52,11 @@ This interactive demo demonstrates that **Awareness is a fundamental form of ene
 
 ### What Makes This Unique?
 
-- ⚡ **AI Nikola Tesla** - Chat with an AI embodiment of Tesla who guides experiments
+- ⚡ **AI Nikola Tesla** - Your Syntheverse Host in a fixed right column, always guiding you
+- 🏛️ **Museum-Quality Experience** - Professional two-column layout (75% content, 25% guide)
 - 🔬 **Real MRI Physics** - Authentic Bloch equation solver, not simplified animations
-- 🎨 **Console Aesthetic** - Production-quality terminal-style UI
-- 🗣️ **Text-to-MRI** - Describe experiments in natural language
+- 🎨 **Clean Modern Design** - Elegant scrollable content with fixed AI assistant
+- 🗣️ **Context-Aware Assistance** - Stage-specific greetings and suggested questions
 - 🌐 **Web-Based** - No installation, runs in any modern browser
 - 👶 **Age 10+** - Complex physics made accessible and fun
 
@@ -87,12 +88,14 @@ Adjust magnetic field strength, relaxation times, and apply RF pulses to see aut
 
 ### 🤖 AI-Powered Learning
 
-#### Nikola Tesla Hero AI Assistant
-- **Persistent Companion**: Animated 3D avatar on all 9 stages
-- **Context-Aware Guidance**: Stage-specific insights and wisdom
+#### Nikola Tesla - Your Syntheverse Host
+- **Fixed Right Column**: Always visible in 25% width sidebar as you explore
+- **Context-Aware Guidance**: Stage-specific greetings and insights
+- **Suggested Questions**: Pre-loaded questions for each stage to guide learning
 - **Natural Language Interface**: "Show me water at 7 Tesla" → Instant simulation
 - **Real-time Configuration**: AI translates ideas into MRI parameters
-- **Educational Explanations**: Tesla explains physics with enthusiasm
+- **Clean Modern Design**: No nested windows, smooth flowing conversation
+- **Collapsible**: Minimize to vertical tab when you need full screen
 - **Powered by Groq**: Ultra-fast AI inference using Mixtral-8x7b
 
 ### 🔬 Authentic MRI Physics
@@ -112,28 +115,35 @@ dMz/dt = γ(M × B)z + (M0 - Mz)/T1
 - **Larmor Frequency**: Real physics calculations (γB₀)
 - **No External APIs**: Pure JavaScript implementation
 
-### 🎨 Production-Quality UI
+### 🎨 Museum-Quality UI
 
-#### Console Aesthetic Design
-- **Terminal Style**: Monospace fonts, scan lines, blinking cursors
-- **Electric Effects**: Glowing borders, pulsing animations
+#### Professional Two-Column Layout
+- **75% Content Area**: Full exhibition experience with smooth scrolling
+- **25% Tesla Column**: Fixed AI assistant, always visible and accessible
+- **Clean Design**: No nested windows or confusing slide-ups
+- **Electric Effects**: Glowing borders, pulsing animations on Tesla's messages
 - **Gradient Accents**: Tesla-themed orange/purple/cyan colors
-- **Responsive**: Desktop, tablet, mobile optimized
+- **Responsive**: Desktop optimized, tablet and mobile friendly
 - **Accessible**: WCAG compliant, keyboard navigation
 
 ### 📚 Educational Journey
 
-9 interactive stages teaching MRI physics and awareness energy:
+14 interactive stages forming a complete museum exhibition:
 
-1. **Welcome** - Introduction to awareness as energy
-2. **MRI Physics** - Hands-on Bloch simulator
-3. **⚡ Tesla AI Lab** - Chat with AI Tesla (flagship feature)
-4. **Seeds & Edges** - Awareness energy propagation
-5. **Boundaries** - Creating awareness gradients
-6. **Fractals** - Recursive self-aware patterns
-7. **Grammar** - Symbolic awareness states (◎ ⊙ ⚛ ❂ ✶ △ ∞ ✦ ◇)
-8. **Holographic Cloud** - Complete awareness field
-9. **Experiments** - Creative exploration
+1. **The Hydrogen Awakening** - Introduction to awareness as energy
+2. **What is Hydrogen Spin?** - Understanding quantum spin fundamentals
+3. **How MRI Uses Hydrogen Spin** - Real Bloch equation physics simulator
+4. **What are Holographs?** - Holographic principle visualization
+5. **Seeds of Awareness** - Energy propagation in networks
+6. **Breaking Boundaries** - Phase coherence and differentiation
+7. **The Infinite Pattern** - Fractal recursion and self-similarity
+8. **The Universal Language** - Symbolic awareness grammar
+9. **HHF-AI MRI Technology** - How HHF-AI bridges MRI and awareness
+10. **HHF-AI vs. Peer Review** - Revolutionary system coherence analysis
+11. **The Grand Reveal: Self-Imaging Syntheverse** - HHF-AI MRI imaging itself
+12. **The Living Field** - 200+ hydrogen holographic finale
+13. **Your Discovery Lab** - Creative experimentation
+14. **Ask Tesla Anything** - Full AI conversation interface
 
 ---
 

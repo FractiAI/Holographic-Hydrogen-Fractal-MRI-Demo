@@ -83,3 +83,4 @@ export default function DiscoveryParticles({ trigger }: DiscoveryParticlesProps)
   )
 }
 
+

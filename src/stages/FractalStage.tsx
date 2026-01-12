@@ -79,9 +79,10 @@ function FractalVisualization({
         />
       ))}
       
-      {/* Add connecting lines between nearby nodes */}
-      {fractalNodes.map((node, i) => {
-        return fractalNodes.slice(i + 1).map((otherNode, j) => {
+      {/* Add connecting lines - optimized to prevent hang at high depths */}
+      {recursionDepth <= 3 && fractalNodes.slice(0, Math.min(100, fractalNodes.length)).map((node, i) => {
+        // Only check next 10 nodes for connections to maintain O(n) performance
+        return fractalNodes.slice(i + 1, i + 11).map((otherNode, j) => {
           const distance = node.position.distanceTo(otherNode.position)
           if (distance < 1.5 && Math.abs(node.depth - otherNode.depth) <= 1) {
             return (
@@ -154,12 +155,29 @@ export default function FractalStage({ onNext, onPrev }: FractalStageProps) {
   return (
     <div className="stage">
       <div className="stage-header">
-        <h2 className="stage-title">♾️ The Infinite Pattern</h2>
+        <h2 className="stage-title">🌀 What are Fractals?</h2>
         <p className="stage-description">
-          Each pattern repeats like a tiny version of the big one — that's a fractal! 
-          Watch as layers of <strong style={{ color: 'var(--primary-cyan)' }}>awareness energy</strong> emerge 
-          and grow. Fractals are how awareness energy becomes self-aware - awareness observing awareness!
+          Fractals are <strong style={{ color: 'var(--accent-purple)' }}>infinite repeating patterns</strong> where 
+          <strong style={{ color: 'var(--accent-pink)' }}> the small looks like the big!</strong> 
+          They appear everywhere in nature — and they're crucial to HHF-AI MRI.
         </p>
+        <div style={{
+          marginTop: '1rem',
+          padding: '1.5rem',
+          background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(236, 72, 153, 0.2))',
+          borderRadius: '12px',
+          border: '2px solid rgba(139, 92, 246, 0.4)',
+          textAlign: 'left'
+        }}>
+          <p style={{ fontSize: '1.05rem', lineHeight: 1.8, margin: 0 }}>
+            <strong style={{ color: '#8B5CF6', fontSize: '1.2em' }}>Fractals in Nature:</strong><br/>
+            🌿 <strong>Ferns</strong> - Each small leaf looks like the whole fern<br/>
+            ❄️ <strong>Snowflakes</strong> - Intricate patterns repeat at every scale<br/>
+            🌊 <strong>Coastlines</strong> - Jagged at all zoom levels<br/>
+            🫁 <strong>Your lungs</strong> - Branching airways, infinitely efficient!<br/>
+            🧠 <strong>Your brain</strong> - Neural networks in fractal patterns
+          </p>
+        </div>
       </div>
 
       <div className="content-grid">
@@ -236,12 +254,59 @@ export default function FractalStage({ onNext, onPrev }: FractalStageProps) {
 
           <div className="info-box">
             <h3>🎯 Try This!</h3>
-            <p>
-              • Start with 1 layer and slowly increase to see how complexity builds<br />
-              • Speed up the growth to see the patterns dance<br />
-              • Notice how each color represents a different depth level<br />
-              • Rotate to see the 3D fractal structure from all angles
-            </p>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', marginTop: '0.8rem' }}>
+              <button 
+                onClick={() => setRecursionDepth(1)}
+                style={{ 
+                  padding: '0.6rem 1rem', 
+                  background: 'linear-gradient(135deg, rgba(6, 182, 212, 0.3), rgba(16, 185, 129, 0.3))',
+                  border: '2px solid #06B6D4',
+                  borderRadius: '8px',
+                  color: 'white',
+                  cursor: 'pointer',
+                  fontSize: '0.9rem',
+                  transition: 'all 0.2s'
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.transform = 'translateX(5px)'}
+                onMouseLeave={(e) => e.currentTarget.style.transform = 'translateX(0)'}
+              >
+                1️⃣ Start Simple - Just 1 Layer
+              </button>
+              <button 
+                onClick={() => setRecursionDepth(4)}
+                style={{ 
+                  padding: '0.6rem 1rem', 
+                  background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.3), rgba(236, 72, 153, 0.3))',
+                  border: '2px solid var(--primary-purple)',
+                  borderRadius: '8px',
+                  color: 'white',
+                  cursor: 'pointer',
+                  fontSize: '0.9rem',
+                  transition: 'all 0.2s'
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.transform = 'translateX(5px)'}
+                onMouseLeave={(e) => e.currentTarget.style.transform = 'translateX(0)'}
+              >
+                ♾️ Maximum Complexity - 4 Layers!
+              </button>
+              <button 
+                onClick={() => setGrowthSpeed(3.0)}
+                style={{ 
+                  padding: '0.6rem 1rem', 
+                  background: 'linear-gradient(135deg, rgba(245, 158, 11, 0.3), rgba(236, 72, 153, 0.3))',
+                  border: '2px solid var(--accent-orange)',
+                  borderRadius: '8px',
+                  color: 'white',
+                  cursor: 'pointer',
+                  fontSize: '0.9rem',
+                  transition: 'all 0.2s'
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.transform = 'translateX(5px)'}
+                onMouseLeave={(e) => e.currentTarget.style.transform = 'translateX(0)'}
+              >
+                ⚡ Hyperspeed Dance Mode!
+              </button>
+            </div>
           </div>
         </div>
       </div>

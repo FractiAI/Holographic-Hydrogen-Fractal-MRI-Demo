@@ -275,6 +275,77 @@ export default function TeslaAILabStage({ onNext, onPrev }: TeslaAILabStageProps
     }
   }
 
+  const sendPromptDirectly = async (prompt: string) => {
+    if (!prompt.trim() || isLoading) return
+
+    const userMessage = prompt.trim()
+    
+    // Add user message
+    const newUserMessage: Message = {
+      role: 'user',
+      content: userMessage,
+      timestamp: Date.now()
+    }
+    setMessages(prev => [...prev, newUserMessage])
+    
+    setIsLoading(true)
+    setIsSpeaking(true)
+
+    try {
+      // Get conversation history
+      const history = messages.map(m => ({ role: m.role, content: m.content }))
+      
+      // Call Tesla AI
+      const response = await chatWithTesla(userMessage, history)
+      
+      // Parse for MRI config
+      const config = parseMRIConfig(response)
+      const explanation = extractExplanation(response)
+      
+      // Add assistant message
+      const assistantMessage: Message = {
+        role: 'assistant',
+        content: explanation,
+        timestamp: Date.now()
+      }
+      setMessages(prev => [...prev, assistantMessage])
+      
+      // If we got a valid config, apply it
+      if (config) {
+        setCurrentConfig(config)
+        simulator.updateParameters({
+          B0: config.B0,
+          T1: config.T1,
+          T2: config.T2,
+          M0: 1.0,
+          gamma: 42.58
+        })
+        simulator.reset()
+        
+        // Apply the pulse
+        simulator.applyRFPulse({
+          flipAngle: config.flipAngle,
+          phase: 0,
+          duration: 1
+        })
+        
+        setIsRunning(true)
+      }
+      
+    } catch (error) {
+      console.error('Error communicating with Tesla:', error)
+      const errorMessage: Message = {
+        role: 'assistant',
+        content: 'My apologies! The electromagnetic interference is disrupting our connection. Please try again, or check that the Groq API key is properly configured.',
+        timestamp: Date.now()
+      }
+      setMessages(prev => [...prev, errorMessage])
+    } finally {
+      setIsLoading(false)
+      setTimeout(() => setIsSpeaking(false), 2000)
+    }
+  }
+
   const examplePrompts = [
     "Show me water at 7 Tesla",
     "What happens with a 180° pulse?",
@@ -487,7 +558,7 @@ export default function TeslaAILabStage({ onNext, onPrev }: TeslaAILabStageProps
               {examplePrompts.map((prompt, idx) => (
                 <button
                   key={idx}
-                  onClick={() => setInput(prompt)}
+                  onClick={() => sendPromptDirectly(prompt)}
                   disabled={isLoading}
                   style={{
                     padding: '0.6rem',
@@ -541,8 +612,12 @@ export default function TeslaAILabStage({ onNext, onPrev }: TeslaAILabStageProps
         <button className="nav-button" onClick={onPrev}>
           ← Back
         </button>
-        <button className="nav-button" onClick={onNext}>
-          Next: Seeds & Edges →
+        <button 
+          className="nav-button" 
+          onClick={() => window.location.reload()}
+          style={{ background: 'linear-gradient(135deg, #10B981, #06B6D4)' }}
+        >
+          🔄 Start Over
         </button>
       </div>
     </div>

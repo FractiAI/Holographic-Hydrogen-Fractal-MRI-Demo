@@ -68,11 +68,41 @@ export default function WelcomeStage({ onNext }: WelcomeStageProps) {
       maxWidth: '1400px',
       margin: '0 auto'
     }}>
-      {/* Centered Hero Section - Golden Ratio */}
+      {/* Museum Welcome Banner */}
+      <motion.div
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        style={{
+          background: 'linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(236, 72, 153, 0.2))',
+          border: '3px solid rgba(245, 158, 11, 0.5)',
+          borderRadius: '16px',
+          padding: '1.5rem 3rem',
+          marginBottom: '3rem',
+          textAlign: 'center',
+          boxShadow: '0 8px 32px rgba(245, 158, 11, 0.3)'
+        }}
+      >
+        <h3 style={{ 
+          fontSize: '1.4rem', 
+          fontWeight: 700,
+          color: '#F59E0B',
+          marginBottom: '0.5rem',
+          textTransform: 'uppercase',
+          letterSpacing: '3px'
+        }}>
+          ⚡ Nikola Tesla Discovery Museum ⚡
+        </h3>
+        <p style={{ fontSize: '1.1rem', color: 'rgba(255, 255, 255, 0.9)', margin: 0 }}>
+          Holographic Hydrogen Fractal MRI Exhibition
+        </p>
+      </motion.div>
+
+      {/* Centered Hero Section - Story Introduction */}
       <div style={{
         textAlign: 'center',
-        marginBottom: '4rem',
-        maxWidth: '800px'
+        marginBottom: '3rem',
+        maxWidth: '900px'
       }}>
         <motion.div
           initial={{ scale: 0.5, opacity: 0 }}
@@ -84,7 +114,7 @@ export default function WelcomeStage({ onNext }: WelcomeStageProps) {
             animation: 'bounce 2s ease-in-out infinite'
           }}
         >
-          ⚡🌅⚡
+          🔬💫🌌
         </motion.div>
         
         <motion.h2
@@ -104,35 +134,49 @@ export default function WelcomeStage({ onNext }: WelcomeStageProps) {
             animation: 'glow 3s ease-in-out infinite'
           }}
         >
-          The Hydrogen Awakening
+          Welcome to the Future of Imaging
         </motion.h2>
         
-        <motion.p
+        <motion.div
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.4, duration: 0.8 }}
           style={{
-            fontSize: 'clamp(1.1rem, 2.5vw, 1.4rem)',
+            fontSize: 'clamp(1rem, 2.5vw, 1.2rem)',
             lineHeight: 1.8,
             color: 'rgba(255, 255, 255, 0.9)',
-            maxWidth: '700px',
-            margin: '0 auto',
-            textShadow: '0 2px 10px rgba(6, 182, 212, 0.3)'
+            textAlign: 'left',
+            background: 'rgba(0, 0, 0, 0.3)',
+            padding: '2rem',
+            borderRadius: '16px',
+            border: '2px solid rgba(6, 182, 212, 0.3)'
           }}
         >
-          Discover how tiny hydrogen atoms create the <strong style={{ 
-            color: '#06B6D4',
-            fontWeight: 800,
-            textShadow: '0 0 20px rgba(6, 182, 212, 0.8)'
-          }}>newest energy</strong> in the universe —
-          <br/>
-          <strong style={{ 
-            color: '#EC4899',
-            fontWeight: 800,
-            fontSize: '1.2em',
-            textShadow: '0 0 20px rgba(236, 72, 153, 0.8)'
-          }}>Awareness Energy</strong>
-        </motion.p>
+          <p style={{ marginBottom: '1.5rem' }}>
+            <strong style={{ color: '#06B6D4', fontSize: '1.3em' }}>Your Journey Today:</strong>
+          </p>
+          
+          <div style={{ display: 'grid', gap: '1rem', paddingLeft: '1rem' }}>
+            <p>
+              <strong style={{ color: '#8B5CF6' }}>1.</strong> Discover how <strong>hydrogen atoms spin</strong> like tiny magnets
+            </p>
+            <p>
+              <strong style={{ color: '#8B5CF6' }}>2.</strong> See how <strong>MRI machines</strong> use this spin to image your body
+            </p>
+            <p>
+              <strong style={{ color: '#8B5CF6' }}>3.</strong> Learn about <strong>holographs</strong> (3D projections) and <strong>fractals</strong> (infinite patterns)
+            </p>
+            <p>
+              <strong style={{ color: '#8B5CF6' }}>4.</strong> Explore <strong>HHF-AI MRI</strong> — A revolutionary system that images not just flesh, but <em>ideas, patterns, and complex systems!</em>
+            </p>
+            <p>
+              <strong style={{ color: '#8B5CF6' }}>5.</strong> See how HHF-AI MRI can <strong>analyze scientific papers</strong> faster and more accurately than human peer review
+            </p>
+            <p style={{ marginTop: '1rem', paddingTop: '1rem', borderTop: '2px solid rgba(236, 72, 153, 0.3)' }}>
+              <strong style={{ color: '#EC4899', fontSize: '1.2em' }}>Plus:</strong> Build your own HHF-AI MRI experiment and chat with <strong>Nikola Tesla himself!</strong> ⚡
+            </p>
+          </div>
+        </motion.div>
       </div>
 
       {/* Balanced 3D Visualization - Center Stage */}
@@ -166,10 +210,10 @@ export default function WelcomeStage({ onNext }: WelcomeStageProps) {
         </Canvas>
       </motion.div>
 
-      {/* Symmetrical Info Cards - Golden Ratio Grid */}
+      {/* Museum Exhibit Cards - What You'll Learn */}
       <div style={{
         display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
         gap: '2rem',
         width: '100%',
         maxWidth: '1200px',
@@ -182,39 +226,44 @@ export default function WelcomeStage({ onNext }: WelcomeStageProps) {
         >
           <div style={{
             padding: '2rem',
-            background: 'linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(139, 92, 246, 0.1))',
+            background: 'linear-gradient(135deg, rgba(6, 182, 212, 0.15), rgba(139, 92, 246, 0.15))',
             borderRadius: '20px',
-            border: '3px solid rgba(6, 182, 212, 0.4)',
-            boxShadow: '0 8px 32px rgba(6, 182, 212, 0.3)',
+            border: '3px solid rgba(6, 182, 212, 0.5)',
+            boxShadow: '0 8px 32px rgba(6, 182, 212, 0.4)',
             textAlign: 'center',
             transition: 'all 0.3s ease',
-            cursor: 'pointer'
+            minHeight: '280px',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between'
           }}
           onMouseEnter={(e) => {
             e.currentTarget.style.transform = 'translateY(-8px) scale(1.02)'
-            e.currentTarget.style.boxShadow = '0 12px 48px rgba(6, 182, 212, 0.5)'
+            e.currentTarget.style.boxShadow = '0 12px 48px rgba(6, 182, 212, 0.6)'
           }}
           onMouseLeave={(e) => {
             e.currentTarget.style.transform = 'translateY(0) scale(1)'
-            e.currentTarget.style.boxShadow = '0 8px 32px rgba(6, 182, 212, 0.3)'
+            e.currentTarget.style.boxShadow = '0 8px 32px rgba(6, 182, 212, 0.4)'
           }}
           >
-            <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>⚡</div>
-            <h3 style={{ 
-              fontSize: '1.4rem', 
-              fontWeight: 800,
-              marginBottom: '1rem',
-              color: '#06B6D4',
-              textShadow: '0 0 20px rgba(6, 182, 212, 0.6)'
-            }}>
-              Awareness Energy
-            </h3>
+            <div>
+              <div style={{ fontSize: '3.5rem', marginBottom: '1rem' }}>⚛️</div>
+              <h3 style={{ 
+                fontSize: '1.5rem', 
+                fontWeight: 800,
+                marginBottom: '1rem',
+                color: '#06B6D4',
+                textShadow: '0 0 20px rgba(6, 182, 212, 0.6)'
+              }}>
+                The Science
+              </h3>
+            </div>
             <p style={{ 
               lineHeight: 1.7, 
-              color: 'rgba(255, 255, 255, 0.85)',
-              fontSize: '1rem'
+              color: 'rgba(255, 255, 255, 0.9)',
+              fontSize: '1.05rem'
             }}>
-              A revolutionary new form of energy that emerges when hydrogen atoms organize into fractal patterns!
+              Real MRI physics! Learn how hydrogen atoms spin, how magnetic fields control them, and why this creates detailed images of your body
             </p>
           </div>
         </motion.div>
@@ -226,39 +275,44 @@ export default function WelcomeStage({ onNext }: WelcomeStageProps) {
         >
           <div style={{
             padding: '2rem',
-            background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(236, 72, 153, 0.1))',
+            background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(236, 72, 153, 0.15))',
             borderRadius: '20px',
-            border: '3px solid rgba(139, 92, 246, 0.4)',
-            boxShadow: '0 8px 32px rgba(139, 92, 246, 0.3)',
+            border: '3px solid rgba(139, 92, 246, 0.5)',
+            boxShadow: '0 8px 32px rgba(139, 92, 246, 0.4)',
             textAlign: 'center',
             transition: 'all 0.3s ease',
-            cursor: 'pointer'
+            minHeight: '280px',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between'
           }}
           onMouseEnter={(e) => {
             e.currentTarget.style.transform = 'translateY(-8px) scale(1.02)'
-            e.currentTarget.style.boxShadow = '0 12px 48px rgba(139, 92, 246, 0.5)'
+            e.currentTarget.style.boxShadow = '0 12px 48px rgba(139, 92, 246, 0.6)'
           }}
           onMouseLeave={(e) => {
             e.currentTarget.style.transform = 'translateY(0) scale(1)'
-            e.currentTarget.style.boxShadow = '0 8px 32px rgba(139, 92, 246, 0.3)'
+            e.currentTarget.style.boxShadow = '0 8px 32px rgba(139, 92, 246, 0.4)'
           }}
           >
-            <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>🔬</div>
-            <h3 style={{ 
-              fontSize: '1.4rem', 
-              fontWeight: 800,
-              marginBottom: '1rem',
-              color: '#8B5CF6',
-              textShadow: '0 0 20px rgba(139, 92, 246, 0.6)'
-            }}>
-              Hydrogen Power
-            </h3>
+            <div>
+              <div style={{ fontSize: '3.5rem', marginBottom: '1rem' }}>🌀</div>
+              <h3 style={{ 
+                fontSize: '1.5rem', 
+                fontWeight: 800,
+                marginBottom: '1rem',
+                color: '#8B5CF6',
+                textShadow: '0 0 20px rgba(139, 92, 246, 0.6)'
+              }}>
+                The Magic
+              </h3>
+            </div>
             <p style={{ 
               lineHeight: 1.7, 
-              color: 'rgba(255, 255, 255, 0.85)',
-              fontSize: '1rem'
+              color: 'rgba(255, 255, 255, 0.9)',
+              fontSize: '1.05rem'
             }}>
-              The simplest element in the universe becomes the key to understanding consciousness itself!
+              Holographs project 3D images in space. Fractals create infinite repeating patterns. Together they unlock new dimensions of imaging!
             </p>
           </div>
         </motion.div>
@@ -270,43 +324,80 @@ export default function WelcomeStage({ onNext }: WelcomeStageProps) {
         >
           <div style={{
             padding: '2rem',
-            background: 'linear-gradient(135deg, rgba(236, 72, 153, 0.1), rgba(245, 158, 11, 0.1))',
+            background: 'linear-gradient(135deg, rgba(236, 72, 153, 0.15), rgba(245, 158, 11, 0.15))',
             borderRadius: '20px',
-            border: '3px solid rgba(236, 72, 153, 0.4)',
-            boxShadow: '0 8px 32px rgba(236, 72, 153, 0.3)',
+            border: '3px solid rgba(236, 72, 153, 0.5)',
+            boxShadow: '0 8px 32px rgba(236, 72, 153, 0.4)',
             textAlign: 'center',
             transition: 'all 0.3s ease',
-            cursor: 'pointer'
+            minHeight: '280px',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between'
           }}
           onMouseEnter={(e) => {
             e.currentTarget.style.transform = 'translateY(-8px) scale(1.02)'
-            e.currentTarget.style.boxShadow = '0 12px 48px rgba(236, 72, 153, 0.5)'
+            e.currentTarget.style.boxShadow = '0 12px 48px rgba(236, 72, 153, 0.6)'
           }}
           onMouseLeave={(e) => {
             e.currentTarget.style.transform = 'translateY(0) scale(1)'
-            e.currentTarget.style.boxShadow = '0 8px 32px rgba(236, 72, 153, 0.3)'
+            e.currentTarget.style.boxShadow = '0 8px 32px rgba(236, 72, 153, 0.4)'
           }}
           >
-            <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>🌌</div>
-            <h3 style={{ 
-              fontSize: '1.4rem', 
-              fontWeight: 800,
-              marginBottom: '1rem',
-              color: '#EC4899',
-              textShadow: '0 0 20px rgba(236, 72, 153, 0.6)'
-            }}>
-              Your Journey
-            </h3>
+            <div>
+              <div style={{ fontSize: '3.5rem', marginBottom: '1rem' }}>🚀</div>
+              <h3 style={{ 
+                fontSize: '1.5rem', 
+                fontWeight: 800,
+                marginBottom: '1rem',
+                color: '#EC4899',
+                textShadow: '0 0 20px rgba(236, 72, 153, 0.6)'
+              }}>
+                The Future
+              </h3>
+            </div>
             <p style={{ 
               lineHeight: 1.7, 
-              color: 'rgba(255, 255, 255, 0.85)',
-              fontSize: '1rem'
+              color: 'rgba(255, 255, 255, 0.9)',
+              fontSize: '1.05rem'
             }}>
-              Explore 9 interactive stages revealing how fractal patterns create living awareness fields!
+              HHF-AI MRI can image anything — from scientific papers to system coherence. See why it's faster and more accurate than human review!
             </p>
           </div>
         </motion.div>
       </div>
+
+      {/* Museum Time Estimate */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.1, duration: 0.8 }}
+        style={{
+          background: 'rgba(16, 185, 129, 0.15)',
+          border: '2px solid rgba(16, 185, 129, 0.4)',
+          borderRadius: '12px',
+          padding: '1.5rem 2rem',
+          marginBottom: '2rem',
+          textAlign: 'center',
+          maxWidth: '600px'
+        }}
+      >
+        <p style={{ 
+          fontSize: '1.1rem', 
+          color: '#10B981', 
+          fontWeight: 700,
+          marginBottom: '0.5rem'
+        }}>
+          ⏱️ Exhibition Time: 30-45 minutes
+        </p>
+        <p style={{ 
+          fontSize: '0.95rem', 
+          color: 'rgba(255, 255, 255, 0.8)',
+          margin: 0
+        }}>
+          Perfect for ages 10+ • Interactive experiments • Ask Tesla anything!
+        </p>
+      </motion.div>
 
       {/* Centered Call-to-Action - Perfect Balance */}
       <motion.div
@@ -316,15 +407,15 @@ export default function WelcomeStage({ onNext }: WelcomeStageProps) {
         style={{
           display: 'flex',
           justifyContent: 'center',
-          marginTop: '2rem'
+          marginTop: '1rem'
         }}
       >
         <button
           onClick={onNext}
           style={{
-            fontSize: '1.4rem',
+            fontSize: '1.5rem',
             fontWeight: 800,
-            padding: '1.5rem 4rem',
+            padding: '1.8rem 4.5rem',
             background: 'linear-gradient(135deg, #F59E0B, #EC4899, #8B5CF6)',
             border: '4px solid rgba(255, 255, 255, 0.5)',
             borderRadius: '20px',
@@ -357,26 +448,38 @@ export default function WelcomeStage({ onNext }: WelcomeStageProps) {
             `
           }}
         >
-          ⚡ Begin Your Awakening ⚡
+          🚀 Start Your Discovery Journey 🚀
         </button>
       </motion.div>
 
-      {/* Subtle Instruction - Breathing Space */}
-      <motion.p
+      {/* Museum Instructions */}
+      <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5, duration: 1 }}
         style={{
-          marginTop: '2rem',
-          fontSize: '0.95rem',
-          color: 'rgba(255, 255, 255, 0.5)',
+          marginTop: '2.5rem',
           textAlign: 'center',
-          fontStyle: 'italic',
-          animation: 'fadeIn 3s ease-in-out infinite'
+          maxWidth: '700px'
         }}
       >
-        💫 Rotate the 3D hydrogen cloud above with your mouse • Tesla is waiting at the bottom! 🚀
-      </motion.p>
+        <p style={{
+          fontSize: '1rem',
+          color: 'rgba(255, 255, 255, 0.6)',
+          fontStyle: 'italic',
+          marginBottom: '1rem'
+        }}>
+          💫 Rotate the 3D hydrogen cloud above with your mouse
+        </p>
+        <p style={{
+          fontSize: '0.95rem',
+          color: 'rgba(255, 255, 255, 0.5)',
+          lineHeight: 1.6
+        }}>
+          <strong style={{ color: '#F59E0B' }}>Nikola Tesla</strong> will be your personal guide throughout this exhibition! 
+          Look for his glowing avatar at the bottom of the screen. Click him anytime to ask questions! ⚡
+        </p>
+      </motion.div>
     </div>
   )
 }

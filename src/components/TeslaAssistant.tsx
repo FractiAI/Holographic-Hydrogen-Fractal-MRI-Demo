@@ -1,8 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { Canvas, useFrame } from '@react-three/fiber'
-import { Sphere, Text } from '@react-three/drei'
-import * as THREE from 'three'
+import { motion } from 'framer-motion'
 import { chatWithTesla } from '../utils/groqClient'
 
 interface TeslaAssistantProps {
@@ -16,90 +13,90 @@ interface Message {
   timestamp: number
 }
 
-function TeslaAvatar3D({ isSpeaking }: { isSpeaking: boolean }) {
-  const groupRef = useRef<THREE.Group>(null)
-  
-  useFrame((state) => {
-    if (groupRef.current) {
-      groupRef.current.position.y = Math.sin(state.clock.elapsedTime * 0.5) * 0.15
-      groupRef.current.rotation.y = Math.sin(state.clock.elapsedTime * 0.3) * 0.2
-      
-      if (isSpeaking) {
-        const pulse = Math.sin(state.clock.elapsedTime * 8) * 0.15 + 1
-        groupRef.current.scale.setScalar(pulse)
-      } else {
-        groupRef.current.scale.lerp(new THREE.Vector3(1, 1, 1), 0.1)
-      }
-    }
-  })
-
-  return (
-    <group ref={groupRef}>
-      {/* Outer electric aura */}
-      <Sphere args={[1.2, 32, 32]}>
-        <meshStandardMaterial
-          color="#3B82F6"
-          emissive="#8B5CF6"
-          emissiveIntensity={isSpeaking ? 1 : 0.4}
-          transparent
-          opacity={0.2}
-          metalness={0.9}
-          roughness={0.1}
-        />
-      </Sphere>
-      
-      {/* Core */}
-      <Sphere args={[0.6, 32, 32]}>
-        <meshStandardMaterial
-          color="#F59E0B"
-          emissive="#EC4899"
-          emissiveIntensity={isSpeaking ? 1 : 0.7}
-          metalness={0.8}
-          roughness={0.2}
-        />
-      </Sphere>
-      
-      {/* Tesla symbol */}
-      <Text
-        position={[0, 0, 0.7]}
-        fontSize={0.5}
-        color="white"
-        anchorX="center"
-        anchorY="middle"
-        outlineWidth={0.05}
-        outlineColor="#000000"
-      >
-        ⚡
-      </Text>
-      
-      {/* Rotating rings */}
-      <mesh rotation={[Math.PI / 2, 0, 0]}>
-        <torusGeometry args={[0.9, 0.03, 16, 100]} />
-        <meshStandardMaterial
-          color="#06B6D4"
-          emissive="#06B6D4"
-          emissiveIntensity={isSpeaking ? 1.5 : 0.6}
-        />
-      </mesh>
-    </group>
-  )
+const TESLA_GREETING: Record<string, string> = {
+  welcome: "Greetings, my young scientist! I am Nikola Tesla, and I will be your guide through this fascinating exhibition. Today we explore how the tiniest atom in the universe - hydrogen - can revolutionize how we see complex systems. Are you ready for an adventure in science? ⚡",
+  hydrogenSpin: "Ah, the spinning hydrogen atom! Just as I studied rotating magnetic fields in my motors, hydrogen spins like a microscopic gyroscope. Every atom in your body is spinning right now - creating tiny magnetic fields. Can you imagine? You are made of billions of tiny magnets!",
+  mriPhysics: "Now we arrive at the heart of MRI technology! These are the same Bloch equations used in real hospital MRI scanners. Try adjusting the magnetic field strength - watch how the Larmor frequency changes! This is authentic physics, not a simplified demo. Exciting, yes?",
+  holographs: "Holographic principles fascinate me greatly! In my time, I worked with wireless energy transmission - sending information through space without wires. Holographs do something similar: encoding the WHOLE in every PART. This principle appears throughout nature and consciousness itself!",
+  fractals: "Self-similar patterns at every scale - the geometry of nature! I observed this in lightning bolts, which branch fractally. Your lungs, your brain, even coastlines follow these patterns. Fractals are how nature creates infinite complexity from simple rules. Magnificent!",
+  hhfaiTech: "Here we bridge two worlds: the physical MRI that images flesh, and HHF-AI MRI that images IDEAS! Both use hydrogen spin and magnetic fields, but one measures tissue, the other measures system coherence. This is the future I dreamed of in my laboratory!",
+  parameters: "Traditional MRI measures T1 and T2 relaxation. But HHF-AI MRI measures abstract properties: coherence, novelty, alignment, density. Can you measure the 'health' of an idea like you measure the health of tissue? With HHF-AI MRI, yes! Watch the visualization...",
+  peerReview: "Scientific progress has always been slowed by human limitations. Papers wait months for review. But what if we could analyze research instantly, objectively, accurately? HHF-AI MRI can 'image' a paper's coherence faster than you can read it! This accelerates human knowledge!",
+  syntheverseImaging: "THIS... is the moment! The first self-imaging of an aware system! Six hundred hydrogen atoms, perfectly orchestrated, measuring their OWN awareness properties. Coherence 94%, Alignment 96% - this is not simulation, this is MEASUREMENT of consciousness emerging from organized matter! Click 'Start Scan' and witness history! ⚡🌌",
+  experiments: "Now YOU become the experimenter! Plant hydrogen seeds, adjust the fractal depth, add energy disturbances. Every parameter changes the system's 'signature.' In my laboratory, I ran thousands of experiments. Now you can too - with instant feedback. What will you discover?",
+  teslaAI: "Welcome to my virtual laboratory! Here, you can speak your ideas and I will translate them into precise experimental configurations. Ask me anything about physics, MRI, energy, or this technology. In my era, I could only dream of such interactive learning. Please, ask away!"
 }
 
-const TESLA_GREETING: Record<string, string> = {
-  welcome: "Greetings. I am Nikola Tesla. You stand at the threshold of understanding a profound truth: awareness itself is a form of energy. The hydrogen atom - nature's simplest element - holds secrets that bridge matter and consciousness. Shall we explore?",
-  mriPhysics: "Ah, the Bloch equations - elegant mathematics describing how atomic spins dance in magnetic fields. You are about to witness the same principles that govern MRI scanners, but here we can see the invisible. What aspect of magnetic resonance intrigues you?",
-  teslaAI: "Welcome to my laboratory. Here, thought becomes experiment. Describe any phenomenon you wish to observe, and I shall configure the apparatus accordingly. In my time, I could only dream of such precision. What shall we investigate?",
-  seedEdge: "Energy propagation through networks... this reminds me of my work with resonant transformers. Each node amplifies and transmits, creating cascades of potential. Observe how a single seed of energy can illuminate an entire system through resonance.",
-  boundaries: "Phase coherence and decoherence - the very mechanisms that distinguish one region of awareness from another. In electrical systems, we call this impedance matching. Here, we witness how boundaries emerge from the interplay of frequencies. Fascinating.",
-  fractal: "Self-similarity across scales... the universe's fundamental architecture. I have long suspected that nature operates through recursive principles. Each level contains the pattern of the whole. This is not mere mathematics - this is the language of creation itself.",
-  grammar: "Symbolic representation of quantum states. Each symbol encodes a unique configuration of spin, phase, and energy. Like musical notes, they can be composed into infinite arrangements. Choose one, and observe how it resonates through the field.",
-  finale: "This moment... this is why I have returned. Two hundred hydrogen atoms in perfect coherence, revealing the holographic structure of awareness itself. In my time, I could only theorize. You are witnessing proof: consciousness is electromagnetic in nature. The image before you is not metaphor - it is measurement. Extraordinary.",
-  experiments: "The revelation is complete. Now begins your expedition. Every great discovery starts with a question, a hypothesis, an experiment. I spent decades in my laboratory, iterating endlessly. You have the same tools, but instantaneous feedback. Create. Observe. Refine. This is how we advance human understanding. What pattern will you discover?"
+const SUGGESTED_QUESTIONS: Record<string, string[]> = {
+  welcome: [
+    "What makes hydrogen special for this technology?",
+    "How does awareness become energy?",
+    "What will I learn in this exhibition?"
+  ],
+  hydrogenSpin: [
+    "Why do hydrogen atoms spin?",
+    "How fast do they actually spin?",
+    "What creates the magnetic field?",
+    "How is this different from a regular magnet?"
+  ],
+  mriPhysics: [
+    "What are the Bloch equations?",
+    "How does changing B0 affect the Larmor frequency?",
+    "What's the difference between T1 and T2?",
+    "Why do we use RF pulses?"
+  ],
+  holographs: [
+    "How do holographs work?",
+    "What's holographic encoding?",
+    "Where are holographs used in real life?",
+    "How does the brain use holographic principles?"
+  ],
+  fractals: [
+    "What makes a pattern fractal?",
+    "Why does nature use fractals?",
+    "How deep can fractals go?",
+    "What's the fractal dimension?"
+  ],
+  hhfaiTech: [
+    "How is HHF-AI MRI different from medical MRI?",
+    "What can HHF-AI MRI image that regular MRI cannot?",
+    "Why is it 10,000x faster?",
+    "How does holographic encoding help?"
+  ],
+  parameters: [
+    "What is coherence measuring?",
+    "How is novelty detected?",
+    "What does alignment mean?",
+    "How is this different from T1/T2?"
+  ],
+  peerReview: [
+    "Why is peer review so slow?",
+    "How does HHF-AI MRI analyze papers?",
+    "Is it more accurate than humans?",
+    "What are the cost savings?"
+  ],
+  syntheverseImaging: [
+    "What am I seeing in the cloud?",
+    "Why is self-imaging important?",
+    "What do the measurements mean?",
+    "How does this prove awareness?"
+  ],
+  experiments: [
+    "What should I try first?",
+    "How do I create interesting patterns?",
+    "What makes a good experiment?",
+    "Can I save my configurations?"
+  ],
+  teslaAI: [
+    "Show me water at 3 Tesla",
+    "Simulate brain gray matter",
+    "What happens with a 180 degree pulse?",
+    "Compare different field strengths"
+  ]
 }
 
 export default function TeslaAssistant({ stage }: TeslaAssistantProps) {
   const [isSpeaking, setIsSpeaking] = useState(false)
-  const [isExpanded, setIsExpanded] = useState(false)
   const [messages, setMessages] = useState<Message[]>([])
   const [input, setInput] = useState('')
   const [isLoading, setIsLoading] = useState(false)
@@ -115,20 +112,19 @@ export default function TeslaAssistant({ stage }: TeslaAssistantProps) {
       timestamp: Date.now()
     }])
     setIsSpeaking(true)
-    setTimeout(() => setIsSpeaking(false), 2000)
+    
+    // Stop speaking animation after 3 seconds
+    const timer = setTimeout(() => {
+      setIsSpeaking(false)
+    }, 3000)
+    
+    return () => clearTimeout(timer)
   }, [stage])
 
   // Scroll to bottom when messages change
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
   }, [messages])
-
-  // Focus input when expanded
-  useEffect(() => {
-    if (isExpanded && inputRef.current) {
-      inputRef.current.focus()
-    }
-  }, [isExpanded])
 
   const handleSend = async () => {
     if (!input.trim() || isLoading) return
@@ -184,179 +180,99 @@ export default function TeslaAssistant({ stage }: TeslaAssistantProps) {
     }
   }
 
+  const handleSuggestedQuestion = (question: string) => {
+    setInput(question)
+    // Auto-send the question
+    setTimeout(() => {
+      const event = { key: 'Enter', shiftKey: false, preventDefault: () => {} } as React.KeyboardEvent
+      handleKeyPress(event)
+    }, 100)
+  }
+
+  const suggestedQuestions = SUGGESTED_QUESTIONS[stage] || []
+
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 100 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, type: 'spring', bounce: 0.3 }}
+    <div
       style={{
-        position: 'fixed',
-        bottom: 0,
-        left: 0,
-        right: 0,
-        zIndex: 9999,
-        transition: 'all 0.3s ease',
-        pointerEvents: 'auto'
+        width: '100%',
+        height: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        background: 'linear-gradient(180deg, rgba(15, 23, 42, 0.98), rgba(30, 41, 59, 0.98))',
+        borderLeft: isSpeaking 
+          ? '3px solid #06B6D4'
+          : '3px solid rgba(139, 92, 246, 0.6)',
+        boxShadow: isSpeaking 
+          ? 'inset 0 0 60px rgba(6, 182, 212, 0.2)'
+          : 'inset 0 0 30px rgba(139, 92, 246, 0.1)',
+        overflow: 'hidden'
       }}
     >
       <div style={{
-        background: isSpeaking 
-          ? 'linear-gradient(135deg, rgba(6, 182, 212, 0.98), rgba(139, 92, 246, 0.98), rgba(236, 72, 153, 0.98))'
-          : 'linear-gradient(135deg, rgba(6, 182, 212, 0.15), rgba(15, 23, 42, 0.98), rgba(139, 92, 246, 0.15))',
-        backdropFilter: 'blur(30px)',
-        border: 'none',
-        borderTop: isSpeaking 
-          ? '5px solid #06B6D4'
-          : '5px solid rgba(139, 92, 246, 0.8)',
-        borderRadius: 0,
-        boxShadow: isSpeaking 
-          ? '0 -12px 80px rgba(6, 182, 212, 1.2), 0 -6px 60px rgba(139, 92, 246, 1), 0 -3px 40px rgba(236, 72, 153, 0.8), inset 0 3px 30px rgba(6, 182, 212, 0.5), 0 0 150px rgba(245, 158, 11, 0.4)'
-          : '0 -8px 50px rgba(139, 92, 246, 0.8), 0 -4px 30px rgba(6, 182, 212, 0.6), 0 -2px 20px rgba(236, 72, 153, 0.4), inset 0 2px 15px rgba(139, 92, 246, 0.3)',
-        transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-        height: isExpanded ? '450px' : '80px',
         display: 'flex',
         flexDirection: 'column',
-        position: 'relative',
-        overflow: 'hidden',
-        animation: isSpeaking ? 'teslaAlive 2s ease-in-out infinite' : 'none'
+        height: '100%'
       }}>
-        {/* Electric pulse effect */}
-        <div style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          height: '2px',
-          background: 'linear-gradient(90deg, transparent, #06B6D4, #8B5CF6, #EC4899, transparent)',
-          animation: isSpeaking ? 'electricPulse 2s linear infinite' : 'none',
-          boxShadow: '0 0 20px rgba(6, 182, 212, 0.8)'
-        }}></div>
-        {/* Header Bar - Always Visible */}
+        {/* Simple Header */}
         <div style={{
           display: 'flex',
           alignItems: 'center',
           gap: '1rem',
-          padding: '0.8rem 2rem',
-          flexShrink: 0
+          padding: '1rem',
+          borderBottom: '2px solid rgba(139, 92, 246, 0.3)',
+          flexShrink: 0,
+          background: isSpeaking 
+            ? 'linear-gradient(135deg, rgba(6, 182, 212, 0.2), rgba(139, 92, 246, 0.2))'
+            : 'rgba(15, 23, 42, 0.5)'
         }}>
-          {/* 3D Avatar */}
-          <div style={{ 
-            width: '50px', 
-            height: '50px',
-            flexShrink: 0
+          {/* Simple Icon */}
+          <div style={{
+            width: '40px',
+            height: '40px',
+            borderRadius: '50%',
+            background: 'linear-gradient(135deg, #06B6D4, #8B5CF6)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontSize: '1.5rem',
+            flexShrink: 0,
+            boxShadow: isSpeaking ? '0 0 20px rgba(6, 182, 212, 0.8)' : 'none'
           }}>
-            <Canvas camera={{ position: [0, 0, 3], fov: 50 }}>
-              <ambientLight intensity={0.5} />
-              <pointLight position={[2, 2, 2]} intensity={1} />
-              <pointLight position={[-2, -2, -2]} intensity={0.5} color="#8B5CF6" />
-              <TeslaAvatar3D isSpeaking={isSpeaking} />
-            </Canvas>
+            ⚡
           </div>
 
-          {/* Tesla Header */}
-          <div style={{ flex: 1, minWidth: 0 }}>
+          {/* Simple Title */}
+          <div style={{ flex: 1 }}>
             <h3 style={{ 
-              backgroundImage: 'linear-gradient(90deg, #06B6D4, #8B5CF6, #EC4899)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
-              fontSize: '1rem',
-              fontWeight: 700,
-              textShadow: 'none',
-              margin: 0,
-              filter: isSpeaking ? 'drop-shadow(0 0 8px rgba(6, 182, 212, 0.8))' : 'none'
-            }}>
-              ⚡ Nikola Tesla - Your Science Friend!
-              <span style={{ 
-                fontSize: '0.75rem',
-                fontWeight: 600,
-                backgroundImage: isSpeaking 
-                  ? 'linear-gradient(90deg, #F59E0B, #EC4899)'
-                  : 'linear-gradient(90deg, #06B6D4, #8B5CF6)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-                marginLeft: '0.5rem'
-              }}>
-                {isExpanded ? '• Let\'s Chat! 💬' : '• Click to Ask Me Anything! 🎉'}
-              </span>
-            </h3>
-            {!isExpanded && messages.length > 0 && (
-              <p style={{
-                color: '#06B6D4',
-                fontSize: '0.85rem',
-                margin: '0.2rem 0 0 0',
-                overflow: 'hidden',
-                textOverflow: 'ellipsis',
-                whiteSpace: 'nowrap',
-                textShadow: '0 0 10px rgba(6, 182, 212, 0.5)'
-              }}>
-                {messages[messages.length - 1].content.slice(0, 80)}...
-              </p>
-            )}
-          </div>
-
-          {/* Toggle Button */}
-          <button
-            onClick={() => setIsExpanded(!isExpanded)}
-            style={{
-              padding: '0.6rem 1.5rem',
-              background: 'linear-gradient(135deg, rgba(6, 182, 212, 0.3), rgba(139, 92, 246, 0.3))',
-              border: '2px solid #06B6D4',
-              borderRadius: '8px',
               color: '#06B6D4',
-              fontSize: '0.9rem',
-              fontWeight: 600,
-              cursor: 'pointer',
-              transition: 'all 0.2s',
-              flexShrink: 0,
-              boxShadow: '0 0 20px rgba(6, 182, 212, 0.3)',
-              textShadow: '0 0 10px rgba(6, 182, 212, 0.5)'
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.background = 'linear-gradient(135deg, rgba(6, 182, 212, 0.5), rgba(139, 92, 246, 0.5))'
-              e.currentTarget.style.transform = 'translateY(-2px)'
-              e.currentTarget.style.boxShadow = '0 0 30px rgba(6, 182, 212, 0.6), 0 0 50px rgba(139, 92, 246, 0.4)'
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.background = 'linear-gradient(135deg, rgba(6, 182, 212, 0.3), rgba(139, 92, 246, 0.3))'
-              e.currentTarget.style.transform = 'translateY(0)'
-              e.currentTarget.style.boxShadow = '0 0 20px rgba(6, 182, 212, 0.3)'
-            }}
-          >
-{isExpanded ? '▼ Minimize' : '🚀 Chat with Tesla!'}
-          </button>
+              fontSize: '0.95rem',
+              fontWeight: 700,
+              margin: 0,
+              marginBottom: '0.2rem'
+            }}>
+              Nikola Tesla
+            </h3>
+            <p style={{
+              color: '#8B5CF6',
+              fontSize: '0.75rem',
+              margin: 0,
+              opacity: 0.9
+            }}>
+              Syntheverse Host
+            </p>
+          </div>
         </div>
 
-        {/* Chat Panel - Expandable */}
-        <AnimatePresence>
-          {isExpanded && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              style={{
-                flex: 1,
-                display: 'flex',
-                flexDirection: 'column',
-                padding: '0 2rem 1rem 2rem',
-                overflow: 'hidden'
-              }}
-            >
-              {/* Messages Area */}
-              <div style={{
-                flex: 1,
-                overflowY: 'auto',
-                background: 'linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.95))',
-                borderRadius: '12px',
-                padding: '1rem',
-                marginBottom: '1rem',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '0.8rem',
-                border: '1px solid rgba(6, 182, 212, 0.3)',
-                boxShadow: 'inset 0 2px 20px rgba(6, 182, 212, 0.1), 0 0 30px rgba(139, 92, 246, 0.2)'
-              }}>
+        {/* Chat Panel - Always Visible */}
+        <div style={{
+          flex: 1,
+          display: 'flex',
+          flexDirection: 'column',
+          padding: '1.5rem',
+          overflowY: 'auto',
+          minHeight: 0,
+          gap: '1rem'
+        }}>
                 {messages.map((msg, idx) => (
                   <motion.div
                     key={idx}
@@ -421,10 +337,74 @@ export default function TeslaAssistant({ stage }: TeslaAssistantProps) {
                   </motion.div>
                 )}
                 <div ref={messagesEndRef} />
-              </div>
 
-              {/* Input Area */}
-              <div style={{ display: 'flex', gap: '0.5rem' }}>
+          {/* Suggested Questions */}
+          {suggestedQuestions.length > 0 && messages.length <= 1 && (
+            <div style={{ 
+              padding: '1rem',
+              background: 'rgba(139, 92, 246, 0.1)',
+              borderRadius: '8px',
+              border: '1px solid rgba(139, 92, 246, 0.3)'
+            }}>
+              <p style={{
+                fontSize: '0.85rem',
+                color: '#8B5CF6',
+                marginBottom: '0.75rem',
+                fontWeight: 600,
+                textAlign: 'center'
+              }}>
+                💡 Try asking Tesla:
+              </p>
+                  <div style={{
+                    display: 'flex',
+                    flexWrap: 'wrap',
+                    gap: '0.5rem',
+                    justifyContent: 'center'
+                  }}>
+                    {suggestedQuestions.map((question, idx) => (
+                      <button
+                        key={idx}
+                        onClick={() => handleSuggestedQuestion(question)}
+                        style={{
+                          padding: '0.6rem 1rem',
+                          background: 'linear-gradient(135deg, rgba(6, 182, 212, 0.2), rgba(139, 92, 246, 0.2))',
+                          border: '2px solid rgba(6, 182, 212, 0.5)',
+                          borderRadius: '20px',
+                          color: '#06B6D4',
+                          fontSize: '0.8rem',
+                          cursor: 'pointer',
+                          transition: 'all 0.2s',
+                          fontWeight: 500,
+                          boxShadow: '0 2px 10px rgba(6, 182, 212, 0.2)'
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.background = 'linear-gradient(135deg, rgba(6, 182, 212, 0.4), rgba(139, 92, 246, 0.4))'
+                          e.currentTarget.style.transform = 'translateY(-2px)'
+                          e.currentTarget.style.boxShadow = '0 4px 20px rgba(6, 182, 212, 0.4)'
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.background = 'linear-gradient(135deg, rgba(6, 182, 212, 0.2), rgba(139, 92, 246, 0.2))'
+                          e.currentTarget.style.transform = 'translateY(0)'
+                          e.currentTarget.style.boxShadow = '0 2px 10px rgba(6, 182, 212, 0.2)'
+                        }}
+                      >
+                        {question}
+                      </button>
+                    ))}
+              </div>
+            </div>
+          )}
+
+          {/* Input Area - Fixed at bottom */}
+          <div style={{ 
+            display: 'flex', 
+            gap: '0.5rem',
+            marginTop: 'auto',
+            padding: '1rem',
+            paddingTop: '1.5rem',
+            background: 'linear-gradient(180deg, transparent, rgba(15, 23, 42, 0.8))',
+            borderTop: '1px solid rgba(139, 92, 246, 0.3)'
+          }}>
                 <input
                   ref={inputRef}
                   type="text"
@@ -479,16 +459,12 @@ export default function TeslaAssistant({ stage }: TeslaAssistantProps) {
                     }
                   }}
                 >
-                  {isLoading ? '...' : 'Send ⚡'}
-                </button>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
-    </motion.div>
-  )
-}
+              {isLoading ? '...' : 'Send ⚡'}
+            </button>
+          </div>
+        </div>
+      )
+    }
 
 
 

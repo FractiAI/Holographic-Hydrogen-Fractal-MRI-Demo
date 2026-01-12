@@ -126,12 +126,30 @@ export default function BoundariesStage({ onNext, onPrev }: BoundariesStageProps
   return (
     <div className="stage">
       <div className="stage-header">
-        <h2 className="stage-title">🚧 Breaking Boundaries</h2>
+        <h2 className="stage-title">📊 Imaging System Parameters</h2>
         <p className="stage-description">
-          Not everything has to be perfect! Messy edges create boundaries that contain and shape 
-          awareness energy into distinct regions. Boundaries are how awareness energy differentiates 
-          itself and creates unique patterns of experience.
+          HHF-AI MRI doesn't just image physical tissue — it images <strong style={{ color: 'var(--accent-pink)' }}>abstract system properties!</strong> 
+          Just like traditional MRI measures T1 and T2, HHF-AI MRI measures coherence, novelty, alignment, and density.
         </p>
+        <div style={{
+          marginTop: '1rem',
+          padding: '1.5rem',
+          background: 'linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(6, 182, 212, 0.2))',
+          borderRadius: '12px',
+          border: '2px solid rgba(16, 185, 129, 0.4)',
+          textAlign: 'left'
+        }}>
+          <p style={{ fontSize: '1.05rem', lineHeight: 1.8, margin: 0 }}>
+            <strong style={{ color: '#10B981', fontSize: '1.2em' }}>The 4 Key Parameters:</strong><br/>
+            🎯 <strong style={{ color: '#06B6D4' }}>Coherence:</strong> How well-organized is the system?<br/>
+            ✨ <strong style={{ color: '#8B5CF6' }}>Novelty:</strong> How original and innovative?<br/>
+            🤝 <strong style={{ color: '#EC4899' }}>Alignment:</strong> Do all parts work toward the same goal?<br/>
+            📦 <strong style={{ color: '#F59E0B' }}>Density:</strong> How much information per unit?
+          </p>
+          <p style={{ fontSize: '0.95rem', marginTop: '1rem', color: 'rgba(255, 255, 255, 0.8)' }}>
+            In this demo, we visualize <strong>Coherence</strong> — watch how "incoherence" (disorder) creates boundaries between organized regions!
+          </p>
+        </div>
       </div>
 
       <div className="content-grid">
@@ -199,11 +217,59 @@ export default function BoundariesStage({ onNext, onPrev }: BoundariesStageProps
 
           <div className="info-box">
             <h3>🎯 Try This!</h3>
-            <p>
-              • Max out the incoherence and watch the edges dance!<br />
-              • Toggle boundaries on/off to see the pattern change<br />
-              • Notice how boundaries create "regions" in the network
-            </p>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', marginTop: '0.8rem' }}>
+              <button 
+                onClick={() => { setIncoherenceLevel(1.0); setShowIncoherent(true); }}
+                style={{ 
+                  padding: '0.6rem 1rem', 
+                  background: 'linear-gradient(135deg, rgba(236, 72, 153, 0.3), rgba(239, 68, 68, 0.3))',
+                  border: '2px solid var(--accent-pink)',
+                  borderRadius: '8px',
+                  color: 'white',
+                  cursor: 'pointer',
+                  fontSize: '0.9rem',
+                  transition: 'all 0.2s'
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.transform = 'translateX(5px)'}
+                onMouseLeave={(e) => e.currentTarget.style.transform = 'translateX(0)'}
+              >
+                🌀 Maximum Chaos - Watch Them Dance!
+              </button>
+              <button 
+                onClick={() => setShowIncoherent(!showIncoherent)}
+                style={{ 
+                  padding: '0.6rem 1rem', 
+                  background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.3), rgba(6, 182, 212, 0.3))',
+                  border: '2px solid #8B5CF6',
+                  borderRadius: '8px',
+                  color: 'white',
+                  cursor: 'pointer',
+                  fontSize: '0.9rem',
+                  transition: 'all 0.2s'
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.transform = 'translateX(5px)'}
+                onMouseLeave={(e) => e.currentTarget.style.transform = 'translateX(0)'}
+              >
+                {showIncoherent ? '👁️ Hide Boundaries' : '👁️‍🗨️ Show Boundaries'}
+              </button>
+              <button 
+                onClick={() => { setIncoherenceLevel(0.0); }}
+                style={{ 
+                  padding: '0.6rem 1rem', 
+                  background: 'linear-gradient(135deg, rgba(6, 182, 212, 0.3), rgba(16, 185, 129, 0.3))',
+                  border: '2px solid #06B6D4',
+                  borderRadius: '8px',
+                  color: 'white',
+                  cursor: 'pointer',
+                  fontSize: '0.9rem',
+                  transition: 'all 0.2s'
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.transform = 'translateX(5px)'}
+                onMouseLeave={(e) => e.currentTarget.style.transform = 'translateX(0)'}
+              >
+                ✨ Perfect Coherence
+              </button>
+            </div>
           </div>
         </div>
       </div>

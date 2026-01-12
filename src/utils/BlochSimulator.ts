@@ -311,3 +311,4 @@ export function magnetizationToColor(spin: SpinState, M0: number = 1): {
 
 
 
+

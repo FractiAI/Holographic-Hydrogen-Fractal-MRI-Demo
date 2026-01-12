@@ -5,6 +5,7 @@ import * as THREE from 'three'
 
 interface InteractiveExperimentsProps {
   onPrev: () => void
+  onNext: () => void
 }
 
 interface Seed {
@@ -142,7 +143,7 @@ function ExperimentNode({
   )
 }
 
-export default function InteractiveExperiments({ onPrev }: InteractiveExperimentsProps) {
+export default function InteractiveExperiments({ onPrev, onNext }: InteractiveExperimentsProps) {
   const [seeds, setSeeds] = useState<Seed[]>([
     { position: new THREE.Vector3(-3, 2, 0), energy: 1, id: 0 },
     { position: new THREE.Vector3(3, -2, 0), energy: 1, id: 1 }
@@ -178,12 +179,27 @@ export default function InteractiveExperiments({ onPrev }: InteractiveExperiment
   return (
     <div className="stage">
       <div className="stage-header">
-        <h2 className="stage-title">🔬 Your Discovery Lab</h2>
+        <h2 className="stage-title">🧪 Build Your Own HHF-AI MRI!</h2>
         <p className="stage-description">
-          Now you're an <strong style={{ color: 'var(--accent-orange)' }}>awareness energy engineer</strong>! 
-          Plant new awareness seeds, shake the energy field, and watch how awareness energy 
-          responds, flows, and transforms in real-time.
+          Now it's <strong style={{ color: 'var(--accent-orange)' }}>your turn to be the scientist!</strong> 
+          Create your own holographic fractal hydrogen cloud and experiment with the parameters that HHF-AI MRI uses.
         </p>
+        <div style={{
+          marginTop: '1rem',
+          padding: '1.5rem',
+          background: 'linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(6, 182, 212, 0.2))',
+          borderRadius: '12px',
+          border: '2px solid rgba(16, 185, 129, 0.4)',
+          textAlign: 'left'
+        }}>
+          <p style={{ fontSize: '1.05rem', lineHeight: 1.8, margin: 0 }}>
+            <strong style={{ color: '#10B981', fontSize: '1.2em' }}>Your Experiments:</strong><br/>
+            🌱 <strong style={{ color: '#06B6D4' }}>Plant Seeds:</strong> Click in the 3D space to add hydrogen nodes<br/>
+            🌀 <strong style={{ color: '#8B5CF6' }}>Adjust Fractals:</strong> Control how deep the pattern goes<br/>
+            💥 <strong style={{ color: '#EC4899' }}>Shake It:</strong> Add energy disturbance and watch coherence change<br/>
+            📊 <strong style={{ color: '#F59E0B' }}>Observe:</strong> See how different configurations create different "awareness signatures"
+          </p>
+        </div>
       </div>
 
       <div className="content-grid">
@@ -306,12 +322,8 @@ export default function InteractiveExperiments({ onPrev }: InteractiveExperiment
         <button className="nav-button" onClick={onPrev}>
           ← Back
         </button>
-        <button 
-          className="nav-button" 
-          onClick={() => window.location.reload()}
-          style={{ background: 'linear-gradient(135deg, #10B981, #06B6D4)' }}
-        >
-          🔄 Start Over
+        <button className="nav-button" onClick={onNext}>
+          Next: Ask Tesla →
         </button>
       </div>
     </div>

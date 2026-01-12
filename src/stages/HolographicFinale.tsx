@@ -407,13 +407,59 @@ export default function HolographicFinale({ onNext, onPrev }: HolographicFinaleP
 
           <div className="info-box">
             <h3>🎯 Try This!</h3>
-            <p>
-              • Max out coherence to see perfect synchronization<br />
-              • Lower coherence to see quantum chaos emerge<br />
-              • Speed up pulses and watch energy waves collide<br />
-              • Use your mouse to rotate and explore from all angles<br />
-              • Zoom in and out to see patterns at different scales
-            </p>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', marginTop: '0.8rem' }}>
+              <button 
+                onClick={() => setCoherence(1.0)}
+                style={{ 
+                  padding: '0.6rem 1rem', 
+                  background: 'linear-gradient(135deg, rgba(6, 182, 212, 0.3), rgba(16, 185, 129, 0.3))',
+                  border: '2px solid #06B6D4',
+                  borderRadius: '8px',
+                  color: 'white',
+                  cursor: 'pointer',
+                  fontSize: '0.9rem',
+                  transition: 'all 0.2s'
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.transform = 'translateX(5px)'}
+                onMouseLeave={(e) => e.currentTarget.style.transform = 'translateX(0)'}
+              >
+                ✨ Perfect Synchronization!
+              </button>
+              <button 
+                onClick={() => setCoherence(0.2)}
+                style={{ 
+                  padding: '0.6rem 1rem', 
+                  background: 'linear-gradient(135deg, rgba(236, 72, 153, 0.3), rgba(239, 68, 68, 0.3))',
+                  border: '2px solid var(--accent-pink)',
+                  borderRadius: '8px',
+                  color: 'white',
+                  cursor: 'pointer',
+                  fontSize: '0.9rem',
+                  transition: 'all 0.2s'
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.transform = 'translateX(5px)'}
+                onMouseLeave={(e) => e.currentTarget.style.transform = 'translateX(0)'}
+              >
+                🌪️ Quantum Chaos Mode!
+              </button>
+              <button 
+                onClick={() => setPulseSpeed(3)}
+                style={{ 
+                  padding: '0.6rem 1rem', 
+                  background: 'linear-gradient(135deg, rgba(245, 158, 11, 0.3), rgba(236, 72, 153, 0.3))',
+                  border: '2px solid var(--accent-orange)',
+                  borderRadius: '8px',
+                  color: 'white',
+                  cursor: 'pointer',
+                  fontSize: '0.9rem',
+                  transition: 'all 0.2s'
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.transform = 'translateX(5px)'}
+                onMouseLeave={(e) => e.currentTarget.style.transform = 'translateX(0)'}
+              >
+                ⚡ Hyperspeed Wave Collisions!
+              </button>
+            </div>
           </div>
         </div>
         )}

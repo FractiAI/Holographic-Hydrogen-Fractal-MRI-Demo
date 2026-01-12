@@ -260,12 +260,59 @@ export default function GrammarStage({ onNext, onPrev }: GrammarStageProps) {
 
           <div className="info-box">
             <h3>🎯 Try This!</h3>
-            <p>
-              • Click each symbol to see it light up and pulse<br />
-              • Increase intensity to see the symbol's power<br />
-              • Think about what role each symbol plays in the network<br />
-              • Notice how the center node energizes all the others
-            </p>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', marginTop: '0.8rem' }}>
+              <button 
+                onClick={() => { setSelectedSymbol('⚛'); setSymbolIntensity(1.0); }}
+                style={{ 
+                  padding: '0.6rem 1rem', 
+                  background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.3), rgba(139, 92, 246, 0.3))',
+                  border: '2px solid #3B82F6',
+                  borderRadius: '8px',
+                  color: 'white',
+                  cursor: 'pointer',
+                  fontSize: '0.9rem',
+                  transition: 'all 0.2s'
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.transform = 'translateX(5px)'}
+                onMouseLeave={(e) => e.currentTarget.style.transform = 'translateX(0)'}
+              >
+                ⚛ Quantum State - Max Power!
+              </button>
+              <button 
+                onClick={() => { setSelectedSymbol('∞'); setSymbolIntensity(0.9); }}
+                style={{ 
+                  padding: '0.6rem 1rem', 
+                  background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.3), rgba(236, 72, 153, 0.3))',
+                  border: '2px solid var(--primary-purple)',
+                  borderRadius: '8px',
+                  color: 'white',
+                  cursor: 'pointer',
+                  fontSize: '0.9rem',
+                  transition: 'all 0.2s'
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.transform = 'translateX(5px)'}
+                onMouseLeave={(e) => e.currentTarget.style.transform = 'translateX(0)'}
+              >
+                ∞ Infinite Awareness
+              </button>
+              <button 
+                onClick={() => setSymbolIntensity(1.0)}
+                style={{ 
+                  padding: '0.6rem 1rem', 
+                  background: 'linear-gradient(135deg, rgba(245, 158, 11, 0.3), rgba(236, 72, 153, 0.3))',
+                  border: '2px solid var(--accent-orange)',
+                  borderRadius: '8px',
+                  color: 'white',
+                  cursor: 'pointer',
+                  fontSize: '0.9rem',
+                  transition: 'all 0.2s'
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.transform = 'translateX(5px)'}
+                onMouseLeave={(e) => e.currentTarget.style.transform = 'translateX(0)'}
+              >
+                ⚡ Maximum Intensity!
+              </button>
+            </div>
           </div>
         </div>
       </div>

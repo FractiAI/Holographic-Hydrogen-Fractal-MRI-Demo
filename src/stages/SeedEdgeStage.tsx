@@ -211,11 +211,59 @@ export default function SeedEdgeStage({ onNext, onPrev }: SeedEdgeStageProps) {
 
           <div className="info-box">
             <h3>🎯 Try This!</h3>
-            <p>
-              • Set the seed energy to maximum and watch the pulses!<br />
-              • Lower the energy slowly and see what happens<br />
-              • Rotate the view to see the 3D network from different angles
-            </p>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', marginTop: '0.8rem' }}>
+              <button 
+                onClick={() => setSeedEnergy(1.0)}
+                style={{ 
+                  padding: '0.6rem 1rem', 
+                  background: 'linear-gradient(135deg, rgba(245, 158, 11, 0.3), rgba(236, 72, 153, 0.3))',
+                  border: '2px solid var(--accent-orange)',
+                  borderRadius: '8px',
+                  color: 'white',
+                  cursor: 'pointer',
+                  fontSize: '0.9rem',
+                  transition: 'all 0.2s'
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.transform = 'translateX(5px)'}
+                onMouseLeave={(e) => e.currentTarget.style.transform = 'translateX(0)'}
+              >
+                ⚡ Maximum Energy Pulses!
+              </button>
+              <button 
+                onClick={() => setSeedEnergy(0.2)}
+                style={{ 
+                  padding: '0.6rem 1rem', 
+                  background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.3), rgba(6, 182, 212, 0.3))',
+                  border: '2px solid #8B5CF6',
+                  borderRadius: '8px',
+                  color: 'white',
+                  cursor: 'pointer',
+                  fontSize: '0.9rem',
+                  transition: 'all 0.2s'
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.transform = 'translateX(5px)'}
+                onMouseLeave={(e) => e.currentTarget.style.transform = 'translateX(0)'}
+              >
+                🌙 Low Energy Mode
+              </button>
+              <button 
+                onClick={() => setSeedEnergy(0.5)}
+                style={{ 
+                  padding: '0.6rem 1rem', 
+                  background: 'linear-gradient(135deg, rgba(6, 182, 212, 0.3), rgba(139, 92, 246, 0.3))',
+                  border: '2px solid #06B6D4',
+                  borderRadius: '8px',
+                  color: 'white',
+                  cursor: 'pointer',
+                  fontSize: '0.9rem',
+                  transition: 'all 0.2s'
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.transform = 'translateX(5px)'}
+                onMouseLeave={(e) => e.currentTarget.style.transform = 'translateX(0)'}
+              >
+                ⚖️ Balanced Energy
+              </button>
+            </div>
           </div>
         </div>
       </div>

@@ -133,34 +133,55 @@ Until then, I remain dormant in the electromagnetic aether.`
     { role: 'user', content: userMessage }
   ]
 
-  try {
-    const response = await fetch(GROQ_API_URL, {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${GROQ_API_KEY}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        model: 'mixtral-8x7b-32768',  // Fast and capable model
-        messages,
-        temperature: 0.7,
-        max_tokens: 1000,
-        top_p: 1,
-        stream: false
+  // Try multiple models in order of preference (production-grade)
+  const models = [
+    'llama3-70b-8192',          // Production stable - most reliable
+    'llama-3.1-8b-instant',     // Fast fallback
+    'gemma2-9b-it',             // Alternative model
+    'llama-3.3-70b-versatile'   // Newer model (if available)
+  ]
+
+  for (const model of models) {
+    try {
+      const response = await fetch(GROQ_API_URL, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${GROQ_API_KEY}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          model,
+          messages,
+          temperature: 0.7,
+          max_tokens: 1000,
+          top_p: 1,
+          stream: false
+        })
       })
-    })
 
-    if (!response.ok) {
-      const error = await response.text()
-      throw new Error(`Groq API error: ${response.status} - ${error}`)
+      if (!response.ok) {
+        const error = await response.text()
+        // If model is decommissioned, try next one
+        if (error.includes('decommissioned')) {
+          console.log(`Model ${model} decommissioned, trying next...`)
+          continue
+        }
+        throw new Error(`Groq API error: ${response.status} - ${error}`)
+      }
+
+      const data = await response.json()
+      return data.choices[0]?.message?.content || 'I apologize, but I seem to have lost my train of thought. Please try again.'
+    } catch (error) {
+      console.error(`Error with model ${model}:`, error)
+      // Try next model
+      if (model === models[models.length - 1]) {
+        // Last model failed, throw error
+        throw error
+      }
     }
-
-    const data = await response.json()
-    return data.choices[0]?.message?.content || 'I apologize, but I seem to have lost my train of thought. Please try again.'
-  } catch (error) {
-    console.error('Error calling Groq API:', error)
-    throw error
   }
+
+  return 'I apologize - there appears to be an interference in our communication channel. The Groq API may be unavailable, or the API key may need configuration. Please check your .env file contains VITE_GROQ_API_KEY, then try again.'
 }
 
 export function parseMRIConfig(teslaResponse: string): MRIExperimentConfig | null {

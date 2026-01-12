@@ -98,7 +98,16 @@ function HydrogenSpinReal({
   index: number
 }) {
   const meshRef = useRef<THREE.Mesh>(null)
-  const vectorRef = useRef<THREE.ArrowHelper>(null)
+  const arrowHelperRef = useRef<THREE.ArrowHelper | null>(null)
+  
+  // Create ArrowHelper on mount
+  const arrowHelper = useMemo(() => {
+    const dir = new THREE.Vector3(0, 1, 0)
+    const origin = new THREE.Vector3(0, 0, 0)
+    const length = 0.5
+    const color = 0xFFFF00
+    return new THREE.ArrowHelper(dir, origin, length, color, 0.2, 0.1)
+  }, [])
   
   useFrame(() => {
     if (meshRef.current) {
@@ -114,14 +123,20 @@ function HydrogenSpinReal({
     }
     
     // Update magnetization vector arrow
-    if (vectorRef.current && showVector) {
-      const dir = new THREE.Vector3(spinState.Mx, spinState.My, spinState.Mz).normalize()
-      const length = Math.sqrt(spinState.Mx ** 2 + spinState.My ** 2 + spinState.Mz ** 2)
-      vectorRef.current.setDirection(dir)
-      vectorRef.current.setLength(length * 0.5, 0.2, 0.1)
-      vectorRef.current.visible = true
-    } else if (vectorRef.current) {
-      vectorRef.current.visible = false
+    if (arrowHelperRef.current) {
+      if (showVector && (spinState.Mx !== 0 || spinState.My !== 0 || spinState.Mz !== 0)) {
+        const mag = Math.sqrt(spinState.Mx ** 2 + spinState.My ** 2 + spinState.Mz ** 2)
+        if (mag > 0.001) {
+          const dir = new THREE.Vector3(spinState.Mx, spinState.My, spinState.Mz).normalize()
+          arrowHelperRef.current.setDirection(dir)
+          arrowHelperRef.current.setLength(mag * 0.5, 0.2, 0.1)
+          arrowHelperRef.current.visible = true
+        } else {
+          arrowHelperRef.current.visible = false
+        }
+      } else {
+        arrowHelperRef.current.visible = false
+      }
     }
   })
 
@@ -133,15 +148,12 @@ function HydrogenSpinReal({
           roughness={0.2}
         />
       </Sphere>
-      <arrowHelper
-        ref={vectorRef}
-        args={[
-          new THREE.Vector3(spinState.Mx, spinState.My, spinState.Mz).normalize(),
-          new THREE.Vector3(0, 0, 0),
-          0.5,
-          0xFFFF00
-        ]}
-      />
+      {showVector && (
+        <primitive 
+          object={arrowHelper} 
+          ref={arrowHelperRef}
+        />
+      )}
     </group>
   )
 }
@@ -159,9 +171,13 @@ function ArrowHelper({
   color: number
   label: string
 }) {
+  const arrow = useMemo(() => {
+    return new THREE.ArrowHelper(dir, new THREE.Vector3(0, 0, 0), length, color, 0.3, 0.2)
+  }, [dir, length, color])
+
   return (
     <group position={origin}>
-      <arrowHelper args={[dir, new THREE.Vector3(0, 0, 0), length, color, 0.3, 0.2]} />
+      <primitive object={arrow} />
       <Text
         position={[0, 0, length + 0.5]}
         fontSize={0.5}
@@ -188,7 +204,13 @@ export default function MRIPhysicsStage({ onNext, onPrev }: MRIPhysicsStageProps
 
   useEffect(() => {
     simulator.updateParameters({ B0, T1, T2 })
-  }, [B0, T1, T2, simulator])
+    // If not running, reset to show equilibrium with new parameters
+    // If running, continue with new parameters (user will see the effect)
+    if (!isRunning) {
+      simulator.reset()
+      setSignalData({ real: 0, imag: 0, magnitude: 0 })
+    }
+  }, [B0, T1, T2, simulator, isRunning])
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -224,16 +246,32 @@ export default function MRIPhysicsStage({ onNext, onPrev }: MRIPhysicsStageProps
     simulator.addDephasing(0.5)
   }
 
-  const larmorFreq = simulator.getLarmorFrequency()
+  // Calculate Larmor frequency dynamically based on current B0
+  const larmorFreq = useMemo(() => simulator.getLarmorFrequency(), [simulator, B0])
 
   return (
     <div className="stage">
       <div className="stage-header">
-        <h2 className="stage-title">🔬 Inside the Quantum Spin</h2>
+        <h2 className="stage-title">🔬 How MRI Uses Hydrogen Spin</h2>
         <p className="stage-description">
-          This is a <strong style={{ color: 'var(--accent-orange)' }}>real Bloch equation simulator</strong>! 
-          Watch actual hydrogen spins respond to RF pulses and evolve according to authentic MRI physics.
+          Now that you know hydrogen spins like a magnet, see how <strong style={{ color: 'var(--accent-orange)' }}>MRI machines control and detect that spin</strong> to create images! 
+          This is a <strong style={{ color: 'var(--accent-cyan)' }}>real Bloch equation simulator</strong> — the same physics used in actual MRI scanners.
         </p>
+        <div style={{
+          marginTop: '1rem',
+          padding: '1.5rem',
+          background: 'linear-gradient(135deg, rgba(6, 182, 212, 0.2), rgba(139, 92, 246, 0.2))',
+          borderRadius: '12px',
+          border: '2px solid rgba(6, 182, 212, 0.4)',
+          textAlign: 'left'
+        }}>
+          <p style={{ fontSize: '1.05rem', lineHeight: 1.8, margin: 0 }}>
+            <strong style={{ color: '#06B6D4', fontSize: '1.2em' }}>The MRI Process (3 Steps):</strong><br/>
+            <strong style={{ color: '#8B5CF6' }}>1. Align:</strong> A powerful magnet (B₀) aligns hydrogen spins<br/>
+            <strong style={{ color: '#EC4899' }}>2. Excite:</strong> Radio waves (RF pulses) tip the spins over<br/>
+            <strong style={{ color: '#10B981' }}>3. Detect:</strong> As spins relax back, they emit radio signals we detect!
+          </p>
+        </div>
       </div>
 
       <div className="content-grid">
@@ -255,7 +293,10 @@ export default function MRIPhysicsStage({ onNext, onPrev }: MRIPhysicsStageProps
           <div className="info-box" style={{ background: 'linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(6, 182, 212, 0.2))' }}>
             <h3>✅ REAL MRI SIMULATOR ACTIVE</h3>
             <p>
-              Larmor Frequency: <strong>{larmorFreq.toFixed(2)} MHz</strong><br />
+              Larmor Frequency: <strong style={{ 
+                color: '#10B981',
+                fontSize: '1.1em'
+              }}>{larmorFreq.toFixed(2)} MHz</strong><br />
               Current Signal: <strong>{signalData.magnitude.toFixed(3)}</strong><br />
               Status: <strong style={{ color: isRunning ? '#10B981' : '#F59E0B' }}>
                 {isRunning ? 'RUNNING' : 'READY'}
@@ -277,7 +318,7 @@ export default function MRIPhysicsStage({ onNext, onPrev }: MRIPhysicsStageProps
               onChange={(e) => setB0(parseFloat(e.target.value))}
             />
             <p style={{ marginTop: '0.8rem', color: 'var(--text-gray)', fontSize: '0.9rem' }}>
-              Main magnetic field strength (1.5T, 3T, or 7T are common clinical strengths)
+              Main magnetic field strength. <strong style={{ color: 'var(--accent-orange)' }}>Watch the Larmor Frequency change!</strong> (1.5T, 3T, or 7T are common)
             </p>
           </div>
 
@@ -314,6 +355,13 @@ export default function MRIPhysicsStage({ onNext, onPrev }: MRIPhysicsStageProps
             />
             <p style={{ marginTop: '0.8rem', color: 'var(--text-gray)', fontSize: '0.9rem' }}>
               Transverse relaxation time (how fast spins lose coherence)
+            </p>
+          </div>
+
+          <div className="info-box" style={{ background: 'linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(236, 72, 153, 0.2))', marginTop: '1rem' }}>
+            <h3>💡 Tip</h3>
+            <p style={{ fontSize: '0.9rem' }}>
+              <strong>Adjust parameters above, then apply an RF pulse below</strong> to see the dramatic effects of T1/T2 relaxation! The simulation runs in real-time using authentic Bloch equations.
             </p>
           </div>
 
