@@ -30,6 +30,49 @@
   50% { opacity: 0.6; }
 }
 
+/* Tesla's Electric Resonance Field */
+@keyframes teslaResonance {
+  0%, 100% { 
+    box-shadow: 
+      0 0 20px rgba(6, 182, 212, 0.4),
+      0 0 40px rgba(139, 92, 246, 0.3),
+      0 0 60px rgba(245, 158, 11, 0.2);
+  }
+  50% { 
+    box-shadow: 
+      0 0 30px rgba(6, 182, 212, 0.6),
+      0 0 60px rgba(139, 92, 246, 0.5),
+      0 0 90px rgba(245, 158, 11, 0.3);
+  }
+}
+
+@keyframes energyFlow {
+  0% { 
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes consciousnessWave {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(-10px) scale(1.05);
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 0.6;
+  }
+}
+
 .app-header {
   padding: 2rem 2rem 1rem;
   text-align: center;

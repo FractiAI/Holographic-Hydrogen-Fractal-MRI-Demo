@@ -89,13 +89,12 @@ function RealMRIVisualization({
 function HydrogenSpinReal({ 
   position,
   spinState,
-  showVector,
-  index 
+  showVector
 }: { 
   position: THREE.Vector3
   spinState: SpinState
   showVector: boolean
-  index: number
+  index?: number
 }) {
   const meshRef = useRef<THREE.Mesh>(null)
   const arrowHelperRef = useRef<THREE.ArrowHelper | null>(null)
