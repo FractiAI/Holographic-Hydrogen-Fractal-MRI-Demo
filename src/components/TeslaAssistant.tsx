@@ -463,8 +463,10 @@ export default function TeslaAssistant({ stage }: TeslaAssistantProps) {
             </button>
           </div>
         </div>
-      )
-    }
+      </div>
+    </div>
+  )
+}
 
 
 
