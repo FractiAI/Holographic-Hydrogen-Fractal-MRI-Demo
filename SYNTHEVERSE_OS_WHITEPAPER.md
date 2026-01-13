@@ -1883,7 +1883,7 @@ MRI = Consciousness Portal
 - Personal meditation/awareness practice
 - Education (feel quantum physics)
 - Therapy (trauma healing, anxiety relief)
-- Research (consciousness science)
+- Research (awareness science)
 - Museums (interactive exhibits)
 
 ### 9.6 Integration Modes
