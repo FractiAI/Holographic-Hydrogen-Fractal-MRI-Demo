@@ -229,7 +229,7 @@ function App() {
                 }}
                 transition={{ duration: 3, repeat: Infinity }}
               >
-                Tesla Science Discovery Museum
+                Nikola Tesla Science Discovery Museum
               </motion.h1>
               <p className="subtitle">Holographic Hydrogen Fractal MRI Exhibition | FractiAI</p>
               <motion.p 

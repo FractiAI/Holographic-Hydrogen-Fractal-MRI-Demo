@@ -1,0 +1,114 @@
+.guided-tour-cursor {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.cursor-icon {
+  position: relative;
+  filter: drop-shadow(0 4px 12px rgba(245, 158, 11, 0.6));
+}
+
+.click-ripple {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  border: 3px solid #F59E0B;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.cursor-tooltip {
+  position: absolute;
+  top: -80px;
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 200px;
+  max-width: 350px;
+  pointer-events: none;
+}
+
+.tooltip-content {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.95), rgba(236, 72, 153, 0.95));
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-align: center;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4),
+              0 0 40px rgba(245, 158, 11, 0.6);
+  line-height: 1.4;
+}
+
+.tooltip-arrow {
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid rgba(245, 158, 11, 0.95);
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+}
+
+.cursor-spotlight {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(
+    circle,
+    rgba(245, 158, 11, 0.3) 0%,
+    rgba(245, 158, 11, 0.1) 50%,
+    transparent 100%
+  );
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* Pulse animation for important elements */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(245, 158, 11, 0.6);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(245, 158, 11, 1);
+  }
+}
+
+.tour-highlight {
+  animation: pulse-glow 2s ease-in-out infinite;
+  position: relative;
+  z-index: 100;
+}
+
+/* Dimming overlay for non-focused elements */
+.tour-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 9998;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+
+.tour-spotlight-hole {
+  position: absolute;
+  background: transparent;
+  border-radius: 12px;
+  box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.7);
+  transition: all 0.5s ease;
+}
+

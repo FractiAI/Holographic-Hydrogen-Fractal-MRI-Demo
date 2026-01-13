@@ -1,0 +1,226 @@
+/* Tesla's Lab Experience Styles */
+
+.teslas-lab-experience {
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(
+    135deg,
+    rgba(2, 6, 23, 0.98),
+    rgba(15, 23, 42, 0.98),
+    rgba(30, 41, 59, 0.95)
+  );
+  color: #E0E7FF;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.lab-stage-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.lab-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.lab-title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 900;
+  background: linear-gradient(135deg, #F59E0B, #EC4899, #8B5CF6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 40px rgba(245, 158, 11, 0.3);
+}
+
+.lab-subtitle {
+  font-size: 1.2rem;
+  color: #06B6D4;
+  font-weight: 600;
+}
+
+.tesla-dialogue-box {
+  background: linear-gradient(
+    135deg,
+    rgba(6, 182, 212, 0.15),
+    rgba(139, 92, 246, 0.15),
+    rgba(236, 72, 153, 0.1)
+  );
+  border: 2px solid rgba(6, 182, 212, 0.4);
+  border-radius: 20px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 8px 32px rgba(6, 182, 212, 0.2),
+    inset 0 0 40px rgba(6, 182, 212, 0.05);
+}
+
+.tesla-quote {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  font-style: italic;
+  color: #E0E7FF;
+  margin: 0;
+}
+
+.resonance-display {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.resonance-metric {
+  background: rgba(15, 23, 42, 0.6);
+  border: 2px solid rgba(139, 92, 246, 0.4);
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.metric-label {
+  font-size: 0.9rem;
+  color: #8B5CF6;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
+}
+
+.metric-value {
+  font-size: 2rem;
+  color: #06B6D4;
+  font-weight: 700;
+  text-shadow: 0 0 20px rgba(6, 182, 212, 0.5);
+}
+
+.lab-action-button {
+  padding: 1.5rem 3rem;
+  font-size: 1.3rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #F59E0B, #EC4899);
+  border: none;
+  border-radius: 15px;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 8px 30px rgba(245, 158, 11, 0.4);
+  transition: all 0.3s ease;
+  display: block;
+  margin: 2rem auto;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.lab-action-button:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(245, 158, 11, 0.6);
+}
+
+.lab-action-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.frequency-animation {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 300px;
+  pointer-events: none;
+}
+
+.frequency-ring {
+  position: absolute;
+  border: 2px solid rgba(6, 182, 212, 0.3);
+  border-radius: 50%;
+  animation: pulse-ring 3s ease-out infinite;
+}
+
+@keyframes pulse-ring {
+  0% {
+    width: 0;
+    height: 0;
+    opacity: 1;
+    top: 50%;
+    left: 50%;
+  }
+  100% {
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    top: 0;
+    left: 0;
+  }
+}
+
+.final-revelation {
+  background: linear-gradient(
+    135deg,
+    rgba(236, 72, 153, 0.2),
+    rgba(139, 92, 246, 0.2),
+    rgba(6, 182, 212, 0.2)
+  );
+  border: 3px solid rgba(236, 72, 153, 0.6);
+  border-radius: 20px;
+  padding: 3rem;
+  margin-top: 3rem;
+  text-align: center;
+  box-shadow: 0 12px 40px rgba(236, 72, 153, 0.3),
+    inset 0 0 60px rgba(236, 72, 153, 0.1);
+}
+
+.final-revelation h2 {
+  font-size: 2.5rem;
+  background: linear-gradient(135deg, #EC4899, #8B5CF6, #06B6D4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1.5rem;
+}
+
+.final-revelation p {
+  font-size: 1.3rem;
+  line-height: 1.8;
+  color: #E0E7FF;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .teslas-lab-experience {
+    padding: 1rem;
+  }
+
+  .resonance-display {
+    grid-template-columns: 1fr;
+  }
+
+  .lab-title {
+    font-size: 2rem;
+  }
+
+  .tesla-quote {
+    font-size: 1rem;
+  }
+
+  .final-revelation {
+    padding: 2rem 1rem;
+  }
+
+  .final-revelation h2 {
+    font-size: 1.8rem;
+  }
+
+  .final-revelation p {
+    font-size: 1.1rem;
+  }
+}
+
