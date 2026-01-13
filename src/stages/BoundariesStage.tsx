@@ -6,6 +6,7 @@ import * as THREE from 'three'
 interface BoundariesStageProps {
   onNext: () => void
   onPrev: () => void
+  scrollToTop?: () => void
 }
 
 function BoundariesVisualization({ 
@@ -119,7 +120,7 @@ function BoundaryEdge({
   )
 }
 
-export default function BoundariesStage({ onNext, onPrev }: BoundariesStageProps) {
+export default function BoundariesStage({ onNext, onPrev, scrollToTop }: BoundariesStageProps) {
   const [incoherenceLevel, setIncoherenceLevel] = useState(0.5)
   const [showIncoherent, setShowIncoherent] = useState(true)
 
@@ -186,7 +187,7 @@ export default function BoundariesStage({ onNext, onPrev }: BoundariesStageProps
 
           <div className="control-group">
             <div className="button-group">
-              <button onClick={() => setShowIncoherent(!showIncoherent)}>
+              <button onClick={() => { setShowIncoherent(!showIncoherent); scrollToTop?.(); }}>
                 {showIncoherent ? '✓ Show Boundaries' : 'Hide Boundaries'}
               </button>
             </div>

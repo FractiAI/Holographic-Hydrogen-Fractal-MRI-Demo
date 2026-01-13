@@ -143,6 +143,13 @@ function App() {
     }
   }
   
+  // Scroll to top helper function for stages to use
+  const scrollToTop = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollTo({ top: 0, behavior: 'smooth' })
+    }
+  }
+  
   // Auto Tour Functions
   const startAutoTour = () => {
     setIsAutoTourActive(true)
@@ -315,16 +322,16 @@ function App() {
               >
                 {currentStage === 'welcome' && <WelcomeStage onNext={nextStage} onStartTour={startAutoTour} />}
                 {currentStage === 'hydrogenSpin' && <HydrogenSpinStage onNext={nextStage} onPrev={prevStage} />}
-                {currentStage === 'mriPhysics' && <MRIPhysicsStage onNext={nextStage} onPrev={prevStage} />}
+                {currentStage === 'mriPhysics' && <MRIPhysicsStage onNext={nextStage} onPrev={prevStage} scrollToTop={scrollToTop} />}
                 {currentStage === 'holographs' && <HolographsStage onNext={nextStage} onPrev={prevStage} />}
                 {currentStage === 'fractals' && <FractalStage onNext={nextStage} onPrev={prevStage} />}
                 {currentStage === 'hhfaiTech' && <HHFAITechnologyStage onNext={nextStage} onPrev={prevStage} />}
-                {currentStage === 'parameters' && <BoundariesStage onNext={nextStage} onPrev={prevStage} />}
+                {currentStage === 'parameters' && <BoundariesStage onNext={nextStage} onPrev={prevStage} scrollToTop={scrollToTop} />}
                 {currentStage === 'peerReview' && <PeerReviewComparisonStage onNext={nextStage} onPrev={prevStage} />}
                 {currentStage === 'syntheverseImaging' && <SyntheverseImagingStage onNext={nextStage} onPrev={prevStage} />}
-                {currentStage === 'ssanLattice' && <SSANLatticeStage onNext={nextStage} onPrev={prevStage} />}
-                {currentStage === 'sensoryReality' && <SensoryRealityStage onNext={nextStage} onPrev={prevStage} />}
-                {currentStage === 'experiments' && <InteractiveExperiments onNext={nextStage} onPrev={prevStage} />}
+                {currentStage === 'ssanLattice' && <SSANLatticeStage onNext={nextStage} onPrev={prevStage} scrollToTop={scrollToTop} />}
+                {currentStage === 'sensoryReality' && <SensoryRealityStage onNext={nextStage} onPrev={prevStage} scrollToTop={scrollToTop} />}
+                {currentStage === 'experiments' && <InteractiveExperiments onNext={nextStage} onPrev={prevStage} scrollToTop={scrollToTop} />}
                 {currentStage === 'teslaAI' && <TeslaAILabStage onNext={nextStage} onPrev={prevStage} />}
               </motion.div>
             </AnimatePresence>

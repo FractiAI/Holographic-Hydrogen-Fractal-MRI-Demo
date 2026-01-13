@@ -12,6 +12,7 @@ import {
 interface MRIPhysicsStageProps {
   onNext: () => void
   onPrev: () => void
+  scrollToTop?: () => void
 }
 
 function RealMRIVisualization({ 
@@ -190,7 +191,7 @@ function ArrowHelper({
   )
 }
 
-export default function MRIPhysicsStage({ onNext, onPrev }: MRIPhysicsStageProps) {
+export default function MRIPhysicsStage({ onNext, onPrev, scrollToTop }: MRIPhysicsStageProps) {
   const [simulator] = useState(() => new BlochSimulator(DEFAULT_MRI_PARAMS, 125))  // 5x5x5 grid
   const [isRunning, setIsRunning] = useState(false)
   const [showVectors, setShowVectors] = useState(true)
@@ -225,24 +226,29 @@ export default function MRIPhysicsStage({ onNext, onPrev }: MRIPhysicsStageProps
   const apply90Pulse = () => {
     simulator.applyRFPulse({ flipAngle: 90, phase: 0, duration: 1 })
     setIsRunning(true)
+    scrollToTop?.()
   }
 
   const apply180Pulse = () => {
     simulator.applyRFPulse({ flipAngle: 180, phase: 0, duration: 1 })
+    scrollToTop?.()
   }
 
   const applyCustomPulse = (flipAngle: number) => {
     simulator.applyRFPulse({ flipAngle, phase: 0, duration: 1 })
+    scrollToTop?.()
   }
 
   const resetSimulator = () => {
     simulator.reset()
     setIsRunning(false)
     setSignalData({ real: 0, imag: 0, magnitude: 0 })
+    scrollToTop?.()
   }
 
   const addDephasing = () => {
     simulator.addDephasing(0.5)
+    scrollToTop?.()
   }
 
   // Calculate Larmor frequency dynamically based on current B0

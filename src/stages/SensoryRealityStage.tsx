@@ -13,6 +13,7 @@ import {
 interface SensoryRealityStageProps {
   onNext: () => void
   onPrev: () => void
+  scrollToTop?: () => void
 }
 
 /**
@@ -282,7 +283,7 @@ function SensoryRealityVisualization({
 /**
  * Main Text-to-Sensory-Reality Stage
  */
-export default function SensoryRealityStage({ onNext, onPrev }: SensoryRealityStageProps) {
+export default function SensoryRealityStage({ onNext, onPrev, scrollToTop }: SensoryRealityStageProps) {
   const [engine] = useState(() => new SensoryRealityEngine())
   const [textPrompt, setTextPrompt] = useState('')
   const [isAnimating, setIsAnimating] = useState(false)
@@ -318,6 +319,7 @@ export default function SensoryRealityStage({ onNext, onPrev }: SensoryRealitySt
     })
     
     setIsAnimating(true)
+    scrollToTop?.()
   }
   
   const handleNodeClick = (nodeId: number) => {
@@ -681,7 +683,7 @@ export default function SensoryRealityStage({ onNext, onPrev }: SensoryRealitySt
               >
                 {isAnimating ? '⏸️ Pause' : '▶️ Start'}
               </button>
-              <button onClick={() => engine.reset()}>
+              <button onClick={() => { engine.reset(); scrollToTop?.(); }}>
                 🔄 Reset
               </button>
             </div>

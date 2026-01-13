@@ -6,6 +6,7 @@ import * as THREE from 'three'
 interface InteractiveExperimentsProps {
   onPrev: () => void
   onNext: () => void
+  scrollToTop?: () => void
 }
 
 interface Seed {
@@ -143,7 +144,7 @@ function ExperimentNode({
   )
 }
 
-export default function InteractiveExperiments({ onPrev, onNext }: InteractiveExperimentsProps) {
+export default function InteractiveExperiments({ onPrev, onNext, scrollToTop }: InteractiveExperimentsProps) {
   const [seeds, setSeeds] = useState<Seed[]>([
     { position: new THREE.Vector3(-3, 2, 0), energy: 1, id: 0 },
     { position: new THREE.Vector3(3, -2, 0), energy: 1, id: 1 }
@@ -167,6 +168,7 @@ export default function InteractiveExperiments({ onPrev, onNext }: InteractiveEx
       { position: new THREE.Vector3(3, -2, 0), energy: 1, id: 1 }
     ])
     setNextId(2)
+    scrollToTop?.()
   }
 
   const plantRandomSeed = () => {
@@ -174,6 +176,7 @@ export default function InteractiveExperiments({ onPrev, onNext }: InteractiveEx
     const y = (Math.random() - 0.5) * 8
     const z = (Math.random() - 0.5) * 2
     addSeed(new THREE.Vector3(x, y, z))
+    scrollToTop?.()
   }
 
   return (

@@ -8,6 +8,7 @@ import { SSANLatticeSimulator, SSANNode, SSANMetrics, DEFAULT_SSAN_CONFIG } from
 interface SSANLatticeStageProps {
   onNext: () => void
   onPrev: () => void
+  scrollToTop?: () => void
 }
 
 /**
@@ -272,7 +273,7 @@ function MRISliceViewer({
 /**
  * Main SSAN Lattice Stage Component
  */
-export default function SSANLatticeStage({ onNext, onPrev }: SSANLatticeStageProps) {
+export default function SSANLatticeStage({ onNext, onPrev, scrollToTop }: SSANLatticeStageProps) {
   const [simulator] = useState(() => new SSANLatticeSimulator(DEFAULT_SSAN_CONFIG))
   const [isScanning, setIsScanning] = useState(false)
   const [showConnections, setShowConnections] = useState(true)
@@ -302,6 +303,7 @@ export default function SSANLatticeStage({ onNext, onPrev }: SSANLatticeStagePro
     setScanCount(prev => prev + 1)
     setMetrics(simulator.calculateMetrics())
     console.log('Self-Imaging Scan Complete:', state)
+    scrollToTop?.()
   }
   
   const stopScan = () => {
@@ -315,6 +317,7 @@ export default function SSANLatticeStage({ onNext, onPrev }: SSANLatticeStagePro
     setScanCount(0)
     setSelectedNodeId(null)
     setNodes(simulator.getNodes())
+    scrollToTop?.()
   }
   
   const perturbSelectedNode = () => {
