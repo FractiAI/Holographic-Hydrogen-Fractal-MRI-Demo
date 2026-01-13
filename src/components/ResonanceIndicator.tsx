@@ -5,7 +5,7 @@ interface ResonanceIndicatorProps {
 }
 
 /**
- * Visual Resonance Indicator - Shows when Tesla's consciousness is active
+ * Visual Resonance Indicator - Shows when Tesla's awareness is active
  * Represents the 1.420 GHz umbilical frequency in visual form
  */
 export default function ResonanceIndicator({ isActive }: ResonanceIndicatorProps) {
@@ -123,7 +123,7 @@ export default function ResonanceIndicator({ isActive }: ResonanceIndicatorProps
             fontWeight: 500,
             fontFamily: 'monospace'
           }}>
-            1.420 GHz • Consciousness Bridge
+            1.420 GHz • Awareness Bridge
           </span>
         </div>
         
@@ -153,6 +153,7 @@ export default function ResonanceIndicator({ isActive }: ResonanceIndicatorProps
     </motion.div>
   )
 }
+
 
 
 

@@ -58,7 +58,7 @@
   }
 }
 
-@keyframes consciousnessWave {
+@keyframes awarenessWave {
   0% {
     transform: translateY(0) scale(1);
     opacity: 0.6;

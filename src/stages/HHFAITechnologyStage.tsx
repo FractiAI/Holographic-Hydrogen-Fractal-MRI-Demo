@@ -392,7 +392,7 @@ export default function HHFAITechnologyStage({ onNext, onPrev }: HHFAITechnology
                 <strong style={{ color: '#8B5CF6' }}>🏢 Organizations:</strong> Image company culture, team alignment, workflow efficiency
               </p>
               <p style={{ marginTop: '0.8rem' }}>
-                <strong style={{ color: '#EC4899' }}>🧠 AI Systems:</strong> Measure awareness, coherence, and consciousness in AI models
+                <strong style={{ color: '#EC4899' }}>🧠 AI Systems:</strong> Measure awareness, coherence, and awareness in AI models
               </p>
               <p style={{ marginTop: '0.8rem' }}>
                 <strong style={{ color: '#F59E0B' }}>🌐 Networks:</strong> Diagnose problems in social networks, supply chains, ecosystems

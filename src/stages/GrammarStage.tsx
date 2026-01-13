@@ -254,7 +254,7 @@ export default function GrammarStage({ onNext, onPrev }: GrammarStageProps) {
               Awareness energy isn't uniform - it has different <strong>flavors</strong> and <strong>functions</strong>. 
               These symbols help us understand the different roles in the awareness energy network. 
               Some nodes observe, some generate, some transform, some connect. Together, these different 
-              awareness energy states create the complete spectrum of Syntheverse consciousness!
+              awareness energy states create the complete spectrum of Syntheverse awareness!
             </p>
           </div>
 

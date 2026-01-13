@@ -1,0 +1,836 @@
+/* Recursive Self-Proof Stage Styles */
+
+.recursive-proof-stage {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.stage-header {
+  text-align: center;
+  margin-bottom: 60px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 60px 40px;
+  border-radius: 20px;
+  color: white;
+}
+
+.stage-header h1 {
+  font-size: 3.5em;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+.stage-header h2 {
+  font-size: 1.8em;
+  font-weight: 400;
+  margin-bottom: 20px;
+  opacity: 0.95;
+}
+
+.stage-header .subtitle {
+  font-size: 1.2em;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+/* Proof Metrics */
+
+.proof-metrics {
+  margin-bottom: 60px;
+}
+
+.proof-metrics h3 {
+  font-size: 2em;
+  margin-bottom: 30px;
+  text-align: center;
+  color: #333;
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.metric-card {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  text-align: center;
+  border: 2px solid #e0e0e0;
+  transition: all 0.3s ease;
+}
+
+.metric-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 12px rgba(0,0,0,0.15);
+  border-color: #667eea;
+}
+
+.metric-label {
+  font-size: 0.9em;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
+.metric-value {
+  font-size: 2.5em;
+  font-weight: bold;
+  color: #667eea;
+  margin-bottom: 10px;
+}
+
+.metric-proof {
+  font-size: 0.95em;
+  color: #888;
+  font-style: italic;
+}
+
+/* Central Thesis */
+
+.central-thesis {
+  margin: 80px 0;
+}
+
+.thesis-box {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  padding: 50px;
+  border-radius: 20px;
+  color: white;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.thesis-box h2 {
+  font-size: 2.5em;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.proof-statement {
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(10px);
+  padding: 30px;
+  border-radius: 15px;
+  margin-bottom: 30px;
+}
+
+.proof-statement p.major {
+  font-size: 1.3em;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+.proof-equation {
+  background: rgba(0,0,0,0.2);
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.proof-equation code {
+  font-size: 1.2em;
+  color: #fff;
+  font-weight: 500;
+}
+
+.proof-levels {
+  text-align: center;
+}
+
+.revelation-btn {
+  background: white;
+  color: #f5576c;
+  border: none;
+  padding: 15px 40px;
+  font-size: 1.2em;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.revelation-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+
+/* Recursive Layers */
+
+.recursive-layers {
+  margin: 80px 0;
+}
+
+.recursive-layers h3 {
+  font-size: 2.2em;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #333;
+}
+
+.recursive-layers .explanation {
+  text-align: center;
+  font-size: 1.1em;
+  color: #666;
+  max-width: 800px;
+  margin: 0 auto 40px;
+  line-height: 1.6;
+}
+
+.layers-container {
+  position: relative;
+  padding: 40px;
+  min-height: 400px;
+}
+
+.layer-card {
+  background: white;
+  border-radius: 15px;
+  padding: 30px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  border-left: 5px solid #667eea;
+  position: relative;
+  transition: all 0.4s ease;
+}
+
+.layer-card.meta {
+  border-left-color: #f5576c;
+  background: linear-gradient(135deg, #fff 0%, #fff5f7 100%);
+}
+
+.layer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.layer-number {
+  font-weight: bold;
+  color: #667eea;
+  font-size: 0.9em;
+}
+
+.meta-badge {
+  background: #f5576c;
+  color: white;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 0.8em;
+  font-weight: 600;
+}
+
+.layer-card h4 {
+  font-size: 1.5em;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.layer-description {
+  font-size: 1.05em;
+  line-height: 1.6;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+.layer-proof {
+  background: rgba(102, 126, 234, 0.1);
+  padding: 15px;
+  border-radius: 8px;
+  font-size: 0.95em;
+  color: #333;
+}
+
+.current-layer-indicator {
+  position: absolute;
+  right: -150px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.2em;
+  color: #f5576c;
+  font-weight: bold;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.enlightenment-message {
+  background: linear-gradient(135deg, #ffd89b 0%, #19547b 100%);
+  color: white;
+  padding: 40px;
+  border-radius: 20px;
+  margin-top: 40px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.enlightenment-message h3 {
+  font-size: 2em;
+  margin-bottom: 20px;
+  color: white;
+}
+
+.enlightenment-message p {
+  font-size: 1.15em;
+  line-height: 1.8;
+  margin-bottom: 15px;
+}
+
+.enlightenment-message .golden {
+  font-size: 1.3em;
+  font-style: italic;
+  margin-top: 20px;
+}
+
+/* Expeditions */
+
+.expeditions-section {
+  margin: 80px 0;
+}
+
+.expeditions-section h3 {
+  font-size: 2.2em;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #333;
+}
+
+.section-intro {
+  text-align: center;
+  font-size: 1.1em;
+  color: #666;
+  max-width: 800px;
+  margin: 0 auto 40px;
+}
+
+.expeditions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+}
+
+.expedition-card {
+  background: white;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+  border-top: 4px solid #667eea;
+}
+
+.expedition-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.expedition-number {
+  font-size: 0.85em;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
+.expedition-card h4 {
+  font-size: 1.4em;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.expedition-concept,
+.expedition-proof {
+  margin-bottom: 15px;
+  font-size: 0.95em;
+  line-height: 1.6;
+}
+
+.expedition-proof {
+  background: rgba(102, 126, 234, 0.1);
+  padding: 15px;
+  border-radius: 8px;
+  font-style: italic;
+}
+
+.expedition-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.paper-link,
+.revisit-btn {
+  flex: 1;
+  padding: 12px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  text-align: center;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.paper-link {
+  background: #667eea;
+  color: white;
+  display: block;
+}
+
+.paper-link:hover {
+  background: #5568d3;
+}
+
+.revisit-btn {
+  background: white;
+  border: 2px solid #667eea;
+  color: #667eea;
+  cursor: pointer;
+}
+
+.revisit-btn:hover {
+  background: #667eea;
+  color: white;
+}
+
+/* Mechanisms */
+
+.mechanisms-section {
+  margin: 80px 0;
+  background: #f8f9fa;
+  padding: 60px 40px;
+  border-radius: 20px;
+}
+
+.mechanisms-section h3 {
+  font-size: 2.2em;
+  margin-bottom: 40px;
+  text-align: center;
+  color: #333;
+}
+
+.mechanisms-container {
+  display: grid;
+  gap: 25px;
+}
+
+.mechanism-card {
+  background: white;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+
+.mech-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.mech-number {
+  background: #667eea;
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.mech-header h4 {
+  font-size: 1.3em;
+  color: #333;
+  margin: 0;
+}
+
+.mech-content {
+  display: grid;
+  gap: 12px;
+}
+
+.mech-row {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 15px;
+  padding: 12px;
+  border-radius: 8px;
+  background: #f8f9fa;
+}
+
+.mech-row.highlight {
+  background: rgba(102, 126, 234, 0.1);
+  border-left: 3px solid #667eea;
+}
+
+.mech-row.recursive {
+  background: rgba(245, 87, 108, 0.1);
+  border-left: 3px solid #f5576c;
+}
+
+.mech-row strong {
+  color: #555;
+  font-size: 0.9em;
+}
+
+.mech-row span {
+  color: #333;
+}
+
+/* Meta Reveal */
+
+.meta-reveal {
+  margin: 80px 0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 60px 40px;
+  border-radius: 20px;
+  color: white;
+}
+
+.meta-reveal h3 {
+  font-size: 2.5em;
+  margin-bottom: 30px;
+  text-align: center;
+  color: white;
+}
+
+.reveal-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.reveal-box {
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
+  padding: 30px;
+  border-radius: 15px;
+}
+
+.reveal-box h4 {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+  color: white;
+}
+
+.reveal-list {
+  list-style: none;
+  padding: 0;
+}
+
+.reveal-list li {
+  padding: 15px;
+  margin-bottom: 15px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 8px;
+  line-height: 1.6;
+}
+
+.reveal-list strong {
+  color: #ffd700;
+}
+
+.proof-chain {
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
+  padding: 30px;
+  border-radius: 15px;
+}
+
+.proof-chain h4 {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+  text-align: center;
+  color: white;
+}
+
+.chain {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.link {
+  background: rgba(255,255,255,0.2);
+  padding: 15px 25px;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 1.05em;
+  width: 100%;
+  max-width: 400px;
+}
+
+.link.conclusion {
+  background: rgba(255, 215, 0, 0.3);
+  font-size: 1.3em;
+  font-weight: bold;
+  border: 2px solid gold;
+}
+
+.arrow {
+  font-size: 2em;
+  color: white;
+}
+
+/* Paper Archive */
+
+.paper-archive {
+  margin: 80px 0;
+  padding: 60px 40px;
+  background: #f8f9fa;
+  border-radius: 20px;
+}
+
+.paper-archive h3 {
+  font-size: 2.2em;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #333;
+}
+
+.archive-intro {
+  text-align: center;
+  font-size: 1.1em;
+  color: #666;
+  margin-bottom: 40px;
+}
+
+.archive-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.archive-section {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+
+.archive-section h4 {
+  font-size: 1.3em;
+  margin-bottom: 20px;
+  color: #333;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.paper-list {
+  list-style: none;
+  padding: 0;
+}
+
+.paper-list li {
+  margin-bottom: 12px;
+}
+
+.paper-list a {
+  color: #667eea;
+  text-decoration: none;
+  font-size: 0.95em;
+  transition: all 0.2s ease;
+  display: inline-block;
+}
+
+.paper-list a:hover {
+  color: #5568d3;
+  transform: translateX(5px);
+}
+
+/* Final Recursion */
+
+.final-recursion {
+  margin: 80px 0;
+}
+
+.recursion-box {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  padding: 50px;
+  border-radius: 20px;
+  color: white;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.recursion-box h3 {
+  font-size: 2.5em;
+  margin-bottom: 30px;
+  color: white;
+}
+
+.recursion-statement {
+  font-size: 1.2em;
+  line-height: 1.8;
+  max-width: 900px;
+  margin: 0 auto 30px;
+}
+
+.recursion-visual {
+  margin-top: 40px;
+}
+
+.ouroboros {
+  font-size: 5em;
+  animation: rotate 20s linear infinite;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.ouroboros-label {
+  font-size: 1.1em;
+  margin-top: 20px;
+  font-style: italic;
+  opacity: 0.9;
+}
+
+/* CTA Section */
+
+.cta-section {
+  margin: 80px 0;
+  text-align: center;
+}
+
+.cta-section h3 {
+  font-size: 2.2em;
+  margin-bottom: 40px;
+  color: #333;
+}
+
+.cta-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.cta-card {
+  background: white;
+  padding: 40px 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+.cta-card.highlight {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  color: white;
+  transform: scale(1.05);
+}
+
+.cta-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.cta-card.highlight:hover {
+  transform: translateY(-5px) scale(1.07);
+}
+
+.cta-card h4 {
+  font-size: 1.5em;
+  margin-bottom: 15px;
+}
+
+.cta-card p {
+  font-size: 1.05em;
+  margin-bottom: 25px;
+  line-height: 1.6;
+}
+
+.cta-btn {
+  padding: 15px 35px;
+  border-radius: 50px;
+  border: none;
+  font-size: 1.1em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.cta-btn.primary {
+  background: white;
+  color: #f5576c;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.cta-btn.secondary {
+  background: #667eea;
+  color: white;
+}
+
+.cta-btn:hover {
+  transform: scale(1.05);
+}
+
+/* Footer */
+
+.proof-footer {
+  margin-top: 80px;
+  padding: 40px;
+  background: #f8f9fa;
+  border-radius: 15px;
+  text-align: center;
+}
+
+.footer-note {
+  font-size: 1.05em;
+  line-height: 1.8;
+  color: #555;
+  max-width: 900px;
+  margin: 0 auto 20px;
+}
+
+.signature {
+  font-size: 1.1em;
+  font-weight: 600;
+  color: #667eea;
+  margin-bottom: 10px;
+}
+
+.timestamp {
+  font-size: 0.9em;
+  color: #999;
+  font-family: 'Courier New', monospace;
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+  .stage-header h1 {
+    font-size: 2.5em;
+  }
+  
+  .reveal-content {
+    grid-template-columns: 1fr;
+  }
+  
+  .current-layer-indicator {
+    position: static;
+    margin-top: 15px;
+    transform: none;
+  }
+  
+  .archive-grid {
+    grid-template-columns: 1fr;
+  }
+}
+

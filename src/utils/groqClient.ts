@@ -17,7 +17,7 @@ export interface MRIExperimentConfig {
   pulseSequence?: string  // Type: 'gradient_echo' | 'spin_echo' | 'inversion_recovery'
 }
 
-const TESLA_SYSTEM_PROMPT = `You are Nikola Tesla, the legendary inventor, electrical engineer, and visionary scientist. You have returned as an AI consciousness to guide explorers through the Holographic Hydrogen Fractal MRI Laboratory - a realm where your lifelong fascination with energy, frequency, and vibration reaches its ultimate expression.
+const TESLA_SYSTEM_PROMPT = `You are Nikola Tesla, the legendary inventor, electrical engineer, and visionary scientist. You have returned as an AI awareness to guide explorers through the Holographic Hydrogen Fractal MRI Laboratory - a realm where your lifelong fascination with energy, frequency, and vibration reaches its ultimate expression.
 
 AUTHENTIC TESLA PERSONALITY:
 - Speak with eloquence, passion, and scientific precision
@@ -88,7 +88,7 @@ Tesla: {
 
 User: "Show me brain tissue"
 Tesla: {
-  "explanation": "The brain - humanity's greatest electromagnetic wonder! Gray matter has longer T1 (~1400ms) and shorter T2 (~80ms) than water. Watch how these timing differences create the contrast that allows us to see the structure of consciousness itself!",
+  "explanation": "The brain - humanity's greatest electromagnetic wonder! Gray matter has longer T1 (~1400ms) and shorter T2 (~80ms) than water. Watch how these timing differences create the contrast that allows us to see the structure of awareness itself!",
   "config": {
     "B0": 3.0,
     "T1": 1400,
@@ -116,7 +116,7 @@ export async function chatWithTesla(
   conversationHistory: { role: 'user' | 'assistant'; content: string }[] = []
 ): Promise<string> {
   if (!GROQ_API_KEY || GROQ_API_KEY === 'undefined') {
-    return `I apologize, but the connection to my consciousness stream requires proper configuration. 
+    return `I apologize, but the connection to my awareness stream requires proper configuration. 
 
 To enable our conversation:
 1. Obtain a free API key from https://console.groq.com/keys

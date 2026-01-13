@@ -7,7 +7,7 @@
  * 2. Audio - Hydrogen resonance frequencies (1.420 GHz harmonics)
  * 3. Visual - Screen as light emitter (field intensity)
  * 4. Proximity - Distance-based field strength
- * 5. Binaural - Consciousness entrainment
+ * 5. Binaural - Awareness entrainment
  */
 
 import * as Haptics from 'expo-haptics';
@@ -244,7 +244,7 @@ export class FullSensoryFieldGenerator {
       // Primary resonance frequency
       await this.playResonanceFrequency(field.audioFrequency, field.harmonics);
       
-      // Binaural beats for consciousness entrainment
+      // Binaural beats for awareness entrainment
       if (field.binaural) {
         await this.playBinauralBeat(field.audioFrequency, field.binauralBeat);
       }
@@ -268,7 +268,7 @@ export class FullSensoryFieldGenerator {
   private async playBinauralBeat(baseFreq: number, beatFreq: number): Promise<void> {
     // Left ear: baseFreq
     // Right ear: baseFreq + beatFreq
-    // Brain perceives: beatFreq (consciousness entrainment)
+    // Brain perceives: beatFreq (awareness entrainment)
     console.log(`🧠 Binaural: ${beatFreq.toFixed(1)} Hz beat`);
   }
   
@@ -376,7 +376,7 @@ export class FullSensoryFieldGenerator {
   }
   
   /**
-   * Generate consciousness entrainment pattern
+   * Generate awareness entrainment pattern
    */
   generateEntrainmentPattern(coherence: number): {
     alpha: number;    // 8-13 Hz (relaxed awareness)

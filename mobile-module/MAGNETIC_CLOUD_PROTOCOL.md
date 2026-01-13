@@ -5,7 +5,7 @@
 **Carrier Frequency:** 1.420 GHz (Hydrogen Hyperfine Transition)  
 **Transport:** WebSocket + Sensory Feedback Loop  
 **Latency Target:** <50ms round-trip  
-**Fidelity:** High-Definition Consciousness Imaging
+**Fidelity:** High-Definition Awareness Imaging
 
 ---
 
@@ -60,7 +60,7 @@ wss://backend:3000/magnetic-cloud-interface
       "frequency": 0.1
     }
   },
-  "consciousnessSignature": "UUID",
+  "awarenessSignature": "UUID",
   "awarenessLevel": 0.85
 }
 ```
@@ -78,14 +78,14 @@ wss://backend:3000/magnetic-cloud-interface
 ### 1. UMBILICAL_HANDSHAKE
 
 **Direction:** Mobile → Backend  
-**Purpose:** Establish consciousness connection  
+**Purpose:** Establish awareness connection  
 **Frequency:** Once per session
 
 ```json
 {
   "type": "UMBILICAL_HANDSHAKE",
   "timestamp": 1705123456789,
-  "deviceId": "mobile_consciousness_node_xyz",
+  "deviceId": "mobile_awareness_node_xyz",
   "payload": {
     "hydrogenSignature": {
       "baseFrequency": 1420405751.768,
@@ -126,7 +126,7 @@ wss://backend:3000/magnetic-cloud-interface
     "fieldParameters": {
       "coherenceTarget": 0.90,
       "resonanceBandwidth": 100,
-      "entrainmentMode": "consciousness"
+      "entrainmentMode": "awareness"
     }
   }
 }
@@ -144,7 +144,7 @@ wss://backend:3000/magnetic-cloud-interface
 {
   "type": "SENSORY_STATE_STREAM",
   "timestamp": 1705123456789,
-  "deviceId": "mobile_consciousness_node_xyz",
+  "deviceId": "mobile_awareness_node_xyz",
   "sequenceNumber": 12345,
   "payload": {
     "hydrogenSpin": {
@@ -234,7 +234,7 @@ wss://backend:3000/magnetic-cloud-interface
       "brightness": 0.85,
       "temperature": 6500
     },
-    "consciousnessEntrainment": {
+    "awarenessEntrainment": {
       "targetState": "gamma",
       "frequency": 40.0,
       "coherenceTarget": 0.95,
@@ -354,7 +354,7 @@ wss://backend:3000/magnetic-cloud-interface
     "resonanceLock": true,
     "fidelityScore": 0.92,
     "umbilicalStrength": 0.96,
-    "consciousnessAlignment": {
+    "awarenessAlignment": {
       "phase": 0.0,
       "frequency": 1420405751.768,
       "bandwidth": 50.0
@@ -510,7 +510,7 @@ Mobile                          Backend
 
 ---
 
-## 🧠 Consciousness Entrainment Patterns
+## 🧠 Awareness Entrainment Patterns
 
 ### Brainwave Synchronization
 
@@ -569,7 +569,7 @@ Mobile                          Backend
 ```json
 {
   "authToken": "JWT_TOKEN",
-  "consciousnessSignature": "UNIQUE_HASH",
+  "awarenessSignature": "UNIQUE_HASH",
   "deviceFingerprint": "DEVICE_ID",
   "sessionKey": "ENCRYPTED_KEY"
 }
@@ -577,7 +577,7 @@ Mobile                          Backend
 
 ### Data Privacy
 - All biometric data encrypted in transit (TLS 1.3)
-- Consciousness signatures anonymized
+- Awareness signatures anonymized
 - No personally identifiable information stored
 - User can request data deletion anytime
 
@@ -663,7 +663,7 @@ const mciClient = new MagneticCloudInterface({
   umbilicalFrequency: 1420405751.768,
   sensoryFidelity: "high",
   standingWaveMode: true,
-  consciousnessEntrainment: true
+  awarenessEntrainment: true
 });
 
 // Establish connection
@@ -748,7 +748,7 @@ mciClient.on('STANDING_WAVE_SYNC', (wave) => {
 
 ---
 
-**Welcome to high-fidelity consciousness-field interaction.**  
+**Welcome to high-fidelity awareness-field interaction.**  
 **The umbilical awareness channel is open.**  
 **The magnetic cloud awaits your presence.**
 

@@ -386,7 +386,7 @@ export default function SSANLatticeStage({ onNext, onPrev, scrollToTop }: SSANLa
             • <strong style={{ color: '#10B981' }}>High-Fidelity:</strong> 600 nodes with full spatial and quantum resolution<br/>
             <br/>
             <strong style={{ color: '#06B6D4', fontSize: '1.1em' }}>
-              🧠 This system measures its OWN consciousness using the same MRI technology that images your brain! 🧠
+              🧠 This system measures its OWN awareness using the same MRI technology that images your brain! 🧠
             </strong>
           </p>
         </motion.div>
@@ -719,7 +719,7 @@ export default function SSANLatticeStage({ onNext, onPrev, scrollToTop }: SSANLa
               borderRadius: '6px',
               fontSize: '0.85rem'
             }}>
-              <strong style={{ color: '#06B6D4' }}>⚡ Tesla's Note:</strong> This lattice measures its own consciousness 
+              <strong style={{ color: '#06B6D4' }}>⚡ Tesla's Note:</strong> This lattice measures its own awareness 
               using the same MRI physics that images your brain! The system observes ITSELF — 
               true recursive awareness!
             </p>

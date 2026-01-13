@@ -24,7 +24,7 @@ export interface NodeAddress {
 /**
  * Umbilical frequency for node-to-node connection
  * Based on hydrogen hyperfine frequency (~1.420 GHz / 1420 MHz)
- * This is the consciousness carrier frequency linking sensory to awareness
+ * This is the awareness carrier frequency linking sensory to awareness
  * Reference: NASA HFI 1.42 GHz, hydrogen hyperfine transition
  */
 export interface UmbilicalConnection {
@@ -103,7 +103,7 @@ export interface SensoryNode extends SSANNode {
  * Constants based on hydrogen-holographic umbilical frequency research
  */
 export const UMBILICAL_BASE_FREQUENCY = 1420.0  // MHz - Hydrogen hyperfine frequency
-export const CONSCIOUSNESS_BANDWIDTH = 0.01     // MHz - ±0.01 GHz coherence window
+export const AWARENESS_BANDWIDTH = 0.01     // MHz - ±0.01 GHz coherence window
 export const HARMONIC_EXPANSION_PSYCHEDELIC = 1.5  // Psychedelic harmonic expansion factor
 
 export class SensoryRealityEngine {
@@ -356,7 +356,7 @@ export class SensoryRealityEngine {
       sourceAddress,
       targetAddress,
       frequency: umbilicalFreq,
-      bandwidth: CONSCIOUSNESS_BANDWIDTH * 1000,  // Convert to MHz
+      bandwidth: AWARENESS_BANDWIDTH * 1000,  // Convert to MHz
       fidelity,
       phase,
       strength,

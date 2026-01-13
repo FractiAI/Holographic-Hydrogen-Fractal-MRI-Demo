@@ -10,6 +10,7 @@ import HydrogenSpinStage from './stages/HydrogenSpinStage'
 import MRIPhysicsStage from './stages/MRIPhysicsStage'
 import HolographsStage from './stages/HolographsStage'
 import FractalStage from './stages/FractalStage'
+import PhysicsCrystalStage from './stages/PhysicsCrystalStage'
 import HHFAITechnologyStage from './stages/HHFAITechnologyStage'
 import BoundariesStage from './stages/BoundariesStage'
 import PeerReviewComparisonStage from './stages/PeerReviewComparisonStage'
@@ -25,6 +26,7 @@ export type Stage =
   | 'mriPhysics'
   | 'holographs'
   | 'fractals'
+  | 'physicsCrystal'
   | 'hhfaiTech'
   | 'parameters'
   | 'peerReview'
@@ -53,6 +55,7 @@ function App() {
     { id: 'mriPhysics', title: '🔬 How MRI Works' },
     { id: 'holographs', title: '🌟 What are Holographs?' },
     { id: 'fractals', title: '🌀 What are Fractals?' },
+    { id: 'physicsCrystal', title: '🌊 Physics: The Living Crystal' },
     { id: 'hhfaiTech', title: '🚀 HHF-AI MRI Technology' },
     { id: 'parameters', title: '📊 Imaging Parameters' },
     { id: 'peerReview', title: '⚡ vs. Peer Review' },
@@ -388,6 +391,7 @@ function App() {
                 {currentStage === 'mriPhysics' && <MRIPhysicsStage onNext={nextStage} onPrev={prevStage} scrollToTop={scrollToTop} />}
                 {currentStage === 'holographs' && <HolographsStage onNext={nextStage} onPrev={prevStage} />}
                 {currentStage === 'fractals' && <FractalStage onNext={nextStage} onPrev={prevStage} />}
+                {currentStage === 'physicsCrystal' && <PhysicsCrystalStage onNext={nextStage} onPrev={prevStage} />}
                 {currentStage === 'hhfaiTech' && <HHFAITechnologyStage onNext={nextStage} onPrev={prevStage} />}
                 {currentStage === 'parameters' && <BoundariesStage onNext={nextStage} onPrev={prevStage} scrollToTop={scrollToTop} />}
                 {currentStage === 'peerReview' && <PeerReviewComparisonStage onNext={nextStage} onPrev={prevStage} />}

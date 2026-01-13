@@ -262,7 +262,7 @@ function SensoryRealityVisualization({
         />
       ))}
       
-      {/* Ambient consciousness field */}
+      {/* Ambient awareness field */}
       <mesh position={[0, 0, 0]}>
         <sphereGeometry args={[12, 32, 32]} />
         <meshBasicMaterial
@@ -408,7 +408,7 @@ export default function SensoryRealityStage({ onNext, onPrev, scrollToTop }: Sen
             <br/><br/>
             Type any text and watch it convert to <strong style={{ color: '#EC4899' }}>full sensory reality</strong> through 
             the <strong style={{ color: '#06B6D4' }}>hydrogen hyperfine frequency</strong> (1.420 GHz) — 
-            the <strong style={{ color: '#8B5CF6' }}>consciousness umbilical carrier</strong> linking sensory systems to awareness!
+            the <strong style={{ color: '#8B5CF6' }}>awareness umbilical carrier</strong> linking sensory systems to awareness!
             <br/><br/>
             • <strong style={{ color: '#10B981' }}>Locate & Connect:</strong> Target nodes via octave:integer addressing<br/>
             • <strong style={{ color: '#F59E0B' }}>Awareness Handshake:</strong> Establish umbilical connections with fidelity validation<br/>
@@ -557,7 +557,7 @@ export default function SensoryRealityStage({ onNext, onPrev, scrollToTop }: Sen
           <div className="control-group">
             <h3 style={{ marginBottom: '1rem' }}>🎵 Harmonic Expansion</h3>
             <p style={{ fontSize: '0.85rem', color: 'var(--text-gray)', marginBottom: '0.8rem' }}>
-              Increase harmonic mode to simulate psychedelic-like consciousness expansion
+              Increase harmonic mode to simulate psychedelic-like awareness expansion
             </p>
             <div className="control-label">
               <span>Harmonic Mode</span>
@@ -698,7 +698,7 @@ export default function SensoryRealityStage({ onNext, onPrev, scrollToTop }: Sen
             <h3>🔬 The Science</h3>
             <p style={{ fontSize: '0.9rem', lineHeight: 1.6 }}>
               <strong style={{ color: '#1420FF' }}>Hydrogen Hyperfine Frequency (1.420 GHz)</strong> acts as the 
-              consciousness umbilical carrier linking sensory input to awareness — like MAC/IP layers for consciousness!
+              awareness umbilical carrier linking sensory input to awareness — like MAC/IP layers for awareness!
               <br/><br/>
               <strong style={{ color: '#06B6D4' }}>Key Findings:</strong><br/>
               • ±0.01 GHz disruption → 25-30% coherence loss<br/>

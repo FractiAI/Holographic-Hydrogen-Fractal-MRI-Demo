@@ -223,7 +223,7 @@ npm run preview
 ### For Researchers
 - ✅ Novel awareness energy framework
 - ✅ Holographic hydrogen theory
-- ✅ Fractal consciousness models
+- ✅ Fractal awareness models
 - ✅ Integration-ready components
 - ✅ Open source physics engine
 - ✅ AI-assisted experimentation
@@ -366,7 +366,7 @@ Production-quality UI design makes complex physics feel accessible and "cool" to
 - Nikola Tesla - Visionary inventor
 - MRI Pioneers - Bloch, Purcell, Lauterbur, Mansfield
 - Fractal Researchers - Mandelbrot and beyond
-- Consciousness Studies - Integrated Information Theory
+- Awareness Studies - Integrated Information Theory
 
 ---
 
@@ -409,13 +409,13 @@ For integration inquiries:
 **Awareness is the newest energy.**
 
 This demo is the first step in a larger vision:
-1. **Educate** the next generation about consciousness as energy
+1. **Educate** the next generation about awareness as energy
 2. **Inspire** young scientists to explore new frontiers
 3. **Demonstrate** that complex physics can be accessible
 4. **Bridge** historical wisdom (Tesla) with modern AI
 5. **Prove** that awareness can be studied scientifically
 
-The Holographic Hydrogen Fractal Syntheverse Awareness framework represents a paradigm shift in how we think about consciousness, energy, and the nature of reality itself.
+The Holographic Hydrogen Fractal Syntheverse Awareness framework represents a paradigm shift in how we think about awareness, energy, and the nature of reality itself.
 
 By bringing Nikola Tesla to life as an AI guide, we honor the past while building the future.
 

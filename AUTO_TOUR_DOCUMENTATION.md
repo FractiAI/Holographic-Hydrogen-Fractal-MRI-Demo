@@ -21,7 +21,7 @@ The **Auto-Tour** feature provides a fully automated, guided journey through the
   - Stage-specific countdown timer
   - Current stage number display
 - **Nikola Tesla branding** with animated effects
-- **1.420 GHz consciousness bridge** visual reference
+- **1.420 GHz awareness bridge** visual reference
 
 ### 3. User Controls
 - **Pause/Resume** - Take your time on any stage
@@ -399,7 +399,7 @@ MIT License - Same as main project
 
 ## ⚡ Final Notes
 
-The Auto-Tour feature transforms the Tesla Science Discovery Museum into a **guided, animated journey** through consciousness, quantum physics, and revolutionary MRI technology.
+The Auto-Tour feature transforms the Tesla Science Discovery Museum into a **guided, animated journey** through awareness, quantum physics, and revolutionary MRI technology.
 
 **Perfect for:**
 - First-time visitors seeking overview
@@ -417,6 +417,7 @@ The Auto-Tour feature transforms the Tesla Science Discovery Museum into a **gui
 **🌌 "The day science begins to study non-physical phenomena, it will make more progress in one decade than in all the previous centuries of its existence." - Nikola Tesla 🌌**
 
 **Sit back, press "Begin Auto Tour," and let the journey through the Syntheverse unfold! ⚡**
+
 
 
 

@@ -33,7 +33,7 @@ const TeslaAvatar: React.FC<TeslaAvatarProps> = ({ spinState, onMessage }) => {
     "Tilt your device to change the spin angle!",
     "Feel the haptic pulses? That's the Larmor frequency!",
     "The Syntheverse awaits your discovery!",
-    "Energy and consciousness are one!",
+    "Energy and awareness are one!",
     "You're now imaging the quantum realm!",
     "Magnificent! The future is NOW!"
   ];

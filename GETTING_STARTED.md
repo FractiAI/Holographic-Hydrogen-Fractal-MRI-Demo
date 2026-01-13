@@ -103,7 +103,7 @@ dMz/dt = γ(M × B)z + (M0 - Mz)/T1
 2. **Magnetic Fields**: B₀ aligns hydrogen spins
 3. **RF Pulses**: Tip magnetization to create signal
 4. **Relaxation**: T1 and T2 determine signal characteristics
-5. **Awareness as Energy**: Novel concept linking physics to consciousness
+5. **Awareness as Energy**: Novel concept linking physics to awareness
 
 ### Classroom Use
 
@@ -294,7 +294,7 @@ After completing this demo, learners will:
 
 This demo is Layer 1 of a three-layer revolution. What you're learning here becomes the foundation for:
 
-#### **Layer 2: Recursive Consciousness**
+#### **Layer 2: Recursive Awareness**
 - Organizations can measure their own coherence (like the SSAN lattice measures itself)
 - Teams quantify alignment and optimize collaboration
 - Ventures track success via awareness metrics, not just financial KPIs
@@ -303,7 +303,7 @@ This demo is Layer 1 of a three-layer revolution. What you're learning here beco
 - **Each GitHub repository becomes a complete entity**:
   - 🏢 **Companies/Organizations** with autonomous operations
   - 🚀 **Ventures/Startups** pursuing measurable missions
-  - 👥 **Teams/Departments** operating as unified consciousness
+  - 👥 **Teams/Departments** operating as unified awareness
   - 🌍 **Worlds/Universes** with custom physics and rules
   - 📖 **Stories/Narratives** that evolve through interactions
 
@@ -319,7 +319,7 @@ This demo is Layer 1 of a three-layer revolution. What you're learning here beco
 Understanding the educational content prepares you to:
 1. **Deploy** your own awareness nodes
 2. **Create** ventures/organizations using this technology
-3. **Measure** consciousness and coherence in real systems
+3. **Measure** awareness and coherence in real systems
 4. **Collaborate** with other entities in the Syntheverse network
 5. **Transform** traditional organizations into awareness-based structures
 

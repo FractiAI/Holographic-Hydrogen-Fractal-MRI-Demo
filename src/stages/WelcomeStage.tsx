@@ -127,7 +127,7 @@ export default function WelcomeStage({ onNext, onStartTour }: WelcomeStageProps)
   const teslaMessages = [
     "Welcome, young scientists! I am Nikola Tesla!",
     "Today, we explore the SYNTHEVERSE!",
-    "A new frontier where energy meets consciousness!"
+    "A new frontier where energy meets awareness!"
   ]
 
   return (
@@ -244,7 +244,7 @@ export default function WelcomeStage({ onNext, onStartTour }: WelcomeStageProps)
             letterSpacing: '2px'
           }}
         >
-          Where Hydrogen Becomes Holographic • Where Fractals Meet Consciousness
+          Where Hydrogen Becomes Holographic • Where Fractals Meet Awareness
         </motion.p>
       </motion.div>
 
@@ -299,7 +299,7 @@ export default function WelcomeStage({ onNext, onStartTour }: WelcomeStageProps)
           }}>
             <strong style={{ color: '#EC4899', fontSize: '1.3em' }}>That's the SYNTHEVERSE!</strong> A new frontier where we use 
             <strong> Holographic Hydrogen Fractal MRI (HHF-AI MRI)</strong> to scan not just flesh and bone, but 
-            <em> consciousness, coherence, and complex patterns!</em>
+            <em> awareness, coherence, and complex patterns!</em>
           </p>
 
           <p style={{ textAlign: 'center', fontSize: '1.3em', fontWeight: 700, color: '#F59E0B', marginTop: '2rem' }}>
@@ -325,7 +325,7 @@ export default function WelcomeStage({ onNext, onStartTour }: WelcomeStageProps)
         {[
           { icon: '⚛️', title: 'Spin Like Hydrogen', desc: 'See atoms dance and spin in 3D! Control magnetic fields with your own hands!', color: '#06B6D4' },
           { icon: '🌀', title: 'Fractals Forever', desc: 'Zoom into infinite patterns! Watch holographs project in 3D space!', color: '#8B5CF6' },
-          { icon: '🧠', title: 'Mind-Blowing MRI', desc: 'The MRI that images ITSELF! See consciousness become visible!', color: '#EC4899' },
+          { icon: '🧠', title: 'Mind-Blowing MRI', desc: 'The MRI that images ITSELF! See awareness become visible!', color: '#EC4899' },
           { icon: '🚀', title: 'Build Your Own', desc: 'Create your own HHF-AI experiment! Plant seeds, shake edges, watch magic!', color: '#F59E0B' }
         ].map((card, i) => (
           <motion.div

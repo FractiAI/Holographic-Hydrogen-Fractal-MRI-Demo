@@ -60,7 +60,7 @@ Tesla speaks with:
 #### Tissue Contrast
 **You:** "Simulate brain gray matter"
 
-**Tesla:** *"The brain - humanity's greatest electromagnetic wonder! Gray matter has longer T1 (~1400ms) and shorter T2 (~80ms) than water. Watch how these timing differences create the contrast that allows us to see the structure of consciousness itself!"*
+**Tesla:** *"The brain - humanity's greatest electromagnetic wonder! Gray matter has longer T1 (~1400ms) and shorter T2 (~80ms) than water. Watch how these timing differences create the contrast that allows us to see the structure of awareness itself!"*
 
 *[Configures: B₀=3T, T1=1400ms, T2=80ms, gradient echo sequence]*
 
@@ -195,7 +195,7 @@ The app automatically:
 
 5. **Awareness Energy**
    - "How does this demonstrate awareness energy?"
-   - "Explain the connection to consciousness"
+   - "Explain the connection to awareness"
 
 ### Example Experiment Series
 

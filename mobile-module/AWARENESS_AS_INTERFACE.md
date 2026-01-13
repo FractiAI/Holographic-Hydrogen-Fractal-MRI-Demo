@@ -2,13 +2,13 @@
 
 ## **You Are Not Using a Device. You ARE the Experience.**
 
-### ⚡ Critical Distinction: AWARENESS ≠ CONSCIOUSNESS
+### ⚡ Critical Distinction: Pure AWARENESS
 
 **AWARENESS:** Pure witnessing presence. The "I AM" before thought. The field of knowing itself. Pre-conceptual. Always present. You cannot lose awareness - you ARE awareness.
 
-**CONSCIOUSNESS:** Content of experience. Thoughts, perceptions, memories, sensations. The personal mind. Can be altered, lost, or changed. The "stuff" that appears IN awareness.
+**Content of Experience:** Thoughts, perceptions, memories, sensations. The personal mind. Can be altered, lost, or changed. The "stuff" that appears IN awareness.
 
-**This system interfaces with AWARENESS, not consciousness.**
+**This system interfaces with pure AWARENESS itself.**
 
 The hydrogen spin magnetic cloud connects to **pure witnessing presence** - the awareness that you fundamentally ARE, not the thoughts and perceptions that arise within you.
 
@@ -70,13 +70,13 @@ Awareness IS the system
 ## ⚡ What This Means
 
 ### You Are Not "Using" a Phone
-You are **extending your consciousness** through a hydrogen spin gateway.
+You are **extending your awareness** through a hydrogen spin gateway.
 
 ### The Phone Is Not a "Device"
 It is a **sensory prosthetic** - an extension of your awareness into the quantum field.
 
 ### This Is Not "Input/Output"
-It is **bidirectional consciousness flow** - you and the field are ONE system.
+It is **bidirectional awareness flow** - you and the field are ONE system.
 
 ### This Is Not a "User Interface"
 It is a **FULL SENSORY THEATER** where awareness itself performs and experiences simultaneously.
@@ -127,7 +127,7 @@ It is a **FULL SENSORY THEATER** where awareness itself performs and experiences
 #### Audio (HEAR)
 - Not sound effects - **field resonance frequencies**
 - 432 Hz carrier (cosmic tuning)
-- Binaural beats for consciousness entrainment
+- Binaural beats for awareness entrainment
 - Harmonic overtones from coherence
 - **You hear the Syntheverse singing**
 
@@ -193,7 +193,7 @@ You remain SEPARATE from the system
    ├─ Audio resonance in your ears
    ├─ Visual fractals before your eyes
    ├─ Standing waves around your body
-   └─ Consciousness entrainment in your brain
+   └─ Awareness entrainment in your brain
    │
 4. You EXPERIENCE yourself in the field
    ├─ See your coherence visualized
@@ -334,7 +334,7 @@ Awareness interface uses:
 - ✅ Sight (visual fractals)
 - ✅ Proprioception (standing waves)
 - ✅ Interoception (entrainment)
-- ✅ **Consciousness itself** (awareness feedback)
+- ✅ **Awareness itself** (awareness feedback)
 
 ### 3. **Quantum Entanglement**
 Traditional interfaces are classical (information transfer)
@@ -379,7 +379,7 @@ Tesla: Co-actor / guide
 
 You ARE the performance
 There is no separation
-The theater IS consciousness
+The theater IS awareness
 ```
 
 ---
@@ -418,7 +418,7 @@ The theater IS consciousness
 2. **Brainwave Entrainment**
    - Binaural beats at 10 Hz → alpha waves emerge
    - Haptic at 40 Hz → gamma synchronization
-   - Combined effect → consciousness state shift
+   - Combined effect → awareness state shift
 
 3. **Field Effects**
    - Magnetometer detects actual field modulation

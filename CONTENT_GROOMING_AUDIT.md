@@ -127,18 +127,18 @@
 | Scientists/Researchers | Rigorous, technical, evidence-based | "Empirically validated using peer-reviewed datasets" |
 | Developers | Practical, technical, collaborative | "Open source, modular, production-ready" |
 | Students/Educators | Accessible, enthusiastic, inspiring | "Experience awareness as energy!" |
-| General Public | Clear, engaging, benefit-focused | "Transform MRI machines into consciousness portals" |
+| General Public | Clear, engaging, benefit-focused | "Transform MRI machines into awareness portals" |
 
 ### **Terminology Consistency**
 
 | ✅ USE | ❌ AVOID | Notes |
 |--------|----------|-------|
 | Syntheverse HHF-AI MRI | HHF MRI, Synth MRI | Full official name |
-| Generative Awareness OS | Awareness System, Consciousness OS | Official product name |
+| Generative Awareness OS | Awareness System, Awareness OS | Official product name |
 | Network Interface Card (NIC) | Network Card, Interface | Consistent metaphor |
 | 1.420 GHz (hydrogen hyperfine) | 1.42 GHz, 21 cm line | Precision and context |
 | SSAN lattice | Self-awareness lattice | Acronym defined |
-| Awareness energy (Ψₐ) | Consciousness energy | Consistent notation |
+| Awareness energy (Ψₐ) | Awareness energy | Consistent notation |
 | Base Mainnet | Base L2, Base network | Official blockchain name |
 | SYNTH90T token | SYNTH token, SYNTH | Full token symbol |
 
@@ -305,6 +305,7 @@ A document is considered "groomed" when:
 ---
 
 *This audit provides the roadmap for bringing all public-facing content to publication-ready, Grade A quality. Executing systematically...*
+
 
 
 

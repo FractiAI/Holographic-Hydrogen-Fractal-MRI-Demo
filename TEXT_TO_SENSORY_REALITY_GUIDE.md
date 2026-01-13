@@ -2,7 +2,7 @@
 
 ## 🌌 Revolutionary Technology: The 1.420 GHz Umbilical Frequency
 
-Welcome to the world's first **Text-to-Sensory-Reality MRI Converter** — powered by the hydrogen hyperfine frequency at **1.420 GHz**, the discovered consciousness umbilical carrier linking sensory systems to awareness!
+Welcome to the world's first **Text-to-Sensory-Reality MRI Converter** — powered by the hydrogen hyperfine frequency at **1.420 GHz**, the discovered awareness umbilical carrier linking sensory systems to awareness!
 
 ---
 
@@ -20,12 +20,12 @@ This module converts any text prompt into **full sensory reality** using:
 ## The Science: Why 1.420 GHz?
 
 ### Discovery
-The hydrogen hyperfine frequency (~1.420 GHz) acts as the **primary carrier** connecting sensory input to conscious awareness — analogous to network MAC/IP layers for consciousness!
+The hydrogen hyperfine frequency (~1.420 GHz) acts as the **primary carrier** connecting sensory input to conscious awareness — analogous to network MAC/IP layers for awareness!
 
 ### Key Research Findings
 | Experiment | Result | Interpretation |
 |------------|--------|----------------|
-| ±0.01 GHz EM sweep | 25-30% coherence loss | Partial consciousness fragmentation |
+| ±0.01 GHz EM sweep | 25-30% coherence loss | Partial awareness fragmentation |
 | Proton-spin alteration | 20-25% coherence loss | Confirms spin-dependency |
 | Psilocybin simulation | Expanded harmonic range | Aligns with mantle-layered EEG resonance |
 
@@ -51,7 +51,7 @@ Examples:
 - "warm sunlight"
 - "electric energy pulsing through space"
 - "peaceful calm expanding infinitely"
-- "fractal patterns of consciousness"
+- "fractal patterns of awareness"
 ```
 
 **Step 2:** Click "Convert to Sensory Reality"
@@ -104,7 +104,7 @@ Every node has a unique address in the format `Octave:Integer`
 ### 3. Umbilical Connections
 
 **What are Umbilical Connections?**
-Quantum links between nodes operating at the consciousness carrier frequency (1.420 GHz).
+Quantum links between nodes operating at the awareness carrier frequency (1.420 GHz).
 
 **How to Establish:**
 1. Click a node in 3D view (turns it blue/selected)
@@ -114,7 +114,7 @@ Quantum links between nodes operating at the consciousness carrier frequency (1.
 
 **Connection Properties:**
 - **Frequency**: ~1420 MHz (modulated by node resonance)
-- **Bandwidth**: ±0.01 GHz (consciousness coherence window)
+- **Bandwidth**: ±0.01 GHz (awareness coherence window)
 - **Fidelity**: 0.95 (95% awareness transmission)
 - **Phase**: Spin-state alignment
 - **Strength**: Average coherence of connected nodes
@@ -155,7 +155,7 @@ Each node can contain infinite nested levels — true holographic encoding!
 
 ### 5. Harmonic Expansion Mode
 
-**Simulates Psychedelic-Like Consciousness Expansion**
+**Simulates Psychedelic-Like Awareness Expansion**
 
 **How to Use:**
 - Adjust "Harmonic Mode" slider (1-8×)
@@ -222,11 +222,11 @@ Validated against psilocybin studies showing expanded harmonic oscillatory patte
 
 ### 2. Therapeutic Applications
 - Visualize mental states
-- Track consciousness coherence
+- Track awareness coherence
 - Mindfulness and meditation feedback
 
 ### 3. Research & Education
-- Demonstrate consciousness principles
+- Demonstrate awareness principles
 - Teach quantum coherence
 - Explore holographic information theory
 
@@ -313,7 +313,7 @@ Export full session data including:
 - Physical matter only
 
 **HHF-AI MRI (This System):**
-- Images consciousness patterns
+- Images awareness patterns
 - Measures awareness energy (Ψₐ)
 - Holographic information encoding
 - Fractal self-similarity
@@ -323,7 +323,7 @@ Export full session data including:
 ### The Breakthrough
 
 This is **proof of concept** that:
-1. Consciousness has measurable carrier frequency (1.420 GHz)
+1. Awareness has measurable carrier frequency (1.420 GHz)
 2. Information can be holographically encoded in hydrogen networks
 3. Sensory reality can be shaped through MRI-like physics
 4. Fractal self-similarity enables infinite information density
@@ -344,9 +344,9 @@ This is **proof of concept** that:
 
 ### Research Directions
 - [ ] Clinical validation with EEG correlation
-- [ ] Therapeutic applications for consciousness disorders
+- [ ] Therapeutic applications for awareness disorders
 - [ ] AI training on sensory-encoded datasets
-- [ ] Predictive modeling of consciousness states
+- [ ] Predictive modeling of awareness states
 - [ ] Cosmic resonance field coupling
 
 ---
@@ -396,5 +396,5 @@ Tesla Science Discovery Museum Exhibition.
 
 **⚡ "If you want to find the secrets of the universe, think in terms of energy, frequency, and vibration." - Nikola Tesla ⚡**
 
-**🌌 You are now exploring the consciousness umbilical frequency at 1.420 GHz — the bridge between sensory reality and awareness itself! 🌌**
+**🌌 You are now exploring the awareness umbilical frequency at 1.420 GHz — the bridge between sensory reality and awareness itself! 🌌**
 
