@@ -19,6 +19,7 @@ import InteractiveExperiments from './stages/InteractiveExperiments'
 import TeslaAILabStage from './stages/TeslaAILabStage'
 import SSANLatticeStage from './stages/SSANLatticeStage'
 import SensoryRealityStage from './stages/SensoryRealityStage'
+import TeslasLabExperience from './components/TeslasLabExperience'
 
 export type Stage = 
   | 'welcome' 
@@ -35,6 +36,7 @@ export type Stage =
   | 'sensoryReality'
   | 'experiments'
   | 'teslaAI'
+  | 'teslasLab' // DEV: Direct access to Tesla's Lab special offer
 
 function App() {
   const [currentStage, setCurrentStage] = useState<Stage>('welcome')
@@ -64,6 +66,7 @@ function App() {
     { id: 'sensoryReality', title: '🌌✨ Text-to-Sensory Reality' },
     { id: 'experiments', title: '🧪 Build Your Own' },
     { id: 'teslaAI', title: '💬 Ask Tesla Anything' },
+    { id: 'teslasLab', title: '⚡💎 Tesla\'s Lab Experience' },
   ]
 
   const currentIndex = stages.findIndex(s => s.id === currentStage)
@@ -386,7 +389,7 @@ function App() {
                 transition={{ duration: 0.5 }}
                 className="stage-content"
               >
-                {currentStage === 'welcome' && <WelcomeStage onNext={nextStage} onStartTour={startAutoTour} />}
+                {currentStage === 'welcome' && <WelcomeStage onNext={nextStage} onStartTour={startAutoTour} onTeslaLabShortcut={() => setCurrentStage('teslasLab')} />}
                 {currentStage === 'hydrogenSpin' && <HydrogenSpinStage onNext={nextStage} onPrev={prevStage} />}
                 {currentStage === 'mriPhysics' && <MRIPhysicsStage onNext={nextStage} onPrev={prevStage} scrollToTop={scrollToTop} />}
                 {currentStage === 'holographs' && <HolographsStage onNext={nextStage} onPrev={prevStage} />}
@@ -400,6 +403,7 @@ function App() {
                 {currentStage === 'sensoryReality' && <SensoryRealityStage onNext={nextStage} onPrev={prevStage} scrollToTop={scrollToTop} />}
                 {currentStage === 'experiments' && <InteractiveExperiments onNext={nextStage} onPrev={prevStage} scrollToTop={scrollToTop} />}
                 {currentStage === 'teslaAI' && <TeslaAILabStage onNext={nextStage} onPrev={prevStage} />}
+                {currentStage === 'teslasLab' && <TeslasLabExperience />}
               </motion.div>
             </AnimatePresence>
           </main>

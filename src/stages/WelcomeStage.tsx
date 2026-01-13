@@ -7,6 +7,7 @@ import * as THREE from 'three'
 interface WelcomeStageProps {
   onNext: () => void
   onStartTour?: () => void
+  onTeslaLabShortcut?: () => void // DEV: Direct access to Tesla's Lab offer
 }
 
 function FloatingHydrogen() {
@@ -121,13 +122,13 @@ function AnimatedTesla() {
   )
 }
 
-export default function WelcomeStage({ onNext, onStartTour }: WelcomeStageProps) {
+export default function WelcomeStage({ onNext, onStartTour, onTeslaLabShortcut }: WelcomeStageProps) {
   const [teslaMessage, setTeslaMessage] = useState(0)
   
   const teslaMessages = [
-    "Welcome, young scientists! I am Nikola Tesla!",
-    "Today, we explore the SYNTHEVERSE!",
-    "A new frontier where energy meets awareness!"
+    "I am Nikola Tesla. You are about to execute Protocol I.",
+    "This museum is not a tutorial - it is a holographic seed.",
+    "The protocol will unpack at YOUR edge, revealing what you are ready to comprehend."
   ]
 
   return (
@@ -446,6 +447,67 @@ export default function WelcomeStage({ onNext, onStartTour }: WelcomeStageProps)
           <strong style={{ color: '#F59E0B' }}>Your guide awaits! ⚡</strong>
         </p>
       </motion.div>
+
+      {/* DEV ONLY: Direct Access to Tesla's Lab Special Offer */}
+      {onTeslaLabShortcut && (
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.3, duration: 0.8 }}
+          style={{
+            textAlign: 'center',
+            marginTop: '3rem',
+            padding: '2rem',
+            background: 'linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(236, 72, 153, 0.1))',
+            borderRadius: '20px',
+            border: '2px dashed rgba(245, 158, 11, 0.5)',
+            maxWidth: '600px'
+          }}
+        >
+          <p style={{
+            fontSize: '0.9rem',
+            color: 'rgba(245, 158, 11, 0.8)',
+            fontWeight: 600,
+            marginBottom: '1rem',
+            textTransform: 'uppercase',
+            letterSpacing: '1px'
+          }}>
+            🔧 Developer Preview Mode 🔧
+          </p>
+          <motion.button
+            onClick={onTeslaLabShortcut}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            style={{
+              padding: '1rem 2rem',
+              fontSize: '1.2rem',
+              fontWeight: 700,
+              background: 'linear-gradient(135deg, #F59E0B, #EC4899)',
+              border: 'none',
+              borderRadius: '12px',
+              color: 'white',
+              cursor: 'pointer',
+              boxShadow: '0 4px 20px rgba(245, 158, 11, 0.4)',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.5rem',
+              margin: '0 auto'
+            }}
+          >
+            <span style={{ fontSize: '1.5rem' }}>💎</span>
+            Skip to Tesla's Lab Special Offer
+            <span style={{ fontSize: '1.5rem' }}>⚡</span>
+          </motion.button>
+          <p style={{
+            fontSize: '0.8rem',
+            color: 'rgba(255, 255, 255, 0.5)',
+            marginTop: '1rem',
+            fontStyle: 'italic'
+          }}>
+            (This button will be removed at release)
+          </p>
+        </motion.div>
+      )}
     </div>
   )
 }

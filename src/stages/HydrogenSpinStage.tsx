@@ -3,6 +3,7 @@ import { OrbitControls, Sphere, Text, Torus } from '@react-three/drei'
 import { motion } from 'framer-motion'
 import { useRef, useState } from 'react'
 import * as THREE from 'three'
+import ProtocolHeader from '../components/ProtocolHeader'
 
 interface HydrogenSpinStageProps {
   onNext: () => void
@@ -154,6 +155,14 @@ export default function HydrogenSpinStage({ onNext, onPrev }: HydrogenSpinStageP
 
   return (
     <div className="stage">
+      <ProtocolHeader 
+        protocolId="PROTOCOL_I.1"
+        protocolName="ESTABLISH_FUNDAMENTAL_FREQUENCY"
+        executionMode="Interactive Observation"
+        stage={1}
+        totalStages={16}
+      />
+      
       <div className="stage-header">
         <motion.div
           initial={{ scale: 0.9, opacity: 0 }}
