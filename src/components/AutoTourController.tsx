@@ -10,6 +10,7 @@ interface AutoTourControllerProps {
   onStop: () => void
   timeRemaining: number
   stageDuration: number
+  currentStageName?: string
 }
 
 /**
@@ -23,7 +24,8 @@ export default function AutoTourController({
   onResume,
   onStop,
   timeRemaining,
-  stageDuration
+  stageDuration,
+  currentStageName = 'Tour Stop'
 }: AutoTourControllerProps) {
   const [isPaused, setIsPaused] = useState(false)
   
@@ -104,19 +106,19 @@ export default function AutoTourController({
                 <h3 style={{ 
                   margin: 0, 
                   color: 'white', 
-                  fontSize: '1.2rem',
+                  fontSize: '1.3rem',
                   fontWeight: 700,
                   textShadow: '0 2px 4px rgba(0, 0, 0, 0.5)'
                 }}>
-                  {isPaused ? '⏸️ Tour Paused' : '🎬 Nikola Tesla\'s Guided Tour'}
+                  {isPaused ? '⏸️ Tour Paused' : `🎬 ${currentStageName}`}
                 </h3>
                 <p style={{ 
                   margin: 0, 
-                  color: 'rgba(255, 255, 255, 0.9)', 
-                  fontSize: '0.85rem',
-                  fontWeight: 500
+                  color: 'rgba(255, 255, 255, 0.95)', 
+                  fontSize: '0.9rem',
+                  fontWeight: 600
                 }}>
-                  Stage {currentStage + 1} of {totalStages} • {isPaused ? 'Paused' : `Next in ${Math.ceil(timeRemaining / 1000)}s`}
+                  Stop {currentStage + 1} of {totalStages} • {isPaused ? 'Paused' : `Auto-advancing in ${Math.ceil(timeRemaining / 1000)}s`}
                 </p>
               </div>
             </div>
@@ -265,6 +267,8 @@ export default function AutoTourController({
     </AnimatePresence>
   )
 }
+
+
 
 
 

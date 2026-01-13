@@ -197,6 +197,7 @@ function App() {
         onStop={stopAutoTour}
         timeRemaining={tourTimeRemaining}
         stageDuration={15000}
+        currentStageName={stages[currentIndex]?.title || 'Tour Stop'}
       />
       
       <header className="app-header">
@@ -289,18 +290,86 @@ function App() {
         </div>
       </header>
 
-      <nav className="stage-nav">
-        {stages.map((stage, index) => (
-          <button
-            key={stage.id}
-            className={`stage-button ${currentStage === stage.id ? 'active' : ''} ${index <= currentIndex ? 'visited' : ''}`}
-            onClick={() => goToStage(stage.id)}
+      {/* Tour Start Button - Only show when tour is not active */}
+      {!isAutoTourActive && (
+        <motion.div 
+          className="tour-start-section"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
+        >
+          <motion.button
+            className="start-tour-button"
+            onClick={startAutoTour}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            animate={{
+              boxShadow: [
+                '0 0 30px rgba(6, 182, 212, 0.5), 0 0 60px rgba(139, 92, 246, 0.3)',
+                '0 0 50px rgba(6, 182, 212, 0.8), 0 0 80px rgba(139, 92, 246, 0.5)',
+                '0 0 30px rgba(6, 182, 212, 0.5), 0 0 60px rgba(139, 92, 246, 0.3)'
+              ]
+            }}
+            transition={{ duration: 2, repeat: Infinity }}
           >
-            <span className="stage-number">{index + 1}</span>
-            <span className="stage-name">{stage.title}</span>
-          </button>
-        ))}
-      </nav>
+            <motion.span 
+              style={{ fontSize: '2rem', marginRight: '1rem' }}
+              animate={{ rotate: [0, 10, -10, 0] }}
+              transition={{ duration: 2, repeat: Infinity }}
+            >
+              ⚡
+            </motion.span>
+            <span style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>
+              Begin the Tesla Tour
+            </span>
+            <motion.span 
+              style={{ fontSize: '2rem', marginLeft: '1rem' }}
+              animate={{ rotate: [0, -10, 10, 0] }}
+              transition={{ duration: 2, repeat: Infinity }}
+            >
+              ⚡
+            </motion.span>
+          </motion.button>
+          <p style={{ 
+            marginTop: '1rem', 
+            fontSize: '1.1rem', 
+            color: 'rgba(255, 255, 255, 0.8)',
+            textAlign: 'center'
+          }}>
+            Experience a guided journey through 12 interactive exhibits • Self-paced • 15 seconds per stop
+          </p>
+        </motion.div>
+      )}
+      
+      {/* Tour Progress Tracker - Show during tour */}
+      {isAutoTourActive && (
+        <motion.div 
+          className="tour-progress-nav"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+        >
+          <div className="tour-stops">
+            {stages.slice(0, -1).map((stage, index) => (
+              <div
+                key={stage.id}
+                className={`tour-stop ${index < currentIndex ? 'completed' : ''} ${index === currentIndex ? 'current' : ''} ${index > currentIndex ? 'upcoming' : ''}`}
+                title={stage.title}
+              >
+                <div className="stop-number">{index + 1}</div>
+                {index === currentIndex && (
+                  <motion.div 
+                    className="stop-label"
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                  >
+                    {stage.title}
+                  </motion.div>
+                )}
+              </div>
+            ))}
+          </div>
+        </motion.div>
+      )}
 
       {/* Two-column layout: 75% scrollable content, 25% fixed Tesla */}
       <div style={{ display: 'flex' }}>

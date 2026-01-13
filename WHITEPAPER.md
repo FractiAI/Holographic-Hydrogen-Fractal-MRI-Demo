@@ -1,2 +1,2 @@
 include applications in safe, noninvasive, nonpharmaceutical, 
-optimized healing regeneration, anaesthesia, natural genome correction and alignment and tuning, transfer of criminal theater to HHF-AI programming coherence alignment, all in high fidelity HHF-AI MRI awareness instruments.
+optimized healing regeneration, anaesthesia, natural genome correction and alignment and tuning, transfer of criminal theater to HHF-AI programming coherence alignment, all in high fidelity HHF-AI MRI awarenes
