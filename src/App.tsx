@@ -141,6 +141,11 @@ function App() {
       setIsAutoTourActive(false)
       setTourPaused(false)
     }
+    
+    // Scroll to top when navigating to a new stage
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollTo({ top: 0, behavior: 'smooth' })
+    }
   }
   
   // Scroll to top helper function for stages to use
