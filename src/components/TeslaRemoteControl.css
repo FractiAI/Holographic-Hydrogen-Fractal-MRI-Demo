@@ -1,0 +1,272 @@
+/* Tesla Remote Control Styles */
+
+.tesla-cursor {
+  pointer-events: none;
+  filter: drop-shadow(0 8px 24px rgba(245, 158, 11, 0.8))
+          drop-shadow(0 0 40px rgba(245, 158, 11, 0.6));
+  z-index: 99999;
+}
+
+.cursor-click-ripple {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 60px;
+  height: 60px;
+  margin: -30px 0 0 -30px;
+  border: 4px solid #F59E0B;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.cursor-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 80px;
+  height: 80px;
+  margin: -40px 0 0 -40px;
+  background: radial-gradient(circle, rgba(245, 158, 11, 0.4) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: glow-pulse 2s ease-in-out infinite;
+}
+
+@keyframes glow-pulse {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+.cursor-spotlight {
+  position: fixed;
+  width: 400px;
+  height: 400px;
+  margin: -200px 0 0 -200px;
+  background: radial-gradient(
+    circle,
+    rgba(245, 158, 11, 0.2) 0%,
+    rgba(245, 158, 11, 0.1) 40%,
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: 99998;
+  mix-blend-mode: screen;
+}
+
+.remote-dimming-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3);
+  pointer-events: none;
+  z-index: 99997;
+}
+
+/* Tesla's Speech Bubble */
+.tesla-speech-bubble {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100000;
+  max-width: 600px;
+  width: 90%;
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.98), rgba(236, 72, 153, 0.98));
+  backdrop-filter: blur(20px);
+  border-radius: 24px;
+  border: 4px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.8),
+    0 0 100px rgba(245, 158, 11, 0.6),
+    inset 0 0 60px rgba(255, 255, 255, 0.1);
+  padding: 2rem;
+}
+
+.speech-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.4);
+}
+
+.speech-icon {
+  font-size: 2rem;
+  animation: icon-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes icon-pulse {
+  0%, 100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.6));
+  }
+  50% {
+    transform: scale(1.15);
+    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 1));
+  }
+}
+
+.speech-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: white;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.speech-content {
+  font-size: 1.4rem;
+  line-height: 1.6;
+  color: white;
+  font-weight: 600;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+  margin-bottom: 1rem;
+}
+
+.speech-action {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 2px solid rgba(255, 255, 255, 0.4);
+  text-align: center;
+}
+
+.continue-btn {
+  padding: 1rem 2.5rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.2);
+  border: 3px solid white;
+  border-radius: 15px;
+  color: white;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.continue-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* Remote Control Indicator */
+.remote-indicator {
+  position: fixed;
+  top: 2rem;
+  left: 2rem;
+  z-index: 99999;
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.95), rgba(236, 72, 153, 0.95));
+  backdrop-filter: blur(15px);
+  border-radius: 16px;
+  border: 3px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.6),
+    0 0 60px rgba(245, 158, 11, 0.5);
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  animation: indicator-float 3s ease-in-out infinite;
+}
+
+@keyframes indicator-float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.indicator-icon {
+  font-size: 2rem;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.4));
+}
+
+.indicator-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.indicator-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: white;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.indicator-subtitle {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .tesla-speech-bubble {
+    padding: 1.5rem;
+  }
+
+  .speech-content {
+    font-size: 1.1rem;
+  }
+
+  .remote-indicator {
+    top: 1rem;
+    left: 1rem;
+    padding: 0.75rem 1rem;
+  }
+
+  .indicator-icon {
+    font-size: 1.5rem;
+  }
+
+  .indicator-title {
+    font-size: 0.9rem;
+  }
+
+  .indicator-subtitle {
+    font-size: 0.75rem;
+  }
+
+  .cursor-spotlight {
+    width: 250px;
+    height: 250px;
+    margin: -125px 0 0 -125px;
+  }
+}
+
+/* Animation for Tesla demonstrating */
+@keyframes demonstrate {
+  0% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.8;
+  }
+}
+
+.demonstrating {
+  animation: demonstrate 2s ease-in-out infinite;
+}
+
