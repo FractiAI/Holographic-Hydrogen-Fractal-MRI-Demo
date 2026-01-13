@@ -1,0 +1,45 @@
+{
+  "name": "hhf-ai-mri-mobile",
+  "version": "1.0.0",
+  "description": "Holographic Hydrogen Fractal MRI Mobile Sensor Module - Tesla Discovery Museum",
+  "main": "App.tsx",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web",
+    "eject": "expo eject"
+  },
+  "dependencies": {
+    "expo": "~49.0.0",
+    "expo-sensors": "~12.4.0",
+    "expo-haptics": "~12.4.0",
+    "expo-camera": "~13.4.0",
+    "expo-av": "~13.4.0",
+    "react": "18.2.0",
+    "react-native": "0.72.3",
+    "react-native-canvas": "^0.1.38",
+    "react-native-reanimated": "~3.3.0",
+    "react-native-svg": "13.9.0",
+    "ws": "^8.13.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.22.0",
+    "@types/react": "~18.2.14",
+    "@types/react-native": "~0.72.2",
+    "typescript": "^5.1.3"
+  },
+  "keywords": [
+    "HHF-AI",
+    "MRI",
+    "Syntheverse",
+    "Hydrogen",
+    "Tesla",
+    "Holographic",
+    "Fractal",
+    "Discovery Museum"
+  ],
+  "author": "FractiAI Research Team",
+  "license": "MIT"
+}
+
