@@ -187,18 +187,7 @@ function App() {
       {/* Nikola Tesla's Resonance Indicator */}
       <ResonanceIndicator isActive={showResonance} />
       
-      {/* Auto Tour Controller */}
-      <AutoTourController
-        isActive={isAutoTourActive}
-        currentStage={currentIndex}
-        totalStages={stages.length - 1} // Exclude Tesla AI from count
-        onPause={pauseAutoTour}
-        onResume={resumeAutoTour}
-        onStop={stopAutoTour}
-        timeRemaining={tourTimeRemaining}
-        stageDuration={15000}
-        currentStageName={stages[currentIndex]?.title || 'Tour Stop'}
-      />
+      {/* Auto Tour Controller - Removed for cleaner experience */}
       
       <header className="app-header">
         <div className="logo-section">

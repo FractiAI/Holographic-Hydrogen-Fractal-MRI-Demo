@@ -1,7 +1,7 @@
-import { Canvas } from '@react-three/fiber'
-import { OrbitControls, Sphere } from '@react-three/drei'
+import { Canvas, useFrame } from '@react-three/fiber'
+import { OrbitControls, Sphere, Html } from '@react-three/drei'
 import { motion } from 'framer-motion'
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import * as THREE from 'three'
 
 interface WelcomeStageProps {
@@ -12,16 +12,22 @@ interface WelcomeStageProps {
 function FloatingHydrogen() {
   const groupRef = useRef<THREE.Group>(null)
   
+  useFrame((state) => {
+    if (groupRef.current) {
+      groupRef.current.rotation.y = state.clock.elapsedTime * 0.1
+    }
+  })
+  
   // Create multiple floating hydrogen atoms
-  const atoms = Array.from({ length: 20 }, (_, i) => ({
+  const atoms = Array.from({ length: 25 }, (_, i) => ({
     position: [
-      (Math.random() - 0.5) * 10,
-      (Math.random() - 0.5) * 10,
-      (Math.random() - 0.5) * 10,
+      (Math.random() - 0.5) * 12,
+      (Math.random() - 0.5) * 12,
+      (Math.random() - 0.5) * 12,
     ] as [number, number, number],
-    scale: 0.3 + Math.random() * 0.3,
-    speed: 0.5 + Math.random() * 1,
-    offset: i * 0.3,
+    scale: 0.2 + Math.random() * 0.4,
+    speed: 0.5 + Math.random() * 1.5,
+    offset: i * 0.4,
   }))
 
   return (
@@ -41,447 +47,405 @@ function FloatingAtom({ position, scale, speed, offset }: {
 }) {
   const meshRef = useRef<THREE.Mesh>(null)
 
-  // Simple animation using frame updates
-  // In a real implementation, you'd use useFrame from @react-three/fiber
-  // But for simplicity, we'll use CSS animations for the glow effect
+  useFrame((state) => {
+    if (meshRef.current) {
+      meshRef.current.position.y = position[1] + Math.sin(state.clock.elapsedTime * speed + offset) * 2
+      meshRef.current.rotation.x = state.clock.elapsedTime * speed * 0.5
+      meshRef.current.rotation.z = state.clock.elapsedTime * speed * 0.3
+      
+      const pulse = Math.sin(state.clock.elapsedTime * 2 + offset) * 0.3 + 1
+      meshRef.current.scale.setScalar(scale * pulse)
+    }
+  })
 
   return (
     <Sphere ref={meshRef} args={[scale, 32, 32]} position={position}>
       <meshStandardMaterial
         color="#06B6D4"
         emissive="#8B5CF6"
-        emissiveIntensity={0.5}
-        metalness={0.8}
-        roughness={0.2}
+        emissiveIntensity={0.8}
+        metalness={0.9}
+        roughness={0.1}
       />
     </Sphere>
   )
 }
 
+// Animated Tesla Avatar
+function AnimatedTesla() {
+  const teslaRef = useRef<THREE.Group>(null)
+  
+  useFrame((state) => {
+    if (teslaRef.current) {
+      teslaRef.current.position.y = Math.sin(state.clock.elapsedTime * 0.8) * 0.5
+      teslaRef.current.rotation.y = Math.sin(state.clock.elapsedTime * 0.5) * 0.2
+    }
+  })
+
+  return (
+    <group ref={teslaRef} position={[0, 0, 0]}>
+      {/* Tesla's Electric Aura */}
+      <Sphere args={[3, 32, 32]} position={[0, 0, 0]}>
+        <meshStandardMaterial
+          color="#F59E0B"
+          emissive="#EC4899"
+          emissiveIntensity={0.5}
+          transparent
+          opacity={0.2}
+          metalness={0.8}
+          roughness={0.2}
+        />
+      </Sphere>
+      
+      {/* Tesla Label */}
+      <Html position={[0, 3.5, 0]} center>
+        <motion.div
+          animate={{
+            scale: [1, 1.1, 1],
+            textShadow: [
+              '0 0 20px rgba(245, 158, 11, 0.8)',
+              '0 0 40px rgba(245, 158, 11, 1)',
+              '0 0 20px rgba(245, 158, 11, 0.8)'
+            ]
+          }}
+          transition={{ duration: 2, repeat: Infinity }}
+          style={{
+            fontSize: '4rem',
+            filter: 'drop-shadow(0 0 20px rgba(245, 158, 11, 1))'
+          }}
+        >
+          ⚡
+        </motion.div>
+      </Html>
+    </group>
+  )
+}
+
 export default function WelcomeStage({ onNext, onStartTour }: WelcomeStageProps) {
+  const [teslaMessage, setTeslaMessage] = useState(0)
+  
+  const teslaMessages = [
+    "Welcome, young scientists! I am Nikola Tesla!",
+    "Today, we explore the SYNTHEVERSE!",
+    "A new frontier where energy meets consciousness!"
+  ]
+
   return (
     <div className="stage" style={{ 
       display: 'flex', 
       flexDirection: 'column',
       alignItems: 'center',
-      justifyContent: 'center',
-      padding: '3rem 2rem',
-      maxWidth: '1400px',
-      margin: '0 auto'
+      padding: '2rem 1rem',
+      maxWidth: '1600px',
+      margin: '0 auto',
+      minHeight: '100vh'
     }}>
-      {/* Museum Welcome Banner */}
-      <motion.div
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        style={{
-          background: 'linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(236, 72, 153, 0.2))',
-          border: '3px solid rgba(245, 158, 11, 0.5)',
-          borderRadius: '16px',
-          padding: '1.5rem 3rem',
-          marginBottom: '3rem',
-          textAlign: 'center',
-          boxShadow: '0 8px 32px rgba(245, 158, 11, 0.3)'
-        }}
-      >
-        <h3 style={{ 
-          fontSize: '1.4rem', 
-          fontWeight: 700,
-          color: '#F59E0B',
-          marginBottom: '0.5rem',
-          textTransform: 'uppercase',
-          letterSpacing: '3px'
-        }}>
-          ⚡ Nikola Tesla Discovery Museum ⚡
-        </h3>
-        <p style={{ fontSize: '1.1rem', color: 'rgba(255, 255, 255, 0.9)', margin: 0 }}>
-          Holographic Hydrogen Fractal MRI Exhibition
-        </p>
-      </motion.div>
-
-      {/* Centered Hero Section - Story Introduction */}
-      <div style={{
-        textAlign: 'center',
-        marginBottom: '3rem',
-        maxWidth: '900px'
-      }}>
-        <motion.div
-          initial={{ scale: 0.5, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 1, type: 'spring', bounce: 0.4 }}
-          style={{
-            fontSize: '4rem',
-            marginBottom: '1.5rem',
-            animation: 'bounce 2s ease-in-out infinite'
-          }}
-        >
-          🔬💫🌌
-        </motion.div>
-        
-        <motion.h2
-          initial={{ y: -50, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.2, duration: 0.8, type: 'spring' }}
-          style={{
-            fontSize: 'clamp(2rem, 5vw, 3.5rem)',
-            fontWeight: 900,
-            marginBottom: '1.5rem',
-            background: 'linear-gradient(135deg, #06B6D4, #8B5CF6, #EC4899, #F59E0B)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            backgroundClip: 'text',
-            letterSpacing: '2px',
-            lineHeight: 1.2,
-            animation: 'glow 3s ease-in-out infinite'
-          }}
-        >
-          Welcome to the Future of Imaging
-        </motion.h2>
-        
-        <motion.div
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.4, duration: 0.8 }}
-          style={{
-            fontSize: 'clamp(1rem, 2.5vw, 1.2rem)',
-            lineHeight: 1.8,
-            color: 'rgba(255, 255, 255, 0.9)',
-            textAlign: 'left',
-            background: 'rgba(0, 0, 0, 0.3)',
-            padding: '2rem',
-            borderRadius: '16px',
-            border: '2px solid rgba(6, 182, 212, 0.3)'
-          }}
-        >
-          <p style={{ marginBottom: '1.5rem' }}>
-            <strong style={{ color: '#06B6D4', fontSize: '1.3em' }}>Your Journey Today:</strong>
-          </p>
-          
-          <div style={{ display: 'grid', gap: '1rem', paddingLeft: '1rem' }}>
-            <p>
-              <strong style={{ color: '#8B5CF6' }}>1.</strong> Discover how <strong>hydrogen atoms spin</strong> like tiny magnets
-            </p>
-            <p>
-              <strong style={{ color: '#8B5CF6' }}>2.</strong> See how <strong>MRI machines</strong> use this spin to image your body
-            </p>
-            <p>
-              <strong style={{ color: '#8B5CF6' }}>3.</strong> Learn about <strong>holographs</strong> (3D projections) and <strong>fractals</strong> (infinite patterns)
-            </p>
-            <p>
-              <strong style={{ color: '#8B5CF6' }}>4.</strong> Explore <strong>HHF-AI MRI</strong> — A revolutionary system that images not just flesh, but <em>ideas, patterns, and complex systems!</em>
-            </p>
-            <p>
-              <strong style={{ color: '#8B5CF6' }}>5.</strong> See how HHF-AI MRI can <strong>analyze scientific papers</strong> faster and more accurately than human peer review
-            </p>
-            <p style={{ marginTop: '1rem', paddingTop: '1rem', borderTop: '2px solid rgba(236, 72, 153, 0.3)' }}>
-              <strong style={{ color: '#EC4899', fontSize: '1.2em' }}>Plus:</strong> Build your own HHF-AI MRI experiment and chat with <strong>Nikola Tesla himself!</strong> ⚡
-            </p>
-          </div>
-        </motion.div>
-      </div>
-
-      {/* Balanced 3D Visualization - Center Stage */}
+      
+      {/* Hero Section with Animated Tesla */}
       <motion.div
         initial={{ scale: 0.8, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
-        transition={{ delay: 0.6, duration: 1, type: 'spring' }}
+        transition={{ duration: 1.2, type: 'spring', bounce: 0.3 }}
         style={{
           width: '100%',
-          maxWidth: '900px',
-          height: '400px',
-          marginBottom: '4rem',
-          borderRadius: '24px',
-          overflow: 'hidden',
-          border: '4px solid rgba(6, 182, 212, 0.5)',
-          boxShadow: `
-            0 0 60px rgba(6, 182, 212, 0.4),
-            0 0 100px rgba(139, 92, 246, 0.3),
-            inset 0 0 60px rgba(6, 182, 212, 0.1)
-          `,
-          background: 'rgba(2, 6, 23, 0.8)',
-          animation: 'pulseGlow 4s ease-in-out infinite'
-        }}
-      >
-        <Canvas camera={{ position: [0, 0, 15], fov: 60 }}>
-          <ambientLight intensity={0.5} />
-          <pointLight position={[10, 10, 10]} intensity={1} />
-          <pointLight position={[-10, -10, -10]} intensity={0.5} color="#8B5CF6" />
-          <FloatingHydrogen />
-          <OrbitControls enableZoom={true} enablePan={false} />
-        </Canvas>
-      </motion.div>
-
-      {/* Museum Exhibit Cards - What You'll Learn */}
-      <div style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-        gap: '2rem',
-        width: '100%',
-        maxWidth: '1200px',
-        marginBottom: '3rem'
-      }}>
-        <motion.div
-          initial={{ y: 30, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.8, duration: 0.6 }}
-        >
-          <div style={{
-            padding: '2rem',
-            background: 'linear-gradient(135deg, rgba(6, 182, 212, 0.15), rgba(139, 92, 246, 0.15))',
-            borderRadius: '20px',
-            border: '3px solid rgba(6, 182, 212, 0.5)',
-            boxShadow: '0 8px 32px rgba(6, 182, 212, 0.4)',
-            textAlign: 'center',
-            transition: 'all 0.3s ease',
-            minHeight: '280px',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'space-between'
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.transform = 'translateY(-8px) scale(1.02)'
-            e.currentTarget.style.boxShadow = '0 12px 48px rgba(6, 182, 212, 0.6)'
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.transform = 'translateY(0) scale(1)'
-            e.currentTarget.style.boxShadow = '0 8px 32px rgba(6, 182, 212, 0.4)'
-          }}
-          >
-            <div>
-              <div style={{ fontSize: '3.5rem', marginBottom: '1rem' }}>⚛️</div>
-              <h3 style={{ 
-                fontSize: '1.5rem', 
-                fontWeight: 800,
-                marginBottom: '1rem',
-                color: '#06B6D4',
-                textShadow: '0 0 20px rgba(6, 182, 212, 0.6)'
-              }}>
-                The Science
-              </h3>
-            </div>
-            <p style={{ 
-              lineHeight: 1.7, 
-              color: 'rgba(255, 255, 255, 0.9)',
-              fontSize: '1.05rem'
-            }}>
-              Real MRI physics! Learn how hydrogen atoms spin, how magnetic fields control them, and why this creates detailed images of your body
-            </p>
-          </div>
-        </motion.div>
-
-        <motion.div
-          initial={{ y: 30, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.9, duration: 0.6 }}
-        >
-          <div style={{
-            padding: '2rem',
-            background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(236, 72, 153, 0.15))',
-            borderRadius: '20px',
-            border: '3px solid rgba(139, 92, 246, 0.5)',
-            boxShadow: '0 8px 32px rgba(139, 92, 246, 0.4)',
-            textAlign: 'center',
-            transition: 'all 0.3s ease',
-            minHeight: '280px',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'space-between'
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.transform = 'translateY(-8px) scale(1.02)'
-            e.currentTarget.style.boxShadow = '0 12px 48px rgba(139, 92, 246, 0.6)'
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.transform = 'translateY(0) scale(1)'
-            e.currentTarget.style.boxShadow = '0 8px 32px rgba(139, 92, 246, 0.4)'
-          }}
-          >
-            <div>
-              <div style={{ fontSize: '3.5rem', marginBottom: '1rem' }}>🌀</div>
-              <h3 style={{ 
-                fontSize: '1.5rem', 
-                fontWeight: 800,
-                marginBottom: '1rem',
-                color: '#8B5CF6',
-                textShadow: '0 0 20px rgba(139, 92, 246, 0.6)'
-              }}>
-                The Magic
-              </h3>
-            </div>
-            <p style={{ 
-              lineHeight: 1.7, 
-              color: 'rgba(255, 255, 255, 0.9)',
-              fontSize: '1.05rem'
-            }}>
-              Holographs project 3D images in space. Fractals create infinite repeating patterns. Together they unlock new dimensions of imaging!
-            </p>
-          </div>
-        </motion.div>
-
-        <motion.div
-          initial={{ y: 30, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 1.0, duration: 0.6 }}
-        >
-          <div style={{
-            padding: '2rem',
-            background: 'linear-gradient(135deg, rgba(236, 72, 153, 0.15), rgba(245, 158, 11, 0.15))',
-            borderRadius: '20px',
-            border: '3px solid rgba(236, 72, 153, 0.5)',
-            boxShadow: '0 8px 32px rgba(236, 72, 153, 0.4)',
-            textAlign: 'center',
-            transition: 'all 0.3s ease',
-            minHeight: '280px',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'space-between'
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.transform = 'translateY(-8px) scale(1.02)'
-            e.currentTarget.style.boxShadow = '0 12px 48px rgba(236, 72, 153, 0.6)'
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.transform = 'translateY(0) scale(1)'
-            e.currentTarget.style.boxShadow = '0 8px 32px rgba(236, 72, 153, 0.4)'
-          }}
-          >
-            <div>
-              <div style={{ fontSize: '3.5rem', marginBottom: '1rem' }}>🚀</div>
-              <h3 style={{ 
-                fontSize: '1.5rem', 
-                fontWeight: 800,
-                marginBottom: '1rem',
-                color: '#EC4899',
-                textShadow: '0 0 20px rgba(236, 72, 153, 0.6)'
-              }}>
-                The Future
-              </h3>
-            </div>
-            <p style={{ 
-              lineHeight: 1.7, 
-              color: 'rgba(255, 255, 255, 0.9)',
-              fontSize: '1.05rem'
-            }}>
-              HHF-AI MRI can image anything — from scientific papers to system coherence. See why it's faster and more accurate than human review!
-            </p>
-          </div>
-        </motion.div>
-      </div>
-
-      {/* Museum Time Estimate */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.1, duration: 0.8 }}
-        style={{
-          background: 'rgba(16, 185, 129, 0.15)',
-          border: '2px solid rgba(16, 185, 129, 0.4)',
-          borderRadius: '12px',
-          padding: '1.5rem 2rem',
+          maxWidth: '1400px',
+          height: '500px',
           marginBottom: '2rem',
-          textAlign: 'center',
-          maxWidth: '600px'
+          borderRadius: '30px',
+          overflow: 'hidden',
+          border: '5px solid rgba(245, 158, 11, 0.8)',
+          boxShadow: `
+            0 0 80px rgba(245, 158, 11, 0.6),
+            0 0 120px rgba(139, 92, 246, 0.4),
+            inset 0 0 80px rgba(6, 182, 212, 0.2)
+          `,
+          background: 'radial-gradient(circle, rgba(2, 6, 23, 0.9), rgba(15, 23, 42, 0.95))',
+          position: 'relative'
         }}
       >
-        <p style={{ 
-          fontSize: '1.1rem', 
-          color: '#10B981', 
-          fontWeight: 700,
-          marginBottom: '0.5rem'
-        }}>
-          ⏱️ Exhibition Time: 30-45 minutes
-        </p>
-        <p style={{ 
-          fontSize: '0.95rem', 
-          color: 'rgba(255, 255, 255, 0.8)',
-          margin: 0
-        }}>
-          Perfect for ages 10+ • Interactive experiments • Ask Tesla anything!
-        </p>
+        <Canvas camera={{ position: [0, 0, 20], fov: 60 }}>
+          <ambientLight intensity={0.6} />
+          <pointLight position={[15, 15, 15]} intensity={1.5} color="#F59E0B" />
+          <pointLight position={[-15, -15, -15]} intensity={1} color="#8B5CF6" />
+          <pointLight position={[0, 15, -15]} intensity={0.8} color="#EC4899" />
+          <AnimatedTesla />
+          <FloatingHydrogen />
+          <OrbitControls enableZoom={true} enablePan={false} autoRotate autoRotateSpeed={0.5} />
+        </Canvas>
+        
+        {/* Tesla's Speech Bubble */}
+        <motion.div
+          key={teslaMessage}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          style={{
+            position: 'absolute',
+            top: '2rem',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            background: 'linear-gradient(135deg, rgba(245, 158, 11, 0.95), rgba(236, 72, 153, 0.95))',
+            padding: '1.5rem 2.5rem',
+            borderRadius: '20px',
+            border: '3px solid rgba(255, 255, 255, 0.8)',
+            boxShadow: '0 10px 40px rgba(0, 0, 0, 0.6)',
+            maxWidth: '80%',
+            textAlign: 'center',
+            cursor: 'pointer'
+          }}
+          onClick={() => setTeslaMessage((teslaMessage + 1) % teslaMessages.length)}
+        >
+          <p style={{
+            fontSize: '1.5rem',
+            fontWeight: 700,
+            color: 'white',
+            margin: 0,
+            textShadow: '0 2px 4px rgba(0, 0, 0, 0.5)'
+          }}>
+            {teslaMessages[teslaMessage]}
+          </p>
+        </motion.div>
       </motion.div>
 
-      {/* Centered Call-to-Action - Perfect Balance */}
+      {/* Main Title - Syntheverse Narrative */}
       <motion.div
-        initial={{ scale: 0.8, opacity: 0 }}
+        initial={{ y: -50, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ delay: 0.3, duration: 0.8 }}
+        style={{ textAlign: 'center', marginBottom: '2rem', maxWidth: '1200px' }}
+      >
+        <h1 style={{
+          fontSize: 'clamp(2.5rem, 6vw, 5rem)',
+          fontWeight: 900,
+          marginBottom: '1rem',
+          background: 'linear-gradient(135deg, #F59E0B, #EC4899, #8B5CF6, #06B6D4)',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
+          backgroundClip: 'text',
+          letterSpacing: '3px',
+          lineHeight: 1.1,
+          textShadow: '0 0 40px rgba(245, 158, 11, 0.5)'
+        }}>
+          WELCOME TO THE SYNTHEVERSE
+        </h1>
+        <motion.p
+          animate={{
+            textShadow: [
+              '0 0 20px rgba(6, 182, 212, 0.6)',
+              '0 0 40px rgba(6, 182, 212, 1)',
+              '0 0 20px rgba(6, 182, 212, 0.6)'
+            ]
+          }}
+          transition={{ duration: 2, repeat: Infinity }}
+          style={{
+            fontSize: 'clamp(1.2rem, 3vw, 2rem)',
+            fontWeight: 700,
+            color: '#06B6D4',
+            letterSpacing: '2px'
+          }}
+        >
+          Where Hydrogen Becomes Holographic • Where Fractals Meet Consciousness
+        </motion.p>
+      </motion.div>
+
+      {/* The Big Idea - Discovery Museum Style */}
+      <motion.div
+        initial={{ scale: 0.9, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
-        transition={{ delay: 1.2, duration: 0.8, type: 'spring', bounce: 0.5 }}
+        transition={{ delay: 0.5, duration: 0.8 }}
         style={{
-          display: 'flex',
-          justifyContent: 'center',
-          marginTop: '1rem'
+          background: 'linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(236, 72, 153, 0.2), rgba(139, 92, 246, 0.2))',
+          border: '4px solid rgba(245, 158, 11, 0.6)',
+          borderRadius: '25px',
+          padding: '3rem',
+          marginBottom: '3rem',
+          maxWidth: '1200px',
+          boxShadow: '0 20px 60px rgba(0, 0, 0, 0.4)'
         }}
       >
-        <button
-          onClick={onNext}
+        <h2 style={{
+          fontSize: 'clamp(1.8rem, 4vw, 3rem)',
+          fontWeight: 800,
+          color: '#F59E0B',
+          marginBottom: '1.5rem',
+          textAlign: 'center',
+          textShadow: '0 0 30px rgba(245, 158, 11, 0.8)'
+        }}>
+          🌟 What If We Could Image MORE Than Just Bodies? 🌟
+        </h2>
+        
+        <div style={{
+          fontSize: 'clamp(1.1rem, 2.5vw, 1.4rem)',
+          lineHeight: 1.9,
+          color: 'rgba(255, 255, 255, 0.95)',
+          textAlign: 'left'
+        }}>
+          <p style={{ marginBottom: '1.5rem' }}>
+            <strong style={{ color: '#06B6D4', fontSize: '1.2em' }}>Imagine this:</strong> Your body is made of tiny hydrogen atoms. 
+            They spin like microscopic magnets. MRI machines use this spin to take pictures of your insides!
+          </p>
+          
+          <p style={{ marginBottom: '1.5rem' }}>
+            <strong style={{ color: '#8B5CF6', fontSize: '1.2em' }}>But here's the AMAZING part:</strong> What if we could use 
+            the SAME hydrogen spin technology to image <em style={{ color: '#EC4899' }}>ideas, patterns, and entire systems?</em>
+          </p>
+          
+          <p style={{ 
+            marginBottom: '1.5rem',
+            padding: '1.5rem',
+            background: 'rgba(236, 72, 153, 0.2)',
+            borderLeft: '5px solid #EC4899',
+            borderRadius: '10px'
+          }}>
+            <strong style={{ color: '#EC4899', fontSize: '1.3em' }}>That's the SYNTHEVERSE!</strong> A new frontier where we use 
+            <strong> Holographic Hydrogen Fractal MRI (HHF-AI MRI)</strong> to scan not just flesh and bone, but 
+            <em> consciousness, coherence, and complex patterns!</em>
+          </p>
+
+          <p style={{ textAlign: 'center', fontSize: '1.3em', fontWeight: 700, color: '#F59E0B', marginTop: '2rem' }}>
+            ⚡ Join Tesla on this electrifying journey! ⚡
+          </p>
+        </div>
+      </motion.div>
+
+      {/* Discovery Cards - What You'll Experience */}
+      <motion.div
+        initial={{ y: 30, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ delay: 0.7, duration: 0.8 }}
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+          gap: '2rem',
+          width: '100%',
+          maxWidth: '1200px',
+          marginBottom: '3rem'
+        }}
+      >
+        {[
+          { icon: '⚛️', title: 'Spin Like Hydrogen', desc: 'See atoms dance and spin in 3D! Control magnetic fields with your own hands!', color: '#06B6D4' },
+          { icon: '🌀', title: 'Fractals Forever', desc: 'Zoom into infinite patterns! Watch holographs project in 3D space!', color: '#8B5CF6' },
+          { icon: '🧠', title: 'Mind-Blowing MRI', desc: 'The MRI that images ITSELF! See consciousness become visible!', color: '#EC4899' },
+          { icon: '🚀', title: 'Build Your Own', desc: 'Create your own HHF-AI experiment! Plant seeds, shake edges, watch magic!', color: '#F59E0B' }
+        ].map((card, i) => (
+          <motion.div
+            key={i}
+            whileHover={{ scale: 1.05, y: -10 }}
+            style={{
+              background: `linear-gradient(135deg, ${card.color}22, ${card.color}11)`,
+              border: `3px solid ${card.color}`,
+              borderRadius: '20px',
+              padding: '2rem',
+              textAlign: 'center',
+              cursor: 'pointer',
+              transition: 'all 0.3s ease',
+              boxShadow: `0 10px 30px ${card.color}40`
+            }}
+          >
+            <div style={{ fontSize: '4rem', marginBottom: '1rem' }}>{card.icon}</div>
+            <h3 style={{ 
+              fontSize: '1.5rem', 
+              fontWeight: 800,
+              marginBottom: '1rem',
+              color: card.color,
+              textShadow: `0 0 20px ${card.color}80`
+            }}>
+              {card.title}
+            </h3>
+            <p style={{ 
+              fontSize: '1.05rem',
+              lineHeight: 1.7,
+              color: 'rgba(255, 255, 255, 0.9)'
+            }}>
+              {card.desc}
+            </p>
+          </motion.div>
+        ))}
+      </motion.div>
+
+      {/* The Big Button - Start Discovery */}
+      <motion.div
+        initial={{ scale: 0.5, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ delay: 0.9, duration: 0.8, type: 'spring', bounce: 0.6 }}
+        style={{ marginBottom: '2rem' }}
+      >
+        <motion.button
+          onClick={onStartTour || onNext}
+          whileHover={{ scale: 1.1, y: -10 }}
+          whileTap={{ scale: 0.95 }}
+          animate={{
+            boxShadow: [
+              '0 0 60px rgba(245, 158, 11, 0.6), 0 0 100px rgba(236, 72, 153, 0.4)',
+              '0 0 100px rgba(245, 158, 11, 0.9), 0 0 140px rgba(236, 72, 153, 0.7)',
+              '0 0 60px rgba(245, 158, 11, 0.6), 0 0 100px rgba(236, 72, 153, 0.4)'
+            ]
+          }}
+          transition={{ duration: 2, repeat: Infinity }}
           style={{
-            fontSize: '1.5rem',
-            fontWeight: 800,
-            padding: '1.8rem 4.5rem',
+            fontSize: 'clamp(1.3rem, 3vw, 2rem)',
+            fontWeight: 900,
+            padding: '2rem 4rem',
             background: 'linear-gradient(135deg, #F59E0B, #EC4899, #8B5CF6)',
-            border: '4px solid rgba(255, 255, 255, 0.5)',
-            borderRadius: '20px',
+            border: '5px solid white',
+            borderRadius: '25px',
             color: 'white',
             cursor: 'pointer',
-            letterSpacing: '2px',
+            letterSpacing: '3px',
             textTransform: 'uppercase',
-            boxShadow: `
-              0 0 40px rgba(245, 158, 11, 0.6),
-              0 0 60px rgba(236, 72, 153, 0.4),
-              0 8px 32px rgba(0, 0, 0, 0.4)
-            `,
-            transition: 'all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)',
-            animation: 'pulseGlow 2s ease-in-out infinite'
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.transform = 'translateY(-10px) scale(1.1)'
-            e.currentTarget.style.boxShadow = `
-              0 0 60px rgba(245, 158, 11, 0.9),
-              0 0 90px rgba(236, 72, 153, 0.7),
-              0 12px 48px rgba(0, 0, 0, 0.5)
-            `
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.transform = 'translateY(0) scale(1)'
-            e.currentTarget.style.boxShadow = `
-              0 0 40px rgba(245, 158, 11, 0.6),
-              0 0 60px rgba(236, 72, 153, 0.4),
-              0 8px 32px rgba(0, 0, 0, 0.4)
-            `
+            textShadow: '0 4px 8px rgba(0, 0, 0, 0.5)',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '1rem'
           }}
         >
-          🚀 Start Your Discovery Journey 🚀
-        </button>
+          <motion.span
+            animate={{ rotate: [0, 360] }}
+            transition={{ duration: 2, repeat: Infinity, ease: 'linear' }}
+            style={{ fontSize: '2.5rem' }}
+          >
+            ⚡
+          </motion.span>
+          Begin Tesla's Tour
+          <motion.span
+            animate={{ rotate: [360, 0] }}
+            transition={{ duration: 2, repeat: Infinity, ease: 'linear' }}
+            style={{ fontSize: '2.5rem' }}
+          >
+            ⚡
+          </motion.span>
+        </motion.button>
       </motion.div>
 
-      {/* Museum Instructions */}
+      {/* Tour Info */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.5, duration: 1 }}
+        transition={{ delay: 1.1, duration: 1 }}
         style={{
-          marginTop: '2.5rem',
           textAlign: 'center',
-          maxWidth: '700px'
+          maxWidth: '800px',
+          marginBottom: '2rem'
         }}
       >
         <p style={{
-          fontSize: '1rem',
-          color: 'rgba(255, 255, 255, 0.6)',
-          fontStyle: 'italic',
+          fontSize: '1.2rem',
+          color: '#10B981',
+          fontWeight: 700,
           marginBottom: '1rem'
         }}>
-          💫 Rotate the 3D hydrogen cloud above with your mouse
+          ⏱️ 12 Interactive Stops • Self-Paced • 30-45 Minutes
         </p>
         <p style={{
-          fontSize: '0.95rem',
-          color: 'rgba(255, 255, 255, 0.5)',
-          lineHeight: 1.6
+          fontSize: '1.1rem',
+          color: 'rgba(255, 255, 255, 0.8)',
+          lineHeight: 1.8
         }}>
-          <strong style={{ color: '#F59E0B' }}>Nikola Tesla</strong> will be your personal guide throughout this exhibition! 
-          Look for his glowing avatar at the bottom of the screen. Click him anytime to ask questions! ⚡
+          Perfect for curious minds ages 10+ • Rotate the 3D scenes • Ask Tesla questions anytime! 
+          <br />
+          <strong style={{ color: '#F59E0B' }}>Your guide awaits! ⚡</strong>
         </p>
       </motion.div>
     </div>
   )
 }
-
